@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1850</width>
-    <height>1080</height>
+    <width>1840</width>
+    <height>1081</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -198,21 +198,6 @@
         <string>Borrar Todo</string>
        </property>
       </widget>
-      <zorder>label</zorder>
-      <zorder>EstadosDeConexion</zorder>
-      <zorder>Conectar</zorder>
-      <zorder>Desconectar</zorder>
-      <zorder>Anadir</zorder>
-      <zorder>Borrar</zorder>
-      <zorder>Frame_Centro</zorder>
-      <zorder>ListaConexiones</zorder>
-      <zorder>label_3</zorder>
-      <zorder>ListaMaquinas</zorder>
-      <zorder>ListaInstrucciones</zorder>
-      <zorder>TablaInstrucciones</zorder>
-      <zorder>Ejecutar</zorder>
-      <zorder>BorrarTodo</zorder>
-      <zorder>Frame_Centro</zorder>
      </widget>
     </item>
     <item>
@@ -346,29 +331,6 @@
         </rect>
        </property>
       </widget>
-      <zorder>Frame_Der</zorder>
-      <zorder>FrameIzq</zorder>
-      <zorder>FrameIzq</zorder>
-      <zorder>FrameIzq</zorder>
-      <zorder>FrameIzq</zorder>
-      <zorder>FrameIzq</zorder>
-      <zorder>FrameIzq</zorder>
-      <zorder>FrameIzq</zorder>
-      <zorder>FrameIzq</zorder>
-      <zorder>FrameIzq</zorder>
-      <zorder>FrameIzq</zorder>
-      <zorder>label_4</zorder>
-      <zorder>Codigo</zorder>
-      <zorder>Compilar</zorder>
-      <zorder>BorrarTodo_2</zorder>
-      <zorder>Cargar</zorder>
-      <zorder>Titulo</zorder>
-      <zorder>label_2</zorder>
-      <zorder>label_5</zorder>
-      <zorder>FrameIzq</zorder>
-      <zorder>ListaMaquinas_2</zorder>
-      <zorder>Frame_Der</zorder>
-      <zorder>Frame_Der</zorder>
      </widget>
     </item>
     <item>
@@ -551,24 +513,6 @@
         <string>Generar Comandos</string>
        </property>
       </widget>
-      <zorder>Frame_Centro</zorder>
-      <zorder>Frame_Centro</zorder>
-      <zorder>Frame_Centro</zorder>
-      <zorder>Frame_Centro</zorder>
-      <zorder>Frame_Centro</zorder>
-      <zorder>label_6</zorder>
-      <zorder>Graficas</zorder>
-      <zorder>PuertoCOM</zorder>
-      <zorder>label_7</zorder>
-      <zorder>ConectarPuerto</zorder>
-      <zorder>DesconectarPuerto</zorder>
-      <zorder>Grabar</zorder>
-      <zorder>Detener</zorder>
-      <zorder>Graficar</zorder>
-      <zorder>Procesar</zorder>
-      <zorder>ListaComandos</zorder>
-      <zorder>pushButton</zorder>
-      <zorder>GenerarComandos</zorder>
      </widget>
     </item>
    </layout>
@@ -578,8 +522,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1850</width>
-     <height>25</height>
+     <width>1840</width>
+     <height>22</height>
     </rect>
    </property>
    <property name="nativeMenuBar">

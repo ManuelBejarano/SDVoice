@@ -1,0 +1,11 @@
+[submodule "spinxbase"]
+	path = ./
+	url = https://github.com/cmusphinx/sphinxbase.git
+	
+[submodule "sphinxtrain"]
+	path = ./
+	url = https://github.com/cmusphinx/sphinxtrain.git
+
+[submodule "pocketsphinx"]
+	path = ./
+	url = https://github.com/cmusphinx/pocketsphinx.git

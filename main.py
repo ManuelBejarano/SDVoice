@@ -1,7 +1,8 @@
 import sys
  	
-from paramiko import client
 import socket
+from paramiko import client
+from firebase import firebase
 from PyQt5 import uic, QtGui, QtCore
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QGridLayout, QTextEdit, QPushButton
 

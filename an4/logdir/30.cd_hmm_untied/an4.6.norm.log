@@ -1,0 +1,60 @@
+Current configuration:
+[NAME]		[DEFLT]	[VALUE]
+-accumdir		/home/sdv/Documents/SDV/SDVoice/an4/bwaccumdir/an4_buff_1,
+-constE		3.0	3.000000e+00
+-dcountfn		
+-example	no	no
+-fullvar	no	no
+-help		no	no
+-inmeanfn		
+-inmixwfn		
+-invarfn		
+-meanfn			/home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_untied/means
+-mixwfn			/home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_untied/mixture_weights
+-mmie		no	no
+-oaccumdir		
+-regmatfn		
+-tiedvar	no	no
+-tmatfn			/home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_untied/transition_matrices
+-varfn			/home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_untied/variances
+
+INFO: main.c(207): Reading and accumulating counts from /home/sdv/Documents/SDV/SDVoice/an4/bwaccumdir/an4_buff_1
+INFO: s3mixw_io.c(117): Read /home/sdv/Documents/SDV/SDVoice/an4/bwaccumdir/an4_buff_1/mixw_counts [4854x4x256 array]
+INFO: s3tmat_io.c(118): Read /home/sdv/Documents/SDV/SDVoice/an4/bwaccumdir/an4_buff_1/tmat_counts [34x3x4 array]
+INFO: s3gau_io.c(386): Read /home/sdv/Documents/SDV/SDVoice/an4/bwaccumdir/an4_buff_1/gauden_counts with means with vars (2pass) [1x4x256 vector arrays]
+INFO: main.c(321): -2passvar yes
+INFO: main.c(391): Normalizing mean for n_mgau= 1, n_stream= 4, n_density= 256
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 2) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 18) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 20) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 30) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 36) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 38) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 57) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 65) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 66) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 71) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 82) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 91) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 109) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 141) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 157) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 161) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 173) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 176) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 183) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 201) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 212) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 216) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 221) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 230) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 239) never observed
+WARN: "gauden.c", line 1565: (mgau= 0, feat= 2, density= 246) never observed
+INFO: main.c(414): Normalizing var
+INFO: s3mixw_io.c(233): Wrote /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_untied/mixture_weights [4854x4x256 array]
+INFO: s3tmat_io.c(176): Wrote /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_untied/transition_matrices [34x3x4 array]
+INFO: s3gau_io.c(228): Wrote /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_untied/means [1x4x256 array]
+INFO: s3gau_io.c(228): Wrote /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_untied/variances [1x4x256 array]
+Fri Nov  2 10:05:14 2018
+Current Overall Likelihood Per Frame = -194.212990246939
+Convergence ratio = 0.183399045444787

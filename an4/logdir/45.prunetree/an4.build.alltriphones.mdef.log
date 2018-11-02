@@ -1,0 +1,37 @@
+Current configuration:
+[NAME]		[DEFLT]	[VALUE]
+-dictfn			/home/sdv/Documents/SDV/SDVoice/an4/etc/an4.dic
+-example	no	no
+-fdictfn		/home/sdv/Documents/SDV/SDVoice/an4/etc/an4.filler
+-help		no	no
+-ignorewpos	no	no
+-inCDmdef		
+-inCImdef		
+-lsnfn			
+-maxtriphones	100000	100000
+-minocc		1	1
+-n_state_pm	3	3
+-oalltphnmdef		/home/sdv/Documents/SDV/SDVoice/an4/model_architecture/an4.alltriphones.mdef
+-ocimdef		
+-ocountfn		
+-ountiedmdef		
+-phnlstfn		/home/sdv/Documents/SDV/SDVoice/an4/model_architecture/an4.phonelist
+-triphnlstfn		
+
+INFO: main.c(94): Will write alltriphone mdef file /home/sdv/Documents/SDV/SDVoice/an4/model_architecture/an4.alltriphones.mdef
+INFO: mk_mdef_gen.c(189): 0 single word triphones in input phone list
+INFO: mk_mdef_gen.c(190): 0 word beginning triphones in input phone list
+INFO: mk_mdef_gen.c(191): 0 word internal triphones in input phone list
+INFO: mk_mdef_gen.c(192): 0 word ending triphones in input phone list
+INFO: mk_mdef_gen.c(280): Reading dict /home/sdv/Documents/SDV/SDVoice/an4/etc/an4.dic
+INFO: mk_mdef_gen.c(322): 130 words in dict /home/sdv/Documents/SDV/SDVoice/an4/etc/an4.dic
+INFO: mk_mdef_gen.c(280): Reading dict /home/sdv/Documents/SDV/SDVoice/an4/etc/an4.filler
+INFO: mk_mdef_gen.c(322): 3 words in dict /home/sdv/Documents/SDV/SDVoice/an4/etc/an4.filler
+INFO: mk_mdef_gen.c(442): 133 words in dictionary
+INFO: mk_mdef_gen.c(443): 2900 unique single word triphones in dictionary
+INFO: mk_mdef_gen.c(444): 1420 unique word beginning triphones in dictionary
+INFO: mk_mdef_gen.c(445): 167 unique word internal triphones in dictionary
+INFO: mk_mdef_gen.c(446): 1885 unique word ending triphones in dictionary
+INFO: mk_mdef_gen.c(897): 34 n_base, 6372 n_tri
+INFO: mk_mdef_gen.c(969): Wrote mdef file /home/sdv/Documents/SDV/SDVoice/an4/model_architecture/an4.alltriphones.mdef
+Fri Nov  2 10:08:03 2018

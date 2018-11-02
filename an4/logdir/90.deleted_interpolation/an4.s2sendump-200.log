@@ -1,0 +1,22 @@
+Current configuration:
+[NAME]		[DEFLT]	[VALUE]
+-example	no	no
+-help		no	no
+-mixwfn			/home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_200_delinterp/mixture_weights
+-moddeffn		/home/sdv/Documents/SDV/SDVoice/an4/model_architecture/an4.200.mdef
+-mwfloor	0.00001	1.000000e-07
+-pocketsphinx	no	yes
+-sendumpfn		/home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_200_delinterp/sendump
+
+INFO: model_def_io.c(573): Model definition info:
+INFO: model_def_io.c(574): 6406 total models defined (34 base, 6372 tri)
+INFO: model_def_io.c(575): 25624 total states
+INFO: model_def_io.c(576): 302 total tied states
+INFO: model_def_io.c(577): 102 total tied CI states
+INFO: model_def_io.c(578): 34 total tied transition matrices
+INFO: model_def_io.c(579): 4 max state/model
+INFO: model_def_io.c(580): 4 min state/model
+INFO: senone.c(210): Reading senone mixture weights: /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_200_delinterp/mixture_weights
+INFO: senone.c(331): Read mixture weights for 302 senones: 4 features x 256 codewords
+INFO: mk_s2sendump.c(207): Writing PocketSphinx format sendump file: /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_200_delinterp/sendump
+Fri Nov  2 10:11:41 2018

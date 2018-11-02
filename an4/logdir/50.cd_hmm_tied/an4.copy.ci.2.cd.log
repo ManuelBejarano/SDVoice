@@ -1,0 +1,6499 @@
+Current configuration:
+[NAME]		[DEFLT]	[VALUE]
+-dest_meanfn		/home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_initial/means
+-dest_mixwfn		/home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_initial/mixture_weights
+-dest_moddeffn		/home/sdv/Documents/SDV/SDVoice/an4/model_architecture/an4.200.mdef
+-dest_tmatfn		/home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_initial/transition_matrices
+-dest_ts2cbfn		.semi.
+-dest_varfn		/home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_initial/variances
+-example	no	no
+-fullvar	no	no
+-help		no	no
+-src_meanfn		/home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.ci_semi/means
+-src_mixwfn		/home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.ci_semi/mixture_weights
+-src_moddeffn		/home/sdv/Documents/SDV/SDVoice/an4/model_architecture/an4.ci.mdef
+-src_tmatfn		/home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.ci_semi/transition_matrices
+-src_ts2cbfn		.semi.
+-src_varfn		/home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.ci_semi/variances
+
+INFO: main.c(261): Reading src /home/sdv/Documents/SDV/SDVoice/an4/model_architecture/an4.ci.mdef
+INFO: model_def_io.c(573): Model definition info:
+INFO: model_def_io.c(574): 34 total models defined (34 base, 0 tri)
+INFO: model_def_io.c(575): 136 total states
+INFO: model_def_io.c(576): 102 total tied states
+INFO: model_def_io.c(577): 102 total tied CI states
+INFO: model_def_io.c(578): 34 total tied transition matrices
+INFO: model_def_io.c(579): 4 max state/model
+INFO: model_def_io.c(580): 4 min state/model
+INFO: main.c(272): Generating semi-continous ts2cb mapping
+INFO: main.c(299): Reading src /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.ci_semi/mixture_weights
+INFO: s3mixw_io.c(117): Read /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.ci_semi/mixture_weights [102x4x256 array]
+INFO: main.c(309): Reading src /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.ci_semi/transition_matrices
+INFO: s3tmat_io.c(118): Read /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.ci_semi/transition_matrices [34x3x4 array]
+INFO: main.c(318): Reading src /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.ci_semi/means
+INFO: s3gau_io.c(169): Read /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.ci_semi/means [1x4x256 array]
+INFO: main.c(342): Reading src /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.ci_semi/variances
+INFO: s3gau_io.c(169): Read /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.ci_semi/variances [1x4x256 array]
+INFO: main.c(391): Reading dest /home/sdv/Documents/SDV/SDVoice/an4/model_architecture/an4.200.mdef
+INFO: model_def_io.c(573): Model definition info:
+INFO: model_def_io.c(574): 6406 total models defined (34 base, 6372 tri)
+INFO: model_def_io.c(575): 25624 total states
+INFO: model_def_io.c(576): 302 total tied states
+INFO: model_def_io.c(577): 102 total tied CI states
+INFO: model_def_io.c(578): 34 total tied transition matrices
+INFO: model_def_io.c(579): 4 max state/model
+INFO: model_def_io.c(580): 4 min state/model
+INFO: main.c(401): Generating semi-continous ts2cb mapping
+INFO: main.c(431): Calculating initial model parameters
+INFO: main.c(439): Alloc 34x3x4 dest tmat
+INFO: main.c(450): Alloc 302x4x256 dest mixw
+INFO: main.c(463): Alloc 1x4x256 dest mean and var
+        AA <- AA        : [tm     0 +=     0]
+[mx     0(0) +=     0] [mg     0(0) <-     0] [mx     1(1) +=     1] [mx     2(2) +=     2] 
+        AE <- AE        : [tm     1 +=     1]
+[mx     3(0) +=     3] [mx     4(1) +=     4] [mx     5(2) +=     5] 
+        AH <- AH        : [tm     2 +=     2]
+[mx     6(0) +=     6] [mx     7(1) +=     7] [mx     8(2) +=     8] 
+        AO <- AO        : [tm     3 +=     3]
+[mx     9(0) +=     9] [mx    10(1) +=    10] [mx    11(2) +=    11] 
+        AW <- AW        : [tm     4 +=     4]
+[mx    12(0) +=    12] [mx    13(1) +=    13] [mx    14(2) +=    14] 
+        AY <- AY        : [tm     5 +=     5]
+[mx    15(0) +=    15] [mx    16(1) +=    16] [mx    17(2) +=    17] 
+         B <- B         : [tm     6 +=     6]
+[mx    18(0) +=    18] [mx    19(1) +=    19] [mx    20(2) +=    20] 
+        CH <- CH        : [tm     7 +=     7]
+[mx    21(0) +=    21] [mx    22(1) +=    22] [mx    23(2) +=    23] 
+         D <- D         : [tm     8 +=     8]
+[mx    24(0) +=    24] [mx    25(1) +=    25] [mx    26(2) +=    26] 
+        EH <- EH        : [tm     9 +=     9]
+[mx    27(0) +=    27] [mx    28(1) +=    28] [mx    29(2) +=    29] 
+        ER <- ER        : [tm    10 +=    10]
+[mx    30(0) +=    30] [mx    31(1) +=    31] [mx    32(2) +=    32] 
+        EY <- EY        : [tm    11 +=    11]
+[mx    33(0) +=    33] [mx    34(1) +=    34] [mx    35(2) +=    35] 
+         F <- F         : [tm    12 +=    12]
+[mx    36(0) +=    36] [mx    37(1) +=    37] [mx    38(2) +=    38] 
+         G <- G         : [tm    13 +=    13]
+[mx    39(0) +=    39] [mx    40(1) +=    40] [mx    41(2) +=    41] 
+        HH <- HH        : [tm    14 +=    14]
+[mx    42(0) +=    42] [mx    43(1) +=    43] [mx    44(2) +=    44] 
+        IH <- IH        : [tm    15 +=    15]
+[mx    45(0) +=    45] [mx    46(1) +=    46] [mx    47(2) +=    47] 
+        IY <- IY        : [tm    16 +=    16]
+[mx    48(0) +=    48] [mx    49(1) +=    49] [mx    50(2) +=    50] 
+        JH <- JH        : [tm    17 +=    17]
+[mx    51(0) +=    51] [mx    52(1) +=    52] [mx    53(2) +=    53] 
+         K <- K         : [tm    18 +=    18]
+[mx    54(0) +=    54] [mx    55(1) +=    55] [mx    56(2) +=    56] 
+         L <- L         : [tm    19 +=    19]
+[mx    57(0) +=    57] [mx    58(1) +=    58] [mx    59(2) +=    59] 
+         M <- M         : [tm    20 +=    20]
+[mx    60(0) +=    60] [mx    61(1) +=    61] [mx    62(2) +=    62] 
+         N <- N         : [tm    21 +=    21]
+[mx    63(0) +=    63] [mx    64(1) +=    64] [mx    65(2) +=    65] 
+        OW <- OW        : [tm    22 +=    22]
+[mx    66(0) +=    66] [mx    67(1) +=    67] [mx    68(2) +=    68] 
+         P <- P         : [tm    23 +=    23]
+[mx    69(0) +=    69] [mx    70(1) +=    70] [mx    71(2) +=    71] 
+         R <- R         : [tm    24 +=    24]
+[mx    72(0) +=    72] [mx    73(1) +=    73] [mx    74(2) +=    74] 
+         S <- S         : [tm    25 +=    25]
+[mx    75(0) +=    75] [mx    76(1) +=    76] [mx    77(2) +=    77] 
+       SIL <- SIL       : [tm    26 +=    26]
+[mx    78(0) +=    78] [mx    79(1) +=    79] [mx    80(2) +=    80] 
+         T <- T         : [tm    27 +=    27]
+[mx    81(0) +=    81] [mx    82(1) +=    82] [mx    83(2) +=    83] 
+        TH <- TH        : [tm    28 +=    28]
+[mx    84(0) +=    84] [mx    85(1) +=    85] [mx    86(2) +=    86] 
+        UW <- UW        : [tm    29 +=    29]
+[mx    87(0) +=    87] [mx    88(1) +=    88] [mx    89(2) +=    89] 
+         V <- V         : [tm    30 +=    30]
+[mx    90(0) +=    90] [mx    91(1) +=    91] [mx    92(2) +=    92] 
+         W <- W         : [tm    31 +=    31]
+[mx    93(0) +=    93] [mx    94(1) +=    94] [mx    95(2) +=    95] 
+         Y <- Y         : [tm    32 +=    32]
+[mx    96(0) +=    96] [mx    97(1) +=    97] [mx    98(2) +=    98] 
+         Z <- Z         : [tm    33 +=    33]
+[mx    99(0) +=    99] [mx   100(1) +=   100] [mx   101(2) +=   101] 
+ AA AH G b <- AA        : [mx   103(0) +=     0] [mx   104(1) +=     1] [mx   105(2) +=     2] 
+ AA AH K b <- AA        : 
+ AA AH R b <- AA        : 
+ AA AY G b <- AA        : [mx   102(0) +=     0] 
+ AA AY K b <- AA        : 
+ AA AY R b <- AA        : 
+ AA CH G b <- AA        : 
+ AA CH K b <- AA        : 
+ AA CH R b <- AA        : 
+  AA D G b <- AA        : 
+  AA D K b <- AA        : 
+  AA D R b <- AA        : 
+ AA ER G b <- AA        : 
+ AA ER K b <- AA        : 
+ AA ER R b <- AA        : 
+ AA EY G b <- AA        : 
+ AA EY K b <- AA        : 
+ AA EY R b <- AA        : 
+  AA F G b <- AA        : 
+  AA F K b <- AA        : 
+  AA F R b <- AA        : 
+ AA IY G b <- AA        : 
+ AA IY K b <- AA        : 
+ AA IY R b <- AA        : 
+  AA L G b <- AA        : 
+  AA L K b <- AA        : 
+  AA L R b <- AA        : 
+  AA M G b <- AA        : 
+  AA M K b <- AA        : 
+  AA M R b <- AA        : 
+  AA M R i <- AA        : 
+  AA N G b <- AA        : 
+  AA N K b <- AA        : 
+  AA N R b <- AA        : 
+ AA OW G b <- AA        : 
+ AA OW K b <- AA        : 
+ AA OW R b <- AA        : 
+  AA P G b <- AA        : 
+  AA P K b <- AA        : 
+  AA P R b <- AA        : 
+  AA P S i <- AA        : 
+  AA R G b <- AA        : 
+  AA R K b <- AA        : 
+  AA R R b <- AA        : 
+  AA S G b <- AA        : 
+  AA S K b <- AA        : 
+  AA S R b <- AA        : 
+AA SIL G b <- AA        : 
+AA SIL K b <- AA        : 
+AA SIL R b <- AA        : 
+  AA T G b <- AA        : 
+  AA T K b <- AA        : 
+  AA T P i <- AA        : 
+  AA T R b <- AA        : 
+  AA T R i <- AA        : 
+ AA TH G b <- AA        : 
+ AA TH K b <- AA        : 
+ AA TH R b <- AA        : 
+ AA UW G b <- AA        : 
+ AA UW K b <- AA        : 
+ AA UW R b <- AA        : 
+  AA V G b <- AA        : 
+  AA V K b <- AA        : 
+  AA V R b <- AA        : 
+ AE AH N b <- AE        : [mx   106(0) +=     3] [mx   107(1) +=     4] [mx   108(2) +=     5] 
+ AE AY N b <- AE        : 
+ AE CH N b <- AE        : 
+  AE D N b <- AE        : 
+ AE ER N b <- AE        : 
+ AE EY N b <- AE        : 
+  AE F N b <- AE        : 
+ AE HH F i <- AE        : 
+ AE IY N b <- AE        : 
+ AE JH N i <- AE        : 
+  AE L N b <- AE        : 
+  AE M N b <- AE        : 
+  AE N N b <- AE        : 
+ AE OW N b <- AE        : 
+  AE P N b <- AE        : 
+  AE R N b <- AE        : 
+  AE S N b <- AE        : 
+AE SIL N b <- AE        : 
+  AE T N b <- AE        : 
+ AE TH N b <- AE        : 
+ AE UW N b <- AE        : 
+  AE V N b <- AE        : 
+AH AH AA s <- AH        : [mx   112(0) +=     6] [mx   116(1) +=     7] [mx   119(2) +=     8] 
+AH AH AE s <- AH        : 
+AH AH AH s <- AH        : 
+AH AH AO s <- AH        : 
+AH AH AY s <- AH        : 
+ AH AH B s <- AH        : 
+ AH AH D s <- AH        : 
+AH AH EH s <- AH        : 
+AH AH EY s <- AH        : 
+ AH AH F s <- AH        : [mx   120(2) +=     8] 
+ AH AH G s <- AH        : 
+AH AH HH s <- AH        : 
+AH AH IH s <- AH        : 
+AH AH IY s <- AH        : 
+AH AH JH s <- AH        : 
+ AH AH K s <- AH        : 
+ AH AH M s <- AH        : 
+ AH AH N b <- AH        : [mx   110(0) +=     6] [mx   114(1) +=     7] [mx   118(2) +=     8] 
+ AH AH N s <- AH        : 
+AH AH OW s <- AH        : 
+ AH AH P b <- AH        : [mx   113(1) +=     7] [mx   117(2) +=     8] 
+ AH AH P s <- AH        : 
+ AH AH R s <- AH        : 
+ AH AH S s <- AH        : 
+AH AH SIL s <- AH        : 
+ AH AH T s <- AH        : 
+AH AH TH s <- AH        : 
+ AH AH V b <- AH        : 
+ AH AH V s <- AH        : 
+ AH AH W s <- AH        : 
+ AH AH Y s <- AH        : 
+ AH AH Z s <- AH        : 
+AH AY AA s <- AH        : 
+AH AY AE s <- AH        : 
+AH AY AH s <- AH        : 
+AH AY AO s <- AH        : 
+AH AY AY s <- AH        : 
+ AH AY B s <- AH        : 
+ AH AY D s <- AH        : 
+AH AY EH s <- AH        : 
+AH AY EY s <- AH        : 
+ AH AY F s <- AH        : 
+ AH AY G s <- AH        : 
+AH AY HH s <- AH        : 
+AH AY IH s <- AH        : 
+AH AY IY s <- AH        : 
+AH AY JH s <- AH        : 
+ AH AY K s <- AH        : 
+ AH AY M s <- AH        : 
+ AH AY N b <- AH        : 
+ AH AY N s <- AH        : 
+AH AY OW s <- AH        : 
+ AH AY P b <- AH        : 
+ AH AY P s <- AH        : 
+ AH AY R s <- AH        : 
+ AH AY S s <- AH        : 
+AH AY SIL s <- AH        : 
+ AH AY T s <- AH        : 
+AH AY TH s <- AH        : 
+ AH AY V b <- AH        : 
+ AH AY V s <- AH        : 
+ AH AY W s <- AH        : 
+ AH AY Y s <- AH        : 
+ AH AY Z s <- AH        : 
+  AH B L i <- AH        : 
+  AH B W i <- AH        : 
+AH CH AA s <- AH        : 
+AH CH AE s <- AH        : 
+AH CH AH s <- AH        : 
+AH CH AO s <- AH        : 
+AH CH AY s <- AH        : 
+ AH CH B s <- AH        : 
+ AH CH D s <- AH        : 
+AH CH EH s <- AH        : 
+AH CH EY s <- AH        : 
+ AH CH F s <- AH        : 
+ AH CH G s <- AH        : 
+AH CH HH s <- AH        : 
+AH CH IH s <- AH        : 
+AH CH IY s <- AH        : 
+AH CH JH s <- AH        : 
+ AH CH K s <- AH        : 
+ AH CH M s <- AH        : 
+ AH CH N b <- AH        : 
+ AH CH N s <- AH        : 
+AH CH OW s <- AH        : 
+ AH CH P b <- AH        : 
+ AH CH P s <- AH        : 
+ AH CH R s <- AH        : 
+ AH CH S s <- AH        : 
+AH CH SIL s <- AH        : 
+ AH CH T s <- AH        : 
+AH CH TH s <- AH        : 
+ AH CH V b <- AH        : 
+ AH CH V s <- AH        : 
+ AH CH W s <- AH        : 
+ AH CH Y s <- AH        : 
+ AH CH Z s <- AH        : 
+ AH D AA s <- AH        : 
+ AH D AE s <- AH        : 
+ AH D AH s <- AH        : 
+ AH D AO s <- AH        : 
+ AH D AY s <- AH        : 
+  AH D B i <- AH        : 
+  AH D B s <- AH        : 
+  AH D D s <- AH        : 
+ AH D EH s <- AH        : 
+ AH D EY s <- AH        : 
+  AH D F s <- AH        : 
+  AH D G s <- AH        : 
+ AH D HH s <- AH        : 
+ AH D IH s <- AH        : 
+ AH D IY s <- AH        : 
+ AH D JH s <- AH        : 
+  AH D K s <- AH        : 
+  AH D M s <- AH        : 
+  AH D N b <- AH        : [mx   111(0) +=     6] [mx   115(1) +=     7] 
+  AH D N s <- AH        : 
+ AH D OW s <- AH        : 
+  AH D P b <- AH        : 
+  AH D P s <- AH        : 
+  AH D R s <- AH        : 
+  AH D S s <- AH        : 
+AH D SIL s <- AH        : 
+  AH D T s <- AH        : 
+ AH D TH s <- AH        : 
+  AH D V b <- AH        : 
+  AH D V s <- AH        : 
+  AH D W s <- AH        : 
+  AH D Y s <- AH        : 
+  AH D Z s <- AH        : 
+AH ER AA s <- AH        : 
+AH ER AE s <- AH        : 
+AH ER AH s <- AH        : 
+AH ER AO s <- AH        : 
+AH ER AY s <- AH        : 
+ AH ER B s <- AH        : 
+ AH ER D s <- AH        : 
+AH ER EH s <- AH        : 
+AH ER EY s <- AH        : 
+ AH ER F s <- AH        : 
+ AH ER G s <- AH        : 
+AH ER HH s <- AH        : 
+AH ER IH s <- AH        : 
+AH ER IY s <- AH        : 
+AH ER JH s <- AH        : 
+ AH ER K s <- AH        : 
+ AH ER M s <- AH        : 
+ AH ER N b <- AH        : 
+ AH ER N s <- AH        : 
+AH ER OW s <- AH        : 
+ AH ER P b <- AH        : 
+ AH ER P s <- AH        : 
+ AH ER R s <- AH        : 
+ AH ER S s <- AH        : 
+AH ER SIL s <- AH        : 
+ AH ER T s <- AH        : 
+AH ER TH s <- AH        : 
+ AH ER V b <- AH        : 
+ AH ER V s <- AH        : 
+ AH ER W s <- AH        : 
+ AH ER Y s <- AH        : 
+ AH ER Z s <- AH        : 
+AH EY AA s <- AH        : 
+AH EY AE s <- AH        : 
+AH EY AH s <- AH        : 
+AH EY AO s <- AH        : 
+AH EY AY s <- AH        : 
+ AH EY B s <- AH        : 
+ AH EY D s <- AH        : 
+AH EY EH s <- AH        : 
+AH EY EY s <- AH        : 
+ AH EY F s <- AH        : 
+ AH EY G s <- AH        : 
+AH EY HH s <- AH        : 
+AH EY IH s <- AH        : 
+AH EY IY s <- AH        : 
+AH EY JH s <- AH        : 
+ AH EY K s <- AH        : 
+ AH EY M s <- AH        : 
+ AH EY N b <- AH        : 
+ AH EY N s <- AH        : 
+AH EY OW s <- AH        : 
+ AH EY P b <- AH        : 
+ AH EY P s <- AH        : 
+ AH EY R s <- AH        : 
+ AH EY S s <- AH        : 
+AH EY SIL s <- AH        : 
+ AH EY T s <- AH        : 
+AH EY TH s <- AH        : 
+ AH EY V b <- AH        : 
+ AH EY V s <- AH        : 
+ AH EY W s <- AH        : 
+ AH EY Y s <- AH        : 
+ AH EY Z s <- AH        : 
+ AH F AA s <- AH        : 
+ AH F AE s <- AH        : 
+ AH F AH s <- AH        : 
+ AH F AO s <- AH        : 
+ AH F AY s <- AH        : 
+  AH F B s <- AH        : 
+  AH F D s <- AH        : 
+ AH F EH s <- AH        : 
+ AH F EY s <- AH        : 
+  AH F F s <- AH        : 
+  AH F G s <- AH        : 
+ AH F HH s <- AH        : 
+ AH F IH s <- AH        : 
+ AH F IY s <- AH        : 
+ AH F JH s <- AH        : 
+  AH F K s <- AH        : 
+  AH F M s <- AH        : 
+  AH F N b <- AH        : 
+  AH F N s <- AH        : 
+ AH F OW s <- AH        : 
+  AH F P b <- AH        : 
+  AH F P s <- AH        : 
+  AH F R s <- AH        : 
+  AH F S s <- AH        : 
+AH F SIL s <- AH        : 
+  AH F T s <- AH        : 
+ AH F TH s <- AH        : 
+  AH F V b <- AH        : 
+  AH F V s <- AH        : 
+  AH F W s <- AH        : 
+  AH F Y s <- AH        : 
+  AH F Z s <- AH        : 
+  AH G S i <- AH        : 
+ AH HH N i <- AH        : 
+AH IY AA e <- AH        : 
+AH IY AA s <- AH        : 
+AH IY AE e <- AH        : 
+AH IY AE s <- AH        : 
+AH IY AH e <- AH        : 
+AH IY AH s <- AH        : 
+AH IY AO e <- AH        : 
+AH IY AO s <- AH        : 
+AH IY AY e <- AH        : 
+AH IY AY s <- AH        : 
+ AH IY B e <- AH        : 
+ AH IY B s <- AH        : 
+ AH IY D e <- AH        : 
+ AH IY D s <- AH        : 
+AH IY EH e <- AH        : 
+AH IY EH s <- AH        : 
+AH IY EY e <- AH        : 
+AH IY EY s <- AH        : 
+ AH IY F e <- AH        : 
+ AH IY F s <- AH        : 
+ AH IY G e <- AH        : 
+ AH IY G s <- AH        : 
+AH IY HH e <- AH        : 
+AH IY HH s <- AH        : 
+AH IY IH e <- AH        : 
+AH IY IH s <- AH        : 
+AH IY IY e <- AH        : 
+AH IY IY s <- AH        : 
+AH IY JH e <- AH        : 
+AH IY JH s <- AH        : 
+ AH IY K e <- AH        : 
+ AH IY K s <- AH        : 
+ AH IY M e <- AH        : 
+ AH IY M s <- AH        : 
+ AH IY N b <- AH        : 
+ AH IY N e <- AH        : 
+ AH IY N s <- AH        : 
+AH IY OW e <- AH        : 
+AH IY OW s <- AH        : 
+ AH IY P b <- AH        : 
+ AH IY P e <- AH        : 
+ AH IY P s <- AH        : 
+ AH IY R e <- AH        : 
+ AH IY R s <- AH        : 
+ AH IY S e <- AH        : 
+ AH IY S s <- AH        : 
+AH IY SIL e <- AH        : 
+AH IY SIL s <- AH        : 
+ AH IY T e <- AH        : 
+ AH IY T s <- AH        : 
+AH IY TH e <- AH        : 
+AH IY TH i <- AH        : 
+AH IY TH s <- AH        : 
+ AH IY V b <- AH        : 
+ AH IY V e <- AH        : 
+ AH IY V s <- AH        : 
+ AH IY W e <- AH        : 
+ AH IY W s <- AH        : 
+ AH IY Y e <- AH        : 
+ AH IY Y s <- AH        : 
+ AH IY Z e <- AH        : 
+ AH IY Z s <- AH        : 
+ AH JH L i <- AH        : 
+  AH K N i <- AH        : 
+ AH L AA s <- AH        : 
+ AH L AE s <- AH        : 
+ AH L AH s <- AH        : 
+ AH L AO s <- AH        : 
+ AH L AY s <- AH        : 
+  AH L B s <- AH        : 
+  AH L D s <- AH        : 
+ AH L EH s <- AH        : 
+ AH L EY s <- AH        : 
+  AH L F s <- AH        : 
+  AH L G s <- AH        : 
+ AH L HH s <- AH        : 
+ AH L IH s <- AH        : 
+ AH L IY s <- AH        : 
+ AH L JH s <- AH        : 
+  AH L K s <- AH        : 
+  AH L M s <- AH        : 
+  AH L N b <- AH        : 
+  AH L N s <- AH        : 
+ AH L OW s <- AH        : 
+  AH L P b <- AH        : 
+  AH L P s <- AH        : 
+  AH L R s <- AH        : 
+  AH L S s <- AH        : 
+AH L SIL s <- AH        : 
+  AH L T s <- AH        : 
+ AH L TH s <- AH        : 
+  AH L V b <- AH        : 
+  AH L V s <- AH        : 
+  AH L W s <- AH        : 
+  AH L Y s <- AH        : 
+  AH L Z s <- AH        : 
+ AH M AA s <- AH        : 
+ AH M AE s <- AH        : 
+ AH M AH s <- AH        : 
+ AH M AO s <- AH        : 
+ AH M AY s <- AH        : 
+  AH M B s <- AH        : 
+  AH M D s <- AH        : 
+ AH M EH s <- AH        : 
+ AH M EY s <- AH        : 
+  AH M F s <- AH        : 
+  AH M G s <- AH        : 
+ AH M HH s <- AH        : 
+ AH M IH s <- AH        : 
+ AH M IY s <- AH        : 
+ AH M JH s <- AH        : 
+  AH M K s <- AH        : 
+  AH M M s <- AH        : 
+  AH M N b <- AH        : 
+  AH M N s <- AH        : 
+ AH M OW s <- AH        : 
+  AH M P b <- AH        : 
+  AH M P s <- AH        : 
+  AH M R s <- AH        : 
+  AH M S s <- AH        : 
+AH M SIL s <- AH        : 
+  AH M T s <- AH        : 
+ AH M TH s <- AH        : 
+  AH M V b <- AH        : 
+  AH M V s <- AH        : 
+  AH M W s <- AH        : 
+  AH M Y s <- AH        : 
+  AH M Z s <- AH        : 
+ AH N AA s <- AH        : 
+ AH N AE s <- AH        : 
+ AH N AH s <- AH        : 
+ AH N AO s <- AH        : 
+ AH N AY s <- AH        : 
+  AH N B s <- AH        : 
+  AH N D s <- AH        : 
+ AH N EH s <- AH        : 
+ AH N EY s <- AH        : 
+  AH N F s <- AH        : 
+  AH N G s <- AH        : 
+ AH N HH s <- AH        : 
+ AH N IH s <- AH        : 
+ AH N IY s <- AH        : 
+ AH N JH s <- AH        : 
+  AH N K s <- AH        : 
+  AH N M s <- AH        : 
+  AH N N b <- AH        : 
+  AH N N s <- AH        : 
+ AH N OW s <- AH        : 
+  AH N P b <- AH        : 
+  AH N P s <- AH        : 
+  AH N R s <- AH        : 
+  AH N S s <- AH        : 
+AH N SIL s <- AH        : 
+  AH N T s <- AH        : 
+ AH N TH s <- AH        : 
+  AH N V b <- AH        : 
+  AH N V s <- AH        : 
+  AH N W s <- AH        : 
+  AH N Y s <- AH        : 
+  AH N Z s <- AH        : 
+AH OW AA s <- AH        : 
+AH OW AE s <- AH        : 
+AH OW AH s <- AH        : 
+AH OW AO s <- AH        : 
+AH OW AY s <- AH        : 
+ AH OW B s <- AH        : 
+ AH OW D s <- AH        : 
+AH OW EH s <- AH        : 
+AH OW EY s <- AH        : 
+ AH OW F s <- AH        : 
+ AH OW G s <- AH        : 
+AH OW HH s <- AH        : 
+AH OW IH s <- AH        : 
+AH OW IY s <- AH        : 
+AH OW JH s <- AH        : 
+ AH OW K s <- AH        : 
+ AH OW M s <- AH        : 
+ AH OW N b <- AH        : 
+ AH OW N s <- AH        : 
+AH OW OW s <- AH        : 
+ AH OW P b <- AH        : 
+ AH OW P s <- AH        : 
+ AH OW R s <- AH        : 
+ AH OW S s <- AH        : 
+AH OW SIL s <- AH        : 
+ AH OW T s <- AH        : 
+AH OW TH s <- AH        : 
+ AH OW V b <- AH        : 
+ AH OW V s <- AH        : 
+ AH OW W s <- AH        : 
+ AH OW Y s <- AH        : 
+ AH OW Z s <- AH        : 
+ AH P AA s <- AH        : 
+ AH P AE s <- AH        : 
+ AH P AH s <- AH        : 
+ AH P AO s <- AH        : 
+ AH P AY s <- AH        : 
+  AH P B s <- AH        : 
+  AH P D s <- AH        : 
+ AH P EH s <- AH        : 
+ AH P EY s <- AH        : 
+  AH P F s <- AH        : 
+  AH P G s <- AH        : 
+ AH P HH s <- AH        : 
+ AH P IH s <- AH        : 
+ AH P IY s <- AH        : 
+ AH P JH s <- AH        : 
+  AH P K s <- AH        : 
+  AH P M s <- AH        : 
+  AH P N b <- AH        : 
+  AH P N s <- AH        : 
+ AH P OW s <- AH        : 
+  AH P P b <- AH        : 
+  AH P P s <- AH        : 
+  AH P R s <- AH        : 
+  AH P S s <- AH        : 
+AH P SIL s <- AH        : 
+  AH P T s <- AH        : 
+ AH P TH s <- AH        : 
+  AH P V b <- AH        : 
+  AH P V s <- AH        : 
+  AH P W s <- AH        : 
+  AH P Y s <- AH        : 
+  AH P Z s <- AH        : 
+ AH R AA s <- AH        : 
+ AH R AE s <- AH        : 
+ AH R AH s <- AH        : 
+ AH R AO s <- AH        : 
+ AH R AY s <- AH        : 
+  AH R B i <- AH        : [mx   109(0) +=     6] 
+  AH R B s <- AH        : 
+  AH R D i <- AH        : 
+  AH R D s <- AH        : 
+ AH R EH s <- AH        : 
+ AH R EY s <- AH        : 
+  AH R F i <- AH        : 
+  AH R F s <- AH        : 
+  AH R G s <- AH        : 
+ AH R HH s <- AH        : 
+ AH R IH s <- AH        : 
+ AH R IY s <- AH        : 
+ AH R JH s <- AH        : 
+  AH R K s <- AH        : 
+  AH R L i <- AH        : 
+  AH R M s <- AH        : 
+  AH R N b <- AH        : 
+  AH R N s <- AH        : 
+ AH R OW s <- AH        : 
+  AH R P b <- AH        : 
+  AH R P s <- AH        : 
+  AH R R s <- AH        : 
+  AH R S s <- AH        : 
+AH R SIL s <- AH        : 
+  AH R T s <- AH        : 
+ AH R TH s <- AH        : 
+  AH R V b <- AH        : 
+  AH R V s <- AH        : 
+  AH R W s <- AH        : 
+  AH R Y s <- AH        : 
+  AH R Z s <- AH        : 
+ AH S AA s <- AH        : 
+ AH S AE s <- AH        : 
+ AH S AH s <- AH        : 
+ AH S AO s <- AH        : 
+ AH S AY s <- AH        : 
+  AH S B s <- AH        : 
+  AH S D s <- AH        : 
+ AH S EH s <- AH        : 
+ AH S EY s <- AH        : 
+  AH S F s <- AH        : 
+  AH S G s <- AH        : 
+ AH S HH s <- AH        : 
+ AH S IH s <- AH        : 
+ AH S IY s <- AH        : 
+ AH S JH s <- AH        : 
+  AH S K s <- AH        : 
+  AH S M s <- AH        : 
+  AH S N b <- AH        : 
+  AH S N s <- AH        : 
+ AH S OW s <- AH        : 
+  AH S P b <- AH        : 
+  AH S P s <- AH        : 
+  AH S R s <- AH        : 
+  AH S S s <- AH        : 
+AH S SIL s <- AH        : 
+  AH S T s <- AH        : 
+ AH S TH s <- AH        : 
+  AH S V b <- AH        : 
+  AH S V s <- AH        : 
+  AH S W s <- AH        : 
+  AH S Y s <- AH        : 
+  AH S Z s <- AH        : 
+AH SIL AA s <- AH        : 
+AH SIL AE s <- AH        : 
+AH SIL AH s <- AH        : 
+AH SIL AO s <- AH        : 
+AH SIL AY s <- AH        : 
+AH SIL B s <- AH        : 
+AH SIL D s <- AH        : 
+AH SIL EH s <- AH        : 
+AH SIL EY s <- AH        : 
+AH SIL F s <- AH        : 
+AH SIL G s <- AH        : 
+AH SIL HH s <- AH        : 
+AH SIL IH s <- AH        : 
+AH SIL IY s <- AH        : 
+AH SIL JH s <- AH        : 
+AH SIL K s <- AH        : 
+AH SIL M s <- AH        : 
+AH SIL N b <- AH        : 
+AH SIL N s <- AH        : 
+AH SIL OW s <- AH        : 
+AH SIL P b <- AH        : 
+AH SIL P s <- AH        : 
+AH SIL R s <- AH        : 
+AH SIL S s <- AH        : 
+AH SIL SIL s <- AH        : 
+AH SIL T s <- AH        : 
+AH SIL TH s <- AH        : 
+AH SIL V b <- AH        : 
+AH SIL V s <- AH        : 
+AH SIL W s <- AH        : 
+AH SIL Y s <- AH        : 
+AH SIL Z s <- AH        : 
+ AH T AA s <- AH        : 
+ AH T AE s <- AH        : 
+ AH T AH s <- AH        : 
+ AH T AO s <- AH        : 
+ AH T AY s <- AH        : 
+  AH T B s <- AH        : 
+  AH T D s <- AH        : 
+ AH T EH s <- AH        : 
+ AH T EY s <- AH        : 
+  AH T F s <- AH        : 
+  AH T G s <- AH        : 
+ AH T HH s <- AH        : 
+ AH T IH s <- AH        : 
+ AH T IY s <- AH        : 
+ AH T JH s <- AH        : 
+  AH T K s <- AH        : 
+  AH T M s <- AH        : 
+  AH T N b <- AH        : 
+  AH T N s <- AH        : 
+ AH T OW s <- AH        : 
+  AH T P b <- AH        : 
+  AH T P s <- AH        : 
+  AH T R s <- AH        : 
+  AH T S s <- AH        : 
+AH T SIL s <- AH        : 
+  AH T T s <- AH        : 
+ AH T TH s <- AH        : 
+  AH T V b <- AH        : 
+  AH T V s <- AH        : 
+  AH T W s <- AH        : 
+  AH T Y s <- AH        : 
+  AH T Z s <- AH        : 
+AH TH AA s <- AH        : 
+AH TH AE s <- AH        : 
+AH TH AH s <- AH        : 
+AH TH AO s <- AH        : 
+AH TH AY s <- AH        : 
+ AH TH B s <- AH        : 
+ AH TH D s <- AH        : 
+AH TH EH s <- AH        : 
+AH TH EY s <- AH        : 
+ AH TH F s <- AH        : 
+ AH TH G s <- AH        : 
+AH TH HH s <- AH        : 
+AH TH IH s <- AH        : 
+AH TH IY s <- AH        : 
+AH TH JH s <- AH        : 
+ AH TH K s <- AH        : 
+ AH TH M s <- AH        : 
+ AH TH N b <- AH        : 
+ AH TH N s <- AH        : 
+AH TH OW s <- AH        : 
+ AH TH P b <- AH        : 
+ AH TH P s <- AH        : 
+ AH TH R s <- AH        : 
+ AH TH S s <- AH        : 
+AH TH SIL s <- AH        : 
+ AH TH T s <- AH        : 
+AH TH TH s <- AH        : 
+ AH TH V b <- AH        : 
+ AH TH V s <- AH        : 
+ AH TH W s <- AH        : 
+ AH TH Y s <- AH        : 
+ AH TH Z s <- AH        : 
+AH UW AA s <- AH        : 
+AH UW AE s <- AH        : 
+AH UW AH s <- AH        : 
+AH UW AO s <- AH        : 
+AH UW AY s <- AH        : 
+ AH UW B s <- AH        : 
+ AH UW D s <- AH        : 
+AH UW EH s <- AH        : 
+AH UW EY s <- AH        : 
+ AH UW F s <- AH        : 
+ AH UW G s <- AH        : 
+AH UW HH s <- AH        : 
+AH UW IH s <- AH        : 
+AH UW IY s <- AH        : 
+AH UW JH s <- AH        : 
+ AH UW K s <- AH        : 
+ AH UW M s <- AH        : 
+ AH UW N b <- AH        : 
+ AH UW N s <- AH        : 
+AH UW OW s <- AH        : 
+ AH UW P b <- AH        : 
+ AH UW P s <- AH        : 
+ AH UW R s <- AH        : 
+ AH UW S s <- AH        : 
+AH UW SIL s <- AH        : 
+ AH UW T s <- AH        : 
+AH UW TH s <- AH        : 
+ AH UW V b <- AH        : 
+ AH UW V s <- AH        : 
+ AH UW W s <- AH        : 
+ AH UW Y s <- AH        : 
+ AH UW Z s <- AH        : 
+ AH V AA s <- AH        : 
+ AH V AE s <- AH        : 
+ AH V AH s <- AH        : 
+ AH V AO s <- AH        : 
+ AH V AY s <- AH        : 
+  AH V B s <- AH        : 
+  AH V D s <- AH        : 
+ AH V EH s <- AH        : 
+ AH V EY s <- AH        : 
+  AH V F s <- AH        : 
+  AH V G s <- AH        : 
+ AH V HH s <- AH        : 
+ AH V IH s <- AH        : 
+ AH V IY s <- AH        : 
+ AH V JH s <- AH        : 
+  AH V K s <- AH        : 
+  AH V M s <- AH        : 
+  AH V N b <- AH        : 
+  AH V N i <- AH        : 
+  AH V N s <- AH        : 
+ AH V OW s <- AH        : 
+  AH V P b <- AH        : 
+  AH V P s <- AH        : 
+  AH V R s <- AH        : 
+  AH V S s <- AH        : 
+AH V SIL s <- AH        : 
+  AH V T s <- AH        : 
+ AH V TH s <- AH        : 
+  AH V V b <- AH        : 
+  AH V V s <- AH        : 
+  AH V W s <- AH        : 
+  AH V Y s <- AH        : 
+  AH V Z s <- AH        : 
+  AH W N i <- AH        : 
+  AH Y W i <- AH        : 
+  AH Z N i <- AH        : 
+ AO AH G b <- AO        : [mx   121(0) +=     9] [mx   122(1) +=    10] [mx   123(2) +=    11] 
+ AO AY G b <- AO        : 
+ AO CH G b <- AO        : 
+  AO D G b <- AO        : 
+ AO ER G b <- AO        : 
+ AO EY G b <- AO        : 
+  AO F G b <- AO        : 
+  AO F R i <- AO        : 
+ AO IY G b <- AO        : 
+  AO L G b <- AO        : 
+  AO M G b <- AO        : 
+  AO N G b <- AO        : 
+ AO OW G b <- AO        : 
+  AO P G b <- AO        : 
+  AO R G b <- AO        : 
+  AO S G b <- AO        : 
+AO SIL G b <- AO        : 
+  AO T G b <- AO        : 
+ AO TH G b <- AO        : 
+ AO UW G b <- AO        : 
+  AO V G b <- AO        : 
+  AW B T i <- AW        : [mx   124(0) +=    12] [mx   125(1) +=    13] [mx   126(2) +=    14] 
+ AW TH Z i <- AW        : 
+AY AH AA s <- AY        : [mx   127(0) +=    15] [mx   130(1) +=    16] [mx   132(2) +=    17] 
+AY AH AE s <- AY        : [mx   131(1) +=    16] 
+AY AH AH s <- AY        : 
+AY AH AO s <- AY        : 
+AY AH AY s <- AY        : 
+ AY AH B s <- AY        : 
+ AY AH D s <- AY        : 
+AY AH EH s <- AY        : 
+AY AH EY s <- AY        : 
+ AY AH F s <- AY        : 
+ AY AH G s <- AY        : 
+AY AH HH s <- AY        : 
+AY AH IH s <- AY        : 
+AY AH IY s <- AY        : 
+AY AH JH s <- AY        : 
+ AY AH K s <- AY        : 
+ AY AH M s <- AY        : 
+ AY AH N s <- AY        : 
+AY AH OW s <- AY        : 
+ AY AH P s <- AY        : 
+ AY AH R s <- AY        : 
+ AY AH S s <- AY        : 
+AY AH SIL s <- AY        : 
+ AY AH T s <- AY        : 
+AY AH TH s <- AY        : 
+ AY AH V s <- AY        : 
+ AY AH W s <- AY        : 
+ AY AH Y s <- AY        : 
+ AY AH Z s <- AY        : 
+AY AY AA s <- AY        : 
+AY AY AE s <- AY        : 
+AY AY AH s <- AY        : 
+AY AY AO s <- AY        : 
+AY AY AY s <- AY        : 
+ AY AY B s <- AY        : 
+ AY AY D s <- AY        : 
+AY AY EH s <- AY        : 
+AY AY EY s <- AY        : 
+ AY AY F s <- AY        : 
+ AY AY G s <- AY        : 
+AY AY HH s <- AY        : 
+AY AY IH s <- AY        : 
+AY AY IY s <- AY        : 
+AY AY JH s <- AY        : 
+ AY AY K s <- AY        : 
+ AY AY M s <- AY        : 
+ AY AY N s <- AY        : 
+AY AY OW s <- AY        : 
+ AY AY P s <- AY        : 
+ AY AY R s <- AY        : 
+ AY AY S s <- AY        : 
+AY AY SIL s <- AY        : 
+ AY AY T s <- AY        : 
+AY AY TH s <- AY        : 
+ AY AY V s <- AY        : 
+ AY AY W s <- AY        : 
+ AY AY Y s <- AY        : 
+ AY AY Z s <- AY        : 
+AY CH AA s <- AY        : 
+AY CH AE s <- AY        : 
+AY CH AH s <- AY        : 
+AY CH AO s <- AY        : 
+AY CH AY s <- AY        : 
+ AY CH B s <- AY        : 
+ AY CH D s <- AY        : 
+AY CH EH s <- AY        : 
+AY CH EY s <- AY        : 
+ AY CH F s <- AY        : 
+ AY CH G s <- AY        : 
+AY CH HH s <- AY        : 
+AY CH IH s <- AY        : 
+AY CH IY s <- AY        : 
+AY CH JH s <- AY        : 
+ AY CH K s <- AY        : 
+ AY CH M s <- AY        : 
+ AY CH N s <- AY        : 
+AY CH OW s <- AY        : 
+ AY CH P s <- AY        : 
+ AY CH R s <- AY        : 
+ AY CH S s <- AY        : 
+AY CH SIL s <- AY        : 
+ AY CH T s <- AY        : 
+AY CH TH s <- AY        : 
+ AY CH V s <- AY        : 
+ AY CH W s <- AY        : 
+ AY CH Y s <- AY        : 
+ AY CH Z s <- AY        : 
+ AY D AA s <- AY        : 
+ AY D AE s <- AY        : 
+ AY D AH s <- AY        : 
+ AY D AO s <- AY        : 
+ AY D AY s <- AY        : 
+  AY D B s <- AY        : 
+  AY D D s <- AY        : 
+ AY D EH s <- AY        : 
+ AY D EY s <- AY        : 
+  AY D F s <- AY        : 
+  AY D G s <- AY        : 
+ AY D HH s <- AY        : 
+ AY D IH s <- AY        : 
+ AY D IY s <- AY        : 
+ AY D JH s <- AY        : 
+  AY D K s <- AY        : 
+  AY D M s <- AY        : 
+  AY D N s <- AY        : 
+ AY D OW s <- AY        : 
+  AY D P s <- AY        : 
+  AY D R s <- AY        : 
+  AY D S s <- AY        : 
+AY D SIL s <- AY        : 
+  AY D T s <- AY        : 
+ AY D TH s <- AY        : 
+  AY D V s <- AY        : 
+  AY D W s <- AY        : 
+  AY D Y s <- AY        : 
+  AY D Z s <- AY        : 
+AY ER AA s <- AY        : 
+AY ER AE s <- AY        : 
+AY ER AH s <- AY        : 
+AY ER AO s <- AY        : 
+AY ER AY s <- AY        : 
+ AY ER B s <- AY        : 
+ AY ER D s <- AY        : 
+AY ER EH s <- AY        : 
+AY ER EY s <- AY        : 
+ AY ER F s <- AY        : 
+ AY ER G s <- AY        : 
+AY ER HH s <- AY        : 
+AY ER IH s <- AY        : 
+AY ER IY s <- AY        : 
+AY ER JH s <- AY        : 
+ AY ER K s <- AY        : 
+ AY ER M s <- AY        : 
+ AY ER N s <- AY        : 
+AY ER OW s <- AY        : 
+ AY ER P s <- AY        : 
+ AY ER R s <- AY        : 
+ AY ER S s <- AY        : 
+AY ER SIL s <- AY        : 
+ AY ER T s <- AY        : 
+AY ER TH s <- AY        : 
+ AY ER V s <- AY        : 
+ AY ER W s <- AY        : 
+ AY ER Y s <- AY        : 
+ AY ER Z s <- AY        : 
+AY EY AA s <- AY        : 
+AY EY AE s <- AY        : 
+AY EY AH s <- AY        : 
+AY EY AO s <- AY        : 
+AY EY AY s <- AY        : 
+ AY EY B s <- AY        : 
+ AY EY D s <- AY        : 
+AY EY EH s <- AY        : 
+AY EY EY s <- AY        : 
+ AY EY F s <- AY        : 
+ AY EY G s <- AY        : 
+AY EY HH s <- AY        : 
+AY EY IH s <- AY        : 
+AY EY IY s <- AY        : 
+AY EY JH s <- AY        : 
+ AY EY K s <- AY        : 
+ AY EY M s <- AY        : 
+ AY EY N s <- AY        : 
+AY EY OW s <- AY        : 
+ AY EY P s <- AY        : 
+ AY EY R s <- AY        : 
+ AY EY S s <- AY        : 
+AY EY SIL s <- AY        : 
+ AY EY T s <- AY        : 
+AY EY TH s <- AY        : 
+ AY EY V s <- AY        : 
+ AY EY W s <- AY        : 
+ AY EY Y s <- AY        : 
+ AY EY Z s <- AY        : 
+ AY F AA s <- AY        : 
+ AY F AE s <- AY        : 
+ AY F AH s <- AY        : 
+ AY F AO s <- AY        : 
+ AY F AY s <- AY        : 
+  AY F B s <- AY        : 
+  AY F D s <- AY        : 
+ AY F EH s <- AY        : 
+ AY F EY s <- AY        : 
+  AY F F s <- AY        : 
+  AY F G s <- AY        : 
+ AY F HH s <- AY        : 
+ AY F IH s <- AY        : 
+ AY F IY s <- AY        : 
+ AY F JH s <- AY        : 
+  AY F K s <- AY        : 
+  AY F M s <- AY        : 
+  AY F N s <- AY        : 
+ AY F OW s <- AY        : 
+  AY F P s <- AY        : 
+  AY F R s <- AY        : 
+  AY F S s <- AY        : 
+AY F SIL s <- AY        : 
+  AY F T s <- AY        : 
+ AY F TH s <- AY        : 
+  AY F V i <- AY        : [mx   129(0) +=    15] [mx   134(2) +=    17] 
+  AY F V s <- AY        : 
+  AY F W s <- AY        : 
+  AY F Y s <- AY        : 
+  AY F Z s <- AY        : 
+AY IY AA s <- AY        : 
+AY IY AE s <- AY        : 
+AY IY AH s <- AY        : 
+AY IY AO s <- AY        : 
+AY IY AY s <- AY        : 
+ AY IY B s <- AY        : 
+ AY IY D s <- AY        : 
+AY IY EH s <- AY        : 
+AY IY EY s <- AY        : 
+ AY IY F s <- AY        : 
+ AY IY G s <- AY        : 
+AY IY HH s <- AY        : 
+AY IY IH s <- AY        : 
+AY IY IY s <- AY        : 
+AY IY JH s <- AY        : 
+ AY IY K s <- AY        : 
+ AY IY M s <- AY        : 
+ AY IY N s <- AY        : 
+AY IY OW s <- AY        : 
+ AY IY P s <- AY        : 
+ AY IY R s <- AY        : 
+ AY IY S s <- AY        : 
+AY IY SIL s <- AY        : 
+ AY IY T s <- AY        : 
+AY IY TH s <- AY        : 
+ AY IY V s <- AY        : 
+ AY IY W s <- AY        : 
+ AY IY Y s <- AY        : 
+ AY IY Z s <- AY        : 
+ AY L AA e <- AY        : 
+ AY L AA s <- AY        : 
+ AY L AE e <- AY        : 
+ AY L AE s <- AY        : 
+ AY L AH e <- AY        : 
+ AY L AH s <- AY        : 
+ AY L AO e <- AY        : 
+ AY L AO s <- AY        : 
+ AY L AY e <- AY        : 
+ AY L AY s <- AY        : 
+  AY L B e <- AY        : 
+  AY L B s <- AY        : 
+  AY L D e <- AY        : 
+  AY L D s <- AY        : 
+ AY L EH e <- AY        : 
+ AY L EH s <- AY        : 
+ AY L EY e <- AY        : 
+ AY L EY s <- AY        : 
+  AY L F e <- AY        : 
+  AY L F s <- AY        : 
+  AY L G e <- AY        : 
+  AY L G s <- AY        : 
+ AY L HH e <- AY        : 
+ AY L HH s <- AY        : 
+ AY L IH e <- AY        : 
+ AY L IH s <- AY        : 
+ AY L IY e <- AY        : 
+ AY L IY s <- AY        : 
+ AY L JH e <- AY        : 
+ AY L JH s <- AY        : 
+  AY L K e <- AY        : 
+  AY L K s <- AY        : 
+  AY L M e <- AY        : 
+  AY L M s <- AY        : 
+  AY L N e <- AY        : 
+  AY L N s <- AY        : 
+ AY L OW e <- AY        : 
+ AY L OW s <- AY        : 
+  AY L P e <- AY        : 
+  AY L P s <- AY        : 
+  AY L R e <- AY        : 
+  AY L R s <- AY        : 
+  AY L S e <- AY        : 
+  AY L S s <- AY        : 
+AY L SIL e <- AY        : 
+AY L SIL s <- AY        : 
+  AY L T e <- AY        : 
+  AY L T s <- AY        : 
+ AY L TH e <- AY        : 
+ AY L TH s <- AY        : 
+  AY L V e <- AY        : 
+  AY L V s <- AY        : 
+  AY L W e <- AY        : 
+  AY L W s <- AY        : 
+  AY L Y e <- AY        : 
+  AY L Y s <- AY        : 
+  AY L Z e <- AY        : 
+  AY L Z s <- AY        : 
+ AY M AA s <- AY        : 
+ AY M AE s <- AY        : 
+ AY M AH s <- AY        : 
+ AY M AO s <- AY        : 
+ AY M AY s <- AY        : 
+  AY M B s <- AY        : 
+  AY M D s <- AY        : 
+ AY M EH s <- AY        : 
+ AY M EY s <- AY        : 
+  AY M F s <- AY        : 
+  AY M G s <- AY        : 
+ AY M HH s <- AY        : 
+ AY M IH s <- AY        : 
+ AY M IY s <- AY        : 
+ AY M JH s <- AY        : 
+  AY M K s <- AY        : 
+  AY M M s <- AY        : 
+  AY M N s <- AY        : 
+ AY M OW s <- AY        : 
+  AY M P s <- AY        : 
+  AY M R s <- AY        : 
+  AY M S s <- AY        : 
+AY M SIL s <- AY        : 
+  AY M T s <- AY        : 
+ AY M TH s <- AY        : 
+  AY M V s <- AY        : 
+  AY M W s <- AY        : 
+  AY M Y s <- AY        : 
+  AY M Z s <- AY        : 
+ AY N AA s <- AY        : 
+ AY N AE s <- AY        : 
+ AY N AH s <- AY        : 
+ AY N AO s <- AY        : 
+ AY N AY s <- AY        : 
+  AY N B s <- AY        : 
+  AY N D s <- AY        : 
+ AY N EH s <- AY        : 
+ AY N EY s <- AY        : 
+  AY N F s <- AY        : 
+  AY N G s <- AY        : 
+ AY N HH s <- AY        : 
+ AY N IH s <- AY        : 
+ AY N IY s <- AY        : 
+ AY N JH s <- AY        : 
+  AY N K s <- AY        : 
+  AY N M s <- AY        : 
+  AY N N i <- AY        : [mx   128(0) +=    15] [mx   133(2) +=    17] 
+  AY N N s <- AY        : 
+ AY N OW s <- AY        : 
+  AY N P s <- AY        : 
+  AY N R s <- AY        : 
+  AY N S s <- AY        : 
+AY N SIL s <- AY        : 
+  AY N T s <- AY        : 
+ AY N TH s <- AY        : 
+  AY N V s <- AY        : 
+  AY N W s <- AY        : 
+  AY N Y s <- AY        : 
+  AY N Z s <- AY        : 
+AY OW AA s <- AY        : 
+AY OW AE s <- AY        : 
+AY OW AH s <- AY        : 
+AY OW AO s <- AY        : 
+AY OW AY s <- AY        : 
+ AY OW B s <- AY        : 
+ AY OW D s <- AY        : 
+AY OW EH s <- AY        : 
+AY OW EY s <- AY        : 
+ AY OW F s <- AY        : 
+ AY OW G s <- AY        : 
+AY OW HH s <- AY        : 
+AY OW IH s <- AY        : 
+AY OW IY s <- AY        : 
+AY OW JH s <- AY        : 
+ AY OW K s <- AY        : 
+ AY OW M s <- AY        : 
+ AY OW N s <- AY        : 
+AY OW OW s <- AY        : 
+ AY OW P s <- AY        : 
+ AY OW R s <- AY        : 
+ AY OW S s <- AY        : 
+AY OW SIL s <- AY        : 
+ AY OW T s <- AY        : 
+AY OW TH s <- AY        : 
+ AY OW V s <- AY        : 
+ AY OW W s <- AY        : 
+ AY OW Y s <- AY        : 
+ AY OW Z s <- AY        : 
+ AY P AA s <- AY        : 
+ AY P AE s <- AY        : 
+ AY P AH s <- AY        : 
+ AY P AO s <- AY        : 
+ AY P AY s <- AY        : 
+  AY P B s <- AY        : 
+  AY P D s <- AY        : 
+ AY P EH s <- AY        : 
+ AY P EY s <- AY        : 
+  AY P F s <- AY        : 
+  AY P G s <- AY        : 
+ AY P HH s <- AY        : 
+ AY P IH s <- AY        : 
+ AY P IY s <- AY        : 
+ AY P JH s <- AY        : 
+  AY P K s <- AY        : 
+  AY P M s <- AY        : 
+  AY P N s <- AY        : 
+ AY P OW s <- AY        : 
+  AY P P s <- AY        : 
+  AY P R s <- AY        : 
+  AY P S s <- AY        : 
+AY P SIL s <- AY        : 
+  AY P T s <- AY        : 
+ AY P TH s <- AY        : 
+  AY P V s <- AY        : 
+  AY P W s <- AY        : 
+  AY P Y s <- AY        : 
+  AY P Z s <- AY        : 
+ AY R AA s <- AY        : 
+ AY R AE s <- AY        : 
+ AY R AH s <- AY        : 
+ AY R AO s <- AY        : 
+ AY R AY s <- AY        : 
+  AY R B s <- AY        : 
+  AY R D s <- AY        : 
+ AY R EH s <- AY        : 
+ AY R EY s <- AY        : 
+  AY R F s <- AY        : 
+  AY R G s <- AY        : 
+ AY R HH s <- AY        : 
+ AY R IH s <- AY        : 
+ AY R IY s <- AY        : 
+ AY R JH s <- AY        : 
+  AY R K s <- AY        : 
+  AY R M s <- AY        : 
+  AY R N s <- AY        : 
+ AY R OW s <- AY        : 
+  AY R P s <- AY        : 
+  AY R R s <- AY        : 
+  AY R S s <- AY        : 
+AY R SIL s <- AY        : 
+  AY R T s <- AY        : 
+ AY R TH s <- AY        : 
+  AY R V s <- AY        : 
+  AY R W s <- AY        : 
+  AY R Y s <- AY        : 
+  AY R Z s <- AY        : 
+ AY S AA s <- AY        : 
+ AY S AE s <- AY        : 
+ AY S AH s <- AY        : 
+ AY S AO s <- AY        : 
+ AY S AY s <- AY        : 
+  AY S B s <- AY        : 
+  AY S D s <- AY        : 
+ AY S EH s <- AY        : 
+ AY S EY s <- AY        : 
+  AY S F s <- AY        : 
+  AY S G s <- AY        : 
+ AY S HH s <- AY        : 
+ AY S IH s <- AY        : 
+ AY S IY s <- AY        : 
+ AY S JH s <- AY        : 
+  AY S K s <- AY        : 
+  AY S M s <- AY        : 
+  AY S N s <- AY        : 
+ AY S OW s <- AY        : 
+  AY S P s <- AY        : 
+  AY S R s <- AY        : 
+  AY S S s <- AY        : 
+AY S SIL s <- AY        : 
+  AY S T s <- AY        : 
+ AY S TH s <- AY        : 
+  AY S V s <- AY        : 
+  AY S W s <- AY        : 
+  AY S Y s <- AY        : 
+  AY S Z s <- AY        : 
+AY SIL AA s <- AY        : 
+AY SIL AE s <- AY        : 
+AY SIL AH s <- AY        : 
+AY SIL AO s <- AY        : 
+AY SIL AY s <- AY        : 
+AY SIL B s <- AY        : 
+AY SIL D s <- AY        : 
+AY SIL EH s <- AY        : 
+AY SIL EY s <- AY        : 
+AY SIL F s <- AY        : 
+AY SIL G s <- AY        : 
+AY SIL HH s <- AY        : 
+AY SIL IH s <- AY        : 
+AY SIL IY s <- AY        : 
+AY SIL JH s <- AY        : 
+AY SIL K s <- AY        : 
+AY SIL M s <- AY        : 
+AY SIL N s <- AY        : 
+AY SIL OW s <- AY        : 
+AY SIL P s <- AY        : 
+AY SIL R s <- AY        : 
+AY SIL S s <- AY        : 
+AY SIL SIL s <- AY        : 
+AY SIL T s <- AY        : 
+AY SIL TH s <- AY        : 
+AY SIL V s <- AY        : 
+AY SIL W s <- AY        : 
+AY SIL Y s <- AY        : 
+AY SIL Z s <- AY        : 
+ AY T AA s <- AY        : 
+ AY T AE s <- AY        : 
+ AY T AH s <- AY        : 
+ AY T AO s <- AY        : 
+ AY T AY s <- AY        : 
+  AY T B s <- AY        : 
+  AY T D s <- AY        : 
+ AY T EH s <- AY        : 
+ AY T EY s <- AY        : 
+  AY T F s <- AY        : 
+  AY T G s <- AY        : 
+ AY T HH s <- AY        : 
+ AY T IH s <- AY        : 
+ AY T IY s <- AY        : 
+ AY T JH s <- AY        : 
+  AY T K s <- AY        : 
+  AY T M s <- AY        : 
+  AY T N s <- AY        : 
+ AY T OW s <- AY        : 
+  AY T P s <- AY        : 
+  AY T R s <- AY        : 
+  AY T S s <- AY        : 
+AY T SIL s <- AY        : 
+  AY T T s <- AY        : 
+ AY T TH s <- AY        : 
+  AY T V s <- AY        : 
+  AY T W s <- AY        : 
+  AY T Y s <- AY        : 
+  AY T Z s <- AY        : 
+AY TH AA s <- AY        : 
+AY TH AE s <- AY        : 
+AY TH AH s <- AY        : 
+AY TH AO s <- AY        : 
+AY TH AY s <- AY        : 
+ AY TH B s <- AY        : 
+ AY TH D s <- AY        : 
+AY TH EH s <- AY        : 
+AY TH EY s <- AY        : 
+ AY TH F s <- AY        : 
+ AY TH G s <- AY        : 
+AY TH HH s <- AY        : 
+AY TH IH s <- AY        : 
+AY TH IY s <- AY        : 
+AY TH JH s <- AY        : 
+ AY TH K s <- AY        : 
+ AY TH M s <- AY        : 
+ AY TH N s <- AY        : 
+AY TH OW s <- AY        : 
+ AY TH P s <- AY        : 
+ AY TH R s <- AY        : 
+ AY TH S s <- AY        : 
+AY TH SIL s <- AY        : 
+ AY TH T s <- AY        : 
+AY TH TH s <- AY        : 
+ AY TH V s <- AY        : 
+ AY TH W s <- AY        : 
+ AY TH Y s <- AY        : 
+ AY TH Z s <- AY        : 
+AY UW AA s <- AY        : 
+AY UW AE s <- AY        : 
+AY UW AH s <- AY        : 
+AY UW AO s <- AY        : 
+AY UW AY s <- AY        : 
+ AY UW B s <- AY        : 
+ AY UW D s <- AY        : 
+AY UW EH s <- AY        : 
+AY UW EY s <- AY        : 
+ AY UW F s <- AY        : 
+ AY UW G s <- AY        : 
+AY UW HH s <- AY        : 
+AY UW IH s <- AY        : 
+AY UW IY s <- AY        : 
+AY UW JH s <- AY        : 
+ AY UW K s <- AY        : 
+ AY UW M s <- AY        : 
+ AY UW N s <- AY        : 
+AY UW OW s <- AY        : 
+ AY UW P s <- AY        : 
+ AY UW R s <- AY        : 
+ AY UW S s <- AY        : 
+AY UW SIL s <- AY        : 
+ AY UW T s <- AY        : 
+AY UW TH s <- AY        : 
+ AY UW V s <- AY        : 
+ AY UW W s <- AY        : 
+ AY UW Y s <- AY        : 
+ AY UW Z s <- AY        : 
+ AY V AA s <- AY        : 
+ AY V AE s <- AY        : 
+ AY V AH s <- AY        : 
+ AY V AO s <- AY        : 
+ AY V AY s <- AY        : 
+  AY V B s <- AY        : 
+  AY V D s <- AY        : 
+ AY V EH s <- AY        : 
+ AY V EY s <- AY        : 
+  AY V F s <- AY        : 
+  AY V G s <- AY        : 
+ AY V HH s <- AY        : 
+ AY V IH s <- AY        : 
+ AY V IY s <- AY        : 
+ AY V JH s <- AY        : 
+  AY V K s <- AY        : 
+  AY V M s <- AY        : 
+  AY V N s <- AY        : 
+ AY V OW s <- AY        : 
+  AY V P s <- AY        : 
+  AY V R s <- AY        : 
+  AY V S s <- AY        : 
+AY V SIL s <- AY        : 
+  AY V T s <- AY        : 
+ AY V TH s <- AY        : 
+  AY V V s <- AY        : 
+  AY V W s <- AY        : 
+  AY V Y s <- AY        : 
+  AY V Z s <- AY        : 
+ AY W AA e <- AY        : 
+ AY W AE e <- AY        : 
+ AY W AH e <- AY        : 
+ AY W AO e <- AY        : 
+ AY W AY e <- AY        : 
+  AY W B e <- AY        : 
+  AY W D e <- AY        : 
+ AY W EH e <- AY        : 
+ AY W EY e <- AY        : 
+  AY W F e <- AY        : 
+  AY W G e <- AY        : 
+ AY W HH e <- AY        : 
+ AY W IH e <- AY        : 
+ AY W IY e <- AY        : 
+ AY W JH e <- AY        : 
+  AY W K e <- AY        : 
+  AY W M e <- AY        : 
+  AY W N e <- AY        : 
+ AY W OW e <- AY        : 
+  AY W P e <- AY        : 
+  AY W R e <- AY        : 
+  AY W S e <- AY        : 
+AY W SIL e <- AY        : 
+  AY W T e <- AY        : 
+ AY W TH e <- AY        : 
+  AY W V e <- AY        : 
+  AY W W e <- AY        : 
+  AY W Y e <- AY        : 
+  AY W Z e <- AY        : 
+ B AH AH i <- B         : [mx   135(0) +=    18] [mx   136(1) +=    19] [mx   138(2) +=    20] 
+ B AH AW i <- B         : 
+ B AH IY b <- B         : 
+ B AY IY b <- B         : [mx   137(2) +=    20] 
+ B CH IY b <- B         : 
+  B D IY b <- B         : 
+ B EH AH i <- B         : 
+  B EH R i <- B         : 
+ B EH UW i <- B         : 
+  B EH Y i <- B         : 
+ B ER IY b <- B         : 
+ B EY IY b <- B         : 
+  B F IY b <- B         : 
+ B IY IY b <- B         : 
+  B L IY b <- B         : 
+  B M ER i <- B         : 
+  B M IY b <- B         : 
+  B N IY b <- B         : 
+ B OW ER i <- B         : 
+ B OW IY b <- B         : 
+  B P IY b <- B         : 
+  B R IY b <- B         : 
+  B S IY b <- B         : 
+B SIL IY b <- B         : 
+  B T IY b <- B         : 
+ B TH IY b <- B         : 
+ B UW IY b <- B         : 
+  B V IY b <- B         : 
+CH EY AA e <- CH        : [mx   139(0) +=    21] [mx   140(1) +=    22] [mx   141(2) +=    23] 
+CH EY AE e <- CH        : 
+CH EY AH e <- CH        : 
+CH EY AO e <- CH        : 
+CH EY AY e <- CH        : 
+ CH EY B e <- CH        : 
+ CH EY D e <- CH        : 
+CH EY EH e <- CH        : 
+CH EY EY e <- CH        : 
+ CH EY F e <- CH        : [mx   142(2) +=    23] 
+ CH EY G e <- CH        : 
+CH EY HH e <- CH        : 
+CH EY IH e <- CH        : 
+CH EY IY e <- CH        : 
+CH EY JH e <- CH        : 
+ CH EY K e <- CH        : 
+ CH EY M e <- CH        : 
+ CH EY N e <- CH        : 
+CH EY OW e <- CH        : 
+ CH EY P e <- CH        : 
+ CH EY R e <- CH        : 
+ CH EY S e <- CH        : 
+CH EY SIL e <- CH        : 
+ CH EY T e <- CH        : 
+CH EY TH e <- CH        : 
+ CH EY V e <- CH        : 
+ CH EY W e <- CH        : 
+ CH EY Y e <- CH        : 
+ CH EY Z e <- CH        : 
+ CH R AA e <- CH        : 
+ CH R AE e <- CH        : 
+ CH R AH e <- CH        : 
+ CH R AO e <- CH        : 
+ CH R AY e <- CH        : 
+  CH R B e <- CH        : 
+  CH R D e <- CH        : 
+ CH R EH e <- CH        : 
+ CH R EY e <- CH        : 
+  CH R F e <- CH        : 
+  CH R G e <- CH        : 
+ CH R HH e <- CH        : 
+ CH R IH e <- CH        : 
+ CH R IY e <- CH        : 
+ CH R JH e <- CH        : 
+  CH R K e <- CH        : 
+  CH R M e <- CH        : 
+  CH R N e <- CH        : 
+ CH R OW e <- CH        : 
+  CH R P e <- CH        : 
+  CH R R e <- CH        : 
+  CH R S e <- CH        : 
+CH R SIL e <- CH        : 
+  CH R T e <- CH        : 
+ CH R TH e <- CH        : 
+  CH R V e <- CH        : 
+  CH R W e <- CH        : 
+  CH R Y e <- CH        : 
+  CH R Z e <- CH        : 
+ D AH AA e <- D         : [mx   143(0) +=    24] [mx   144(1) +=    25] [mx   145(2) +=    26] 
+ D AH AE e <- D         : 
+ D AH AH b <- D         : 
+ D AH AH e <- D         : 
+ D AH AO e <- D         : 
+ D AH AY e <- D         : 
+  D AH B e <- D         : 
+  D AH D e <- D         : 
+ D AH EH e <- D         : 
+ D AH EY e <- D         : 
+  D AH F e <- D         : 
+  D AH G e <- D         : 
+ D AH HH e <- D         : 
+ D AH IH b <- D         : 
+ D AH IH e <- D         : 
+ D AH IY b <- D         : 
+ D AH IY e <- D         : 
+ D AH JH e <- D         : 
+  D AH K e <- D         : 
+  D AH M e <- D         : 
+  D AH N e <- D         : 
+ D AH OW e <- D         : 
+  D AH P e <- D         : 
+  D AH R e <- D         : 
+  D AH S e <- D         : 
+D AH SIL e <- D         : 
+  D AH T e <- D         : 
+ D AH TH e <- D         : 
+  D AH V e <- D         : 
+  D AH W e <- D         : 
+  D AH Y e <- D         : 
+  D AH Z e <- D         : 
+ D AY AH b <- D         : 
+ D AY IH b <- D         : 
+ D AY IY b <- D         : 
+ D CH AH b <- D         : 
+ D CH IH b <- D         : 
+ D CH IY b <- D         : 
+  D D AH b <- D         : 
+  D D IH b <- D         : 
+  D D IY b <- D         : 
+ D ER AA e <- D         : 
+ D ER AE e <- D         : 
+ D ER AH b <- D         : 
+ D ER AH e <- D         : 
+ D ER AO e <- D         : 
+ D ER AY e <- D         : 
+  D ER B e <- D         : 
+  D ER D e <- D         : 
+ D ER EH e <- D         : 
+ D ER EY e <- D         : 
+  D ER F e <- D         : 
+  D ER G e <- D         : 
+ D ER HH e <- D         : 
+ D ER IH b <- D         : 
+ D ER IH e <- D         : 
+ D ER IY b <- D         : 
+ D ER IY e <- D         : 
+ D ER IY i <- D         : 
+ D ER JH e <- D         : 
+  D ER K e <- D         : 
+  D ER M e <- D         : 
+  D ER N e <- D         : 
+ D ER OW e <- D         : 
+  D ER P e <- D         : 
+  D ER R e <- D         : 
+  D ER S e <- D         : 
+D ER SIL e <- D         : 
+  D ER T e <- D         : 
+ D ER TH e <- D         : 
+  D ER V e <- D         : 
+  D ER W e <- D         : 
+  D ER Y e <- D         : 
+  D ER Z e <- D         : 
+ D EY AH b <- D         : 
+ D EY IH b <- D         : 
+ D EY IY b <- D         : 
+  D F AH b <- D         : 
+  D F IH b <- D         : 
+  D F IY b <- D         : 
+ D IH AA e <- D         : 
+ D IH AE e <- D         : 
+ D IH AH e <- D         : 
+ D IH AO e <- D         : 
+ D IH AY e <- D         : 
+  D IH B e <- D         : 
+  D IH D e <- D         : 
+ D IH EH e <- D         : 
+ D IH EY e <- D         : 
+  D IH F e <- D         : 
+  D IH G e <- D         : 
+ D IH HH e <- D         : 
+ D IH IH e <- D         : 
+ D IH IY e <- D         : 
+ D IH JH e <- D         : 
+  D IH K e <- D         : 
+  D IH M e <- D         : 
+  D IH N e <- D         : 
+ D IH OW e <- D         : 
+  D IH P e <- D         : 
+  D IH R e <- D         : 
+  D IH S e <- D         : 
+D IH SIL e <- D         : 
+  D IH T e <- D         : 
+ D IH TH e <- D         : 
+  D IH V e <- D         : 
+  D IH W e <- D         : 
+  D IH Y e <- D         : 
+  D IH Z e <- D         : 
+ D IY AH b <- D         : 
+ D IY IH b <- D         : 
+ D IY IY b <- D         : 
+  D L AH b <- D         : 
+  D L IH b <- D         : 
+  D L IY b <- D         : 
+  D M AH b <- D         : 
+  D M IH b <- D         : 
+  D M IY b <- D         : 
+  D N AA e <- D         : 
+  D N AE e <- D         : 
+  D N AH b <- D         : 
+  D N AH e <- D         : 
+  D N AO e <- D         : 
+  D N AY e <- D         : 
+   D N B e <- D         : 
+   D N D e <- D         : 
+  D N EH e <- D         : 
+  D N ER i <- D         : 
+  D N EY e <- D         : 
+   D N F e <- D         : 
+   D N G e <- D         : 
+  D N HH e <- D         : 
+  D N IH b <- D         : 
+  D N IH e <- D         : 
+  D N IY b <- D         : 
+  D N IY e <- D         : 
+  D N JH e <- D         : 
+   D N K e <- D         : 
+   D N M e <- D         : 
+   D N N e <- D         : 
+  D N OW e <- D         : 
+   D N P e <- D         : 
+   D N R e <- D         : 
+   D N R i <- D         : 
+   D N S e <- D         : 
+ D N SIL e <- D         : 
+   D N T e <- D         : 
+  D N TH e <- D         : 
+   D N V e <- D         : 
+   D N W e <- D         : 
+   D N Y e <- D         : 
+   D N Z e <- D         : 
+ D OW AA e <- D         : 
+ D OW AE e <- D         : 
+ D OW AH b <- D         : 
+ D OW AH e <- D         : 
+ D OW AO e <- D         : 
+ D OW AY e <- D         : 
+  D OW B e <- D         : 
+  D OW D e <- D         : 
+ D OW EH e <- D         : 
+ D OW EY e <- D         : 
+  D OW F e <- D         : 
+  D OW G e <- D         : 
+ D OW HH e <- D         : 
+ D OW IH b <- D         : 
+ D OW IH e <- D         : 
+ D OW IY b <- D         : 
+ D OW IY e <- D         : 
+ D OW JH e <- D         : 
+  D OW K e <- D         : 
+  D OW M e <- D         : 
+  D OW N e <- D         : 
+ D OW OW e <- D         : 
+  D OW P e <- D         : 
+  D OW R e <- D         : 
+  D OW S e <- D         : 
+D OW SIL e <- D         : 
+  D OW T e <- D         : 
+ D OW TH e <- D         : 
+  D OW V e <- D         : 
+  D OW W e <- D         : 
+  D OW Y e <- D         : 
+  D OW Z e <- D         : 
+  D P AH b <- D         : 
+  D P IH b <- D         : 
+  D P IY b <- D         : 
+  D R AH b <- D         : 
+  D R IH b <- D         : 
+  D R IY b <- D         : 
+  D S AH b <- D         : 
+  D S IH b <- D         : 
+  D S IY b <- D         : 
+D SIL AH b <- D         : 
+D SIL IH b <- D         : 
+D SIL IY b <- D         : 
+  D T AH b <- D         : 
+  D T IH b <- D         : 
+  D T IY b <- D         : 
+ D TH AH b <- D         : 
+ D TH IH b <- D         : 
+ D TH IY b <- D         : 
+ D UW AH b <- D         : 
+ D UW IH b <- D         : 
+ D UW IY b <- D         : 
+  D V AH b <- D         : 
+  D V IH b <- D         : 
+  D V IY b <- D         : 
+ EH AH F b <- EH        : [mx   146(0) +=    27] [mx   152(1) +=    28] [mx   155(2) +=    29] 
+ EH AH K b <- EH        : 
+ EH AH L b <- EH        : [mx   159(2) +=    29] 
+ EH AH M b <- EH        : [mx   153(1) +=    28] 
+ EH AH N b <- EH        : [mx   157(2) +=    29] 
+ EH AH R b <- EH        : 
+ EH AH S b <- EH        : 
+ EH AY F b <- EH        : 
+ EH AY K b <- EH        : 
+ EH AY L b <- EH        : 
+ EH AY M b <- EH        : 
+ EH AY N b <- EH        : 
+ EH AY R b <- EH        : 
+ EH AY S b <- EH        : 
+ EH CH F b <- EH        : [mx   147(0) +=    27] [mx   154(1) +=    28] 
+ EH CH K b <- EH        : 
+ EH CH L b <- EH        : 
+ EH CH M b <- EH        : 
+ EH CH N b <- EH        : 
+ EH CH R b <- EH        : 
+ EH CH S b <- EH        : 
+  EH D F b <- EH        : 
+  EH D K b <- EH        : 
+  EH D L b <- EH        : 
+  EH D M b <- EH        : 
+  EH D N b <- EH        : 
+  EH D R b <- EH        : 
+  EH D S b <- EH        : 
+ EH ER F b <- EH        : 
+ EH ER K b <- EH        : 
+ EH ER L b <- EH        : 
+ EH ER M b <- EH        : 
+ EH ER N b <- EH        : 
+ EH ER R b <- EH        : 
+ EH ER S b <- EH        : 
+ EH EY F b <- EH        : 
+ EH EY K b <- EH        : 
+ EH EY L b <- EH        : 
+ EH EY M b <- EH        : 
+ EH EY N b <- EH        : 
+ EH EY R b <- EH        : 
+ EH EY S b <- EH        : 
+  EH F B i <- EH        : [mx   150(0) +=    27] [mx   151(1) +=    28] 
+  EH F F b <- EH        : 
+  EH F K b <- EH        : 
+  EH F L b <- EH        : 
+  EH F M b <- EH        : 
+  EH F N b <- EH        : 
+  EH F R b <- EH        : 
+  EH F S b <- EH        : 
+ EH HH L i <- EH        : [mx   149(0) +=    27] 
+ EH IY F b <- EH        : 
+ EH IY K b <- EH        : 
+ EH IY L b <- EH        : 
+ EH IY M b <- EH        : 
+ EH IY N b <- EH        : 
+ EH IY R b <- EH        : 
+ EH IY S b <- EH        : 
+  EH L F b <- EH        : 
+  EH L K b <- EH        : 
+  EH L L b <- EH        : 
+  EH L M b <- EH        : 
+  EH L N b <- EH        : 
+  EH L R b <- EH        : 
+  EH L S b <- EH        : 
+  EH L V i <- EH        : [mx   156(2) +=    29] 
+  EH M F b <- EH        : 
+  EH M K b <- EH        : 
+  EH M L b <- EH        : 
+  EH M M b <- EH        : 
+  EH M N b <- EH        : 
+  EH M R b <- EH        : 
+  EH M S b <- EH        : 
+  EH N F b <- EH        : 
+  EH N K b <- EH        : 
+  EH N L b <- EH        : 
+  EH N M b <- EH        : 
+  EH N N b <- EH        : 
+  EH N R b <- EH        : 
+  EH N S b <- EH        : 
+ EH OW F b <- EH        : 
+ EH OW K b <- EH        : 
+ EH OW L b <- EH        : 
+ EH OW M b <- EH        : 
+ EH OW N b <- EH        : 
+ EH OW R b <- EH        : 
+ EH OW S b <- EH        : 
+  EH P F b <- EH        : 
+  EH P K b <- EH        : 
+  EH P L b <- EH        : 
+  EH P M b <- EH        : 
+  EH P N b <- EH        : 
+  EH P R b <- EH        : 
+  EH P S b <- EH        : 
+  EH R F b <- EH        : 
+  EH R K b <- EH        : 
+  EH R L b <- EH        : 
+  EH R M b <- EH        : 
+  EH R N b <- EH        : 
+  EH R R b <- EH        : 
+  EH R S b <- EH        : 
+  EH S F b <- EH        : 
+  EH S K b <- EH        : 
+  EH S K i <- EH        : 
+  EH S L b <- EH        : 
+  EH S M b <- EH        : 
+  EH S M i <- EH        : 
+  EH S N b <- EH        : 
+  EH S P i <- EH        : 
+  EH S R b <- EH        : 
+  EH S S b <- EH        : 
+  EH S V i <- EH        : 
+EH SIL F b <- EH        : [mx   148(0) +=    27] 
+EH SIL K b <- EH        : 
+EH SIL L b <- EH        : 
+EH SIL M b <- EH        : 
+EH SIL N b <- EH        : [mx   158(2) +=    29] 
+EH SIL R b <- EH        : 
+EH SIL S b <- EH        : 
+  EH T F b <- EH        : 
+  EH T K b <- EH        : 
+  EH T L b <- EH        : 
+  EH T M b <- EH        : 
+  EH T M i <- EH        : 
+  EH T N b <- EH        : 
+  EH T N i <- EH        : 
+  EH T R b <- EH        : 
+  EH T S b <- EH        : 
+ EH TH F b <- EH        : 
+ EH TH K b <- EH        : 
+ EH TH L b <- EH        : 
+ EH TH M b <- EH        : 
+ EH TH N b <- EH        : 
+ EH TH R b <- EH        : 
+ EH TH S b <- EH        : 
+ EH UW F b <- EH        : 
+ EH UW K b <- EH        : 
+ EH UW L b <- EH        : 
+ EH UW M b <- EH        : 
+ EH UW N b <- EH        : 
+ EH UW R b <- EH        : 
+ EH UW R i <- EH        : 
+ EH UW S b <- EH        : 
+  EH V F b <- EH        : 
+  EH V K b <- EH        : 
+  EH V L b <- EH        : 
+  EH V M b <- EH        : 
+  EH V M i <- EH        : 
+  EH V N b <- EH        : 
+  EH V R b <- EH        : 
+  EH V S b <- EH        : 
+  EH W L i <- EH        : 
+  EH W N i <- EH        : 
+  EH W R i <- EH        : 
+  EH Y S i <- EH        : 
+ ER B AA e <- ER        : [mx   160(0) +=    30] [mx   161(1) +=    31] [mx   162(2) +=    32] 
+ ER B AE e <- ER        : 
+ ER B AH e <- ER        : 
+ ER B AO e <- ER        : 
+ ER B AY e <- ER        : 
+  ER B B e <- ER        : 
+  ER B D e <- ER        : 
+ ER B EH e <- ER        : 
+ ER B EY e <- ER        : 
+  ER B F e <- ER        : 
+  ER B G e <- ER        : 
+ ER B HH e <- ER        : 
+ ER B IH e <- ER        : 
+ ER B IY e <- ER        : 
+ ER B JH e <- ER        : 
+  ER B K e <- ER        : 
+  ER B M e <- ER        : 
+  ER B N e <- ER        : 
+ ER B OW e <- ER        : 
+  ER B P e <- ER        : 
+  ER B R e <- ER        : 
+  ER B S e <- ER        : 
+ER B SIL e <- ER        : 
+  ER B T e <- ER        : 
+ ER B TH e <- ER        : 
+  ER B V e <- ER        : 
+  ER B W e <- ER        : 
+  ER B Y e <- ER        : 
+  ER B Z e <- ER        : 
+  ER D D i <- ER        : 
+  ER F S i <- ER        : 
+ ER N AA e <- ER        : 
+ ER N AE e <- ER        : 
+ ER N AH e <- ER        : 
+ ER N AO e <- ER        : 
+ ER N AY e <- ER        : 
+  ER N B e <- ER        : 
+  ER N D e <- ER        : 
+  ER N D i <- ER        : 
+ ER N EH e <- ER        : 
+ ER N EY e <- ER        : 
+  ER N F e <- ER        : 
+  ER N G e <- ER        : 
+ ER N HH e <- ER        : 
+ ER N IH e <- ER        : 
+ ER N IY e <- ER        : 
+ ER N JH e <- ER        : 
+  ER N K e <- ER        : 
+  ER N M e <- ER        : 
+  ER N N e <- ER        : 
+ ER N OW e <- ER        : 
+  ER N P e <- ER        : 
+  ER N R e <- ER        : 
+  ER N S e <- ER        : 
+ER N SIL e <- ER        : 
+  ER N T e <- ER        : 
+ ER N TH e <- ER        : 
+  ER N V e <- ER        : 
+  ER N W e <- ER        : 
+  ER N Y e <- ER        : 
+  ER N Z e <- ER        : 
+ ER T AA e <- ER        : 
+ ER T AE e <- ER        : 
+ ER T AH e <- ER        : 
+ ER T AO e <- ER        : 
+ ER T AY e <- ER        : 
+  ER T B e <- ER        : 
+  ER T D e <- ER        : 
+ ER T EH e <- ER        : 
+ ER T EY e <- ER        : 
+  ER T F e <- ER        : 
+  ER T G e <- ER        : 
+ ER T HH e <- ER        : 
+ ER T IH e <- ER        : 
+ ER T IY e <- ER        : 
+ ER T JH e <- ER        : 
+  ER T K e <- ER        : 
+  ER T M e <- ER        : 
+  ER T N e <- ER        : 
+ ER T OW e <- ER        : 
+  ER T P e <- ER        : 
+  ER T R e <- ER        : 
+  ER T S e <- ER        : 
+ER T SIL e <- ER        : 
+  ER T T e <- ER        : 
+ ER T TH e <- ER        : 
+  ER T V e <- ER        : 
+  ER T W e <- ER        : 
+  ER T Y e <- ER        : 
+  ER T Z e <- ER        : 
+ ER TH D i <- ER        : 
+ ER TH T i <- ER        : 
+EY AH AA s <- EY        : [mx   165(0) +=    33] [mx   166(1) +=    34] [mx   169(2) +=    35] 
+EY AH AE s <- EY        : [mx   168(2) +=    35] 
+EY AH AH s <- EY        : 
+EY AH AO s <- EY        : 
+EY AH AY s <- EY        : 
+ EY AH B s <- EY        : 
+EY AH CH b <- EY        : [mx   164(0) +=    33] 
+ EY AH D s <- EY        : 
+EY AH EH s <- EY        : 
+EY AH EY s <- EY        : 
+ EY AH F s <- EY        : 
+ EY AH G s <- EY        : 
+EY AH HH s <- EY        : 
+EY AH IH s <- EY        : 
+EY AH IY s <- EY        : 
+EY AH JH s <- EY        : 
+ EY AH K s <- EY        : 
+ EY AH M s <- EY        : 
+ EY AH N s <- EY        : 
+EY AH OW s <- EY        : 
+ EY AH P b <- EY        : 
+ EY AH P s <- EY        : 
+ EY AH R s <- EY        : 
+ EY AH S s <- EY        : 
+EY AH SIL s <- EY        : 
+ EY AH T b <- EY        : 
+ EY AH T s <- EY        : 
+EY AH TH b <- EY        : 
+EY AH TH s <- EY        : 
+ EY AH V s <- EY        : 
+ EY AH W s <- EY        : 
+ EY AH Y s <- EY        : 
+ EY AH Z s <- EY        : 
+EY AY AA s <- EY        : 
+EY AY AE s <- EY        : 
+EY AY AH s <- EY        : 
+EY AY AO s <- EY        : 
+EY AY AY s <- EY        : 
+ EY AY B s <- EY        : 
+EY AY CH b <- EY        : 
+ EY AY D s <- EY        : 
+EY AY EH s <- EY        : 
+EY AY EY s <- EY        : 
+ EY AY F s <- EY        : 
+ EY AY G s <- EY        : 
+EY AY HH s <- EY        : 
+EY AY IH s <- EY        : 
+EY AY IY s <- EY        : 
+EY AY JH s <- EY        : 
+ EY AY K s <- EY        : 
+ EY AY M s <- EY        : 
+ EY AY N s <- EY        : 
+EY AY OW s <- EY        : 
+ EY AY P b <- EY        : 
+ EY AY P s <- EY        : 
+ EY AY R s <- EY        : 
+ EY AY S s <- EY        : 
+EY AY SIL s <- EY        : 
+ EY AY T b <- EY        : 
+ EY AY T s <- EY        : 
+EY AY TH b <- EY        : 
+EY AY TH s <- EY        : 
+ EY AY V s <- EY        : 
+ EY AY W s <- EY        : 
+ EY AY Y s <- EY        : 
+ EY AY Z s <- EY        : 
+EY CH AA s <- EY        : 
+EY CH AE s <- EY        : 
+EY CH AH s <- EY        : 
+EY CH AO s <- EY        : 
+EY CH AY s <- EY        : 
+ EY CH B s <- EY        : 
+EY CH CH b <- EY        : [mx   163(0) +=    33] 
+ EY CH D s <- EY        : 
+EY CH EH s <- EY        : 
+EY CH EY s <- EY        : 
+ EY CH F s <- EY        : 
+ EY CH G s <- EY        : 
+EY CH HH s <- EY        : 
+EY CH IH s <- EY        : 
+EY CH IY s <- EY        : 
+EY CH JH s <- EY        : 
+ EY CH K s <- EY        : 
+ EY CH M s <- EY        : 
+ EY CH N s <- EY        : 
+EY CH OW s <- EY        : 
+ EY CH P b <- EY        : 
+ EY CH P s <- EY        : 
+ EY CH R s <- EY        : 
+ EY CH S s <- EY        : 
+EY CH SIL s <- EY        : 
+ EY CH T b <- EY        : 
+ EY CH T s <- EY        : 
+EY CH TH b <- EY        : 
+EY CH TH s <- EY        : 
+ EY CH V s <- EY        : 
+ EY CH W s <- EY        : 
+ EY CH Y s <- EY        : 
+ EY CH Z s <- EY        : 
+ EY D AA s <- EY        : 
+ EY D AE s <- EY        : 
+ EY D AH s <- EY        : 
+ EY D AO s <- EY        : 
+ EY D AY s <- EY        : 
+  EY D B s <- EY        : 
+ EY D CH b <- EY        : 
+  EY D D s <- EY        : 
+ EY D EH s <- EY        : 
+ EY D EY s <- EY        : 
+  EY D F s <- EY        : 
+  EY D G s <- EY        : 
+ EY D HH s <- EY        : 
+ EY D IH s <- EY        : 
+ EY D IY s <- EY        : 
+ EY D JH s <- EY        : 
+  EY D K s <- EY        : 
+  EY D M s <- EY        : 
+  EY D N s <- EY        : 
+ EY D OW s <- EY        : 
+  EY D P b <- EY        : 
+  EY D P s <- EY        : 
+  EY D R s <- EY        : 
+  EY D S s <- EY        : 
+EY D SIL s <- EY        : 
+  EY D T b <- EY        : 
+  EY D T s <- EY        : 
+ EY D TH b <- EY        : 
+ EY D TH s <- EY        : 
+  EY D V s <- EY        : 
+  EY D W s <- EY        : 
+  EY D Y s <- EY        : 
+  EY D Z s <- EY        : 
+EY ER AA s <- EY        : 
+EY ER AE s <- EY        : 
+EY ER AH s <- EY        : 
+EY ER AO s <- EY        : 
+EY ER AY s <- EY        : 
+ EY ER B s <- EY        : 
+EY ER CH b <- EY        : 
+ EY ER D s <- EY        : 
+EY ER EH s <- EY        : 
+EY ER EY s <- EY        : 
+ EY ER F s <- EY        : 
+ EY ER G s <- EY        : 
+EY ER HH s <- EY        : 
+EY ER IH s <- EY        : 
+EY ER IY s <- EY        : 
+EY ER JH s <- EY        : 
+ EY ER K s <- EY        : 
+ EY ER M s <- EY        : 
+ EY ER N s <- EY        : 
+EY ER OW s <- EY        : 
+ EY ER P b <- EY        : 
+ EY ER P s <- EY        : 
+ EY ER R s <- EY        : 
+ EY ER S s <- EY        : 
+EY ER SIL s <- EY        : 
+ EY ER T b <- EY        : 
+ EY ER T s <- EY        : 
+EY ER TH b <- EY        : 
+EY ER TH s <- EY        : 
+ EY ER V s <- EY        : 
+ EY ER W s <- EY        : 
+ EY ER Y s <- EY        : 
+ EY ER Z s <- EY        : 
+EY EY AA s <- EY        : 
+EY EY AE s <- EY        : 
+EY EY AH s <- EY        : 
+EY EY AO s <- EY        : 
+EY EY AY s <- EY        : 
+ EY EY B s <- EY        : 
+EY EY CH b <- EY        : 
+ EY EY D s <- EY        : 
+EY EY EH s <- EY        : 
+EY EY EY s <- EY        : 
+ EY EY F s <- EY        : 
+ EY EY G s <- EY        : 
+EY EY HH s <- EY        : 
+EY EY IH s <- EY        : 
+EY EY IY s <- EY        : 
+EY EY JH s <- EY        : 
+ EY EY K s <- EY        : 
+ EY EY M s <- EY        : 
+ EY EY N s <- EY        : 
+EY EY OW s <- EY        : 
+ EY EY P b <- EY        : 
+ EY EY P s <- EY        : 
+ EY EY R s <- EY        : 
+ EY EY S s <- EY        : 
+EY EY SIL s <- EY        : 
+ EY EY T b <- EY        : 
+ EY EY T s <- EY        : 
+EY EY TH b <- EY        : 
+EY EY TH s <- EY        : 
+ EY EY V s <- EY        : 
+ EY EY W s <- EY        : 
+ EY EY Y s <- EY        : 
+ EY EY Z s <- EY        : 
+ EY F AA s <- EY        : 
+ EY F AE s <- EY        : 
+ EY F AH s <- EY        : 
+ EY F AO s <- EY        : 
+ EY F AY s <- EY        : 
+  EY F B s <- EY        : 
+ EY F CH b <- EY        : 
+  EY F D s <- EY        : 
+ EY F EH s <- EY        : 
+ EY F EY s <- EY        : 
+  EY F F s <- EY        : 
+  EY F G s <- EY        : 
+ EY F HH s <- EY        : 
+ EY F IH s <- EY        : 
+ EY F IY s <- EY        : 
+ EY F JH s <- EY        : 
+  EY F K s <- EY        : 
+  EY F M s <- EY        : 
+  EY F N s <- EY        : 
+ EY F OW s <- EY        : 
+  EY F P b <- EY        : 
+  EY F P s <- EY        : 
+  EY F R s <- EY        : 
+  EY F S s <- EY        : 
+EY F SIL s <- EY        : 
+  EY F T b <- EY        : 
+  EY F T s <- EY        : 
+ EY F TH b <- EY        : 
+ EY F TH s <- EY        : 
+  EY F V s <- EY        : 
+  EY F W s <- EY        : 
+  EY F Y s <- EY        : 
+  EY F Z s <- EY        : 
+EY IY AA s <- EY        : 
+EY IY AE s <- EY        : 
+EY IY AH s <- EY        : 
+EY IY AO s <- EY        : 
+EY IY AY s <- EY        : 
+ EY IY B s <- EY        : 
+EY IY CH b <- EY        : 
+ EY IY D s <- EY        : 
+EY IY EH s <- EY        : 
+EY IY EY s <- EY        : 
+ EY IY F s <- EY        : 
+ EY IY G s <- EY        : 
+EY IY HH s <- EY        : 
+EY IY IH s <- EY        : 
+EY IY IY s <- EY        : 
+EY IY JH s <- EY        : 
+ EY IY K s <- EY        : 
+ EY IY M s <- EY        : 
+ EY IY N s <- EY        : 
+EY IY OW s <- EY        : 
+ EY IY P b <- EY        : 
+ EY IY P s <- EY        : 
+ EY IY R s <- EY        : 
+ EY IY S s <- EY        : 
+EY IY SIL s <- EY        : 
+ EY IY T b <- EY        : 
+ EY IY T s <- EY        : 
+EY IY TH b <- EY        : 
+EY IY TH s <- EY        : 
+ EY IY V s <- EY        : 
+ EY IY W s <- EY        : 
+ EY IY Y s <- EY        : 
+ EY IY Z s <- EY        : 
+EY JH AA e <- EY        : [mx   167(1) +=    34] 
+EY JH AE e <- EY        : 
+EY JH AH e <- EY        : 
+EY JH AO e <- EY        : 
+EY JH AY e <- EY        : 
+ EY JH B e <- EY        : 
+ EY JH D e <- EY        : 
+EY JH EH e <- EY        : 
+EY JH EY e <- EY        : 
+ EY JH F e <- EY        : 
+ EY JH G e <- EY        : 
+EY JH HH e <- EY        : 
+EY JH IH e <- EY        : 
+EY JH IY e <- EY        : 
+EY JH JH e <- EY        : 
+ EY JH K e <- EY        : 
+ EY JH M e <- EY        : 
+ EY JH N e <- EY        : 
+EY JH OW e <- EY        : 
+ EY JH P e <- EY        : 
+ EY JH R e <- EY        : 
+ EY JH S e <- EY        : 
+EY JH SIL e <- EY        : 
+ EY JH T e <- EY        : 
+EY JH TH e <- EY        : 
+ EY JH V e <- EY        : 
+ EY JH W e <- EY        : 
+ EY JH Y e <- EY        : 
+ EY JH Z e <- EY        : 
+ EY K AA e <- EY        : 
+ EY K AE e <- EY        : 
+ EY K AH e <- EY        : 
+ EY K AO e <- EY        : 
+ EY K AY e <- EY        : 
+  EY K B e <- EY        : 
+  EY K D e <- EY        : 
+ EY K EH e <- EY        : 
+ EY K EY e <- EY        : 
+  EY K F e <- EY        : 
+  EY K G e <- EY        : 
+ EY K HH e <- EY        : 
+ EY K IH e <- EY        : 
+ EY K IY e <- EY        : 
+ EY K JH e <- EY        : 
+  EY K K e <- EY        : 
+  EY K M e <- EY        : 
+  EY K N e <- EY        : 
+ EY K OW e <- EY        : 
+  EY K P e <- EY        : 
+  EY K R e <- EY        : 
+  EY K S e <- EY        : 
+EY K SIL e <- EY        : 
+  EY K T e <- EY        : 
+ EY K TH e <- EY        : 
+  EY K V e <- EY        : 
+  EY K W e <- EY        : 
+  EY K Y e <- EY        : 
+  EY K Z e <- EY        : 
+ EY L AA s <- EY        : 
+ EY L AE s <- EY        : 
+ EY L AH s <- EY        : 
+ EY L AO s <- EY        : 
+ EY L AY s <- EY        : 
+  EY L B s <- EY        : 
+ EY L CH b <- EY        : 
+  EY L D s <- EY        : 
+ EY L EH s <- EY        : 
+ EY L EY s <- EY        : 
+  EY L F s <- EY        : 
+  EY L G s <- EY        : 
+ EY L HH s <- EY        : 
+ EY L IH s <- EY        : 
+ EY L IY s <- EY        : 
+ EY L JH s <- EY        : 
+  EY L K s <- EY        : 
+  EY L M s <- EY        : 
+  EY L N s <- EY        : 
+ EY L OW s <- EY        : 
+  EY L P b <- EY        : 
+  EY L P s <- EY        : 
+  EY L R s <- EY        : 
+  EY L S s <- EY        : 
+EY L SIL s <- EY        : 
+  EY L T b <- EY        : 
+  EY L T s <- EY        : 
+ EY L TH b <- EY        : 
+ EY L TH s <- EY        : 
+  EY L V s <- EY        : 
+  EY L W s <- EY        : 
+  EY L Y s <- EY        : 
+  EY L Z s <- EY        : 
+ EY M AA e <- EY        : 
+ EY M AA s <- EY        : 
+ EY M AE e <- EY        : 
+ EY M AE s <- EY        : 
+ EY M AH e <- EY        : 
+ EY M AH s <- EY        : 
+ EY M AO e <- EY        : 
+ EY M AO s <- EY        : 
+ EY M AY e <- EY        : 
+ EY M AY s <- EY        : 
+  EY M B e <- EY        : 
+  EY M B s <- EY        : 
+ EY M CH b <- EY        : 
+  EY M D e <- EY        : 
+  EY M D s <- EY        : 
+ EY M EH e <- EY        : 
+ EY M EH s <- EY        : 
+ EY M EY e <- EY        : 
+ EY M EY s <- EY        : 
+  EY M F e <- EY        : 
+  EY M F s <- EY        : 
+  EY M G e <- EY        : 
+  EY M G s <- EY        : 
+ EY M HH e <- EY        : 
+ EY M HH s <- EY        : 
+ EY M IH e <- EY        : 
+ EY M IH s <- EY        : 
+ EY M IY e <- EY        : 
+ EY M IY s <- EY        : 
+ EY M JH e <- EY        : 
+ EY M JH s <- EY        : 
+  EY M K e <- EY        : 
+  EY M K s <- EY        : 
+  EY M M e <- EY        : 
+  EY M M s <- EY        : 
+  EY M N e <- EY        : 
+  EY M N s <- EY        : 
+ EY M OW e <- EY        : 
+ EY M OW s <- EY        : 
+  EY M P b <- EY        : 
+  EY M P e <- EY        : 
+  EY M P s <- EY        : 
+  EY M R e <- EY        : 
+  EY M R s <- EY        : 
+  EY M S e <- EY        : 
+  EY M S s <- EY        : 
+EY M SIL e <- EY        : 
+EY M SIL s <- EY        : 
+  EY M T b <- EY        : 
+  EY M T e <- EY        : 
+  EY M T s <- EY        : 
+ EY M TH b <- EY        : 
+ EY M TH e <- EY        : 
+ EY M TH s <- EY        : 
+  EY M V e <- EY        : 
+  EY M V s <- EY        : 
+  EY M W e <- EY        : 
+  EY M W s <- EY        : 
+  EY M Y e <- EY        : 
+  EY M Y s <- EY        : 
+  EY M Z e <- EY        : 
+  EY M Z s <- EY        : 
+ EY N AA s <- EY        : 
+ EY N AE s <- EY        : 
+ EY N AH s <- EY        : 
+ EY N AO s <- EY        : 
+ EY N AY s <- EY        : 
+  EY N B s <- EY        : 
+ EY N CH b <- EY        : 
+  EY N D s <- EY        : 
+ EY N EH s <- EY        : 
+ EY N EY s <- EY        : 
+  EY N F s <- EY        : 
+  EY N G s <- EY        : 
+ EY N HH s <- EY        : 
+ EY N IH s <- EY        : 
+ EY N IY s <- EY        : 
+ EY N JH s <- EY        : 
+  EY N K s <- EY        : 
+  EY N M s <- EY        : 
+  EY N N s <- EY        : 
+ EY N OW s <- EY        : 
+  EY N P b <- EY        : 
+  EY N P s <- EY        : 
+  EY N R s <- EY        : 
+  EY N S s <- EY        : 
+EY N SIL s <- EY        : 
+  EY N T b <- EY        : 
+  EY N T s <- EY        : 
+ EY N TH b <- EY        : 
+ EY N TH s <- EY        : 
+  EY N V s <- EY        : 
+  EY N W s <- EY        : 
+  EY N Y s <- EY        : 
+  EY N Z s <- EY        : 
+EY OW AA s <- EY        : 
+EY OW AE s <- EY        : 
+EY OW AH s <- EY        : 
+EY OW AO s <- EY        : 
+EY OW AY s <- EY        : 
+ EY OW B s <- EY        : 
+EY OW CH b <- EY        : 
+ EY OW D s <- EY        : 
+EY OW EH s <- EY        : 
+EY OW EY s <- EY        : 
+ EY OW F s <- EY        : 
+ EY OW G s <- EY        : 
+EY OW HH s <- EY        : 
+EY OW IH s <- EY        : 
+EY OW IY s <- EY        : 
+EY OW JH s <- EY        : 
+ EY OW K s <- EY        : 
+ EY OW M s <- EY        : 
+ EY OW N s <- EY        : 
+EY OW OW s <- EY        : 
+ EY OW P b <- EY        : 
+ EY OW P s <- EY        : 
+ EY OW R s <- EY        : 
+ EY OW S s <- EY        : 
+EY OW SIL s <- EY        : 
+ EY OW T b <- EY        : 
+ EY OW T s <- EY        : 
+EY OW TH b <- EY        : 
+EY OW TH s <- EY        : 
+ EY OW V s <- EY        : 
+ EY OW W s <- EY        : 
+ EY OW Y s <- EY        : 
+ EY OW Z s <- EY        : 
+ EY P AA s <- EY        : 
+ EY P AE s <- EY        : 
+ EY P AH s <- EY        : 
+ EY P AO s <- EY        : 
+ EY P AY s <- EY        : 
+  EY P B s <- EY        : 
+ EY P CH b <- EY        : 
+  EY P D s <- EY        : 
+ EY P EH s <- EY        : 
+ EY P EY s <- EY        : 
+  EY P F s <- EY        : 
+  EY P G s <- EY        : 
+ EY P HH s <- EY        : 
+ EY P IH s <- EY        : 
+ EY P IY s <- EY        : 
+ EY P JH s <- EY        : 
+  EY P K s <- EY        : 
+  EY P M s <- EY        : 
+  EY P N s <- EY        : 
+ EY P OW s <- EY        : 
+  EY P P b <- EY        : 
+  EY P P s <- EY        : 
+  EY P R s <- EY        : 
+  EY P S s <- EY        : 
+EY P SIL s <- EY        : 
+  EY P T b <- EY        : 
+  EY P T s <- EY        : 
+ EY P TH b <- EY        : 
+ EY P TH s <- EY        : 
+  EY P V s <- EY        : 
+  EY P W s <- EY        : 
+  EY P Y s <- EY        : 
+  EY P Z s <- EY        : 
+ EY R AA s <- EY        : 
+ EY R AE s <- EY        : 
+ EY R AH s <- EY        : 
+ EY R AO s <- EY        : 
+ EY R AY s <- EY        : 
+  EY R B s <- EY        : 
+ EY R CH b <- EY        : 
+  EY R D s <- EY        : 
+ EY R EH s <- EY        : 
+ EY R EY s <- EY        : 
+  EY R F s <- EY        : 
+  EY R G s <- EY        : 
+ EY R HH s <- EY        : 
+ EY R IH s <- EY        : 
+ EY R IY s <- EY        : 
+ EY R JH s <- EY        : 
+  EY R K s <- EY        : 
+  EY R M s <- EY        : 
+  EY R N s <- EY        : 
+ EY R OW s <- EY        : 
+  EY R P b <- EY        : 
+  EY R P s <- EY        : 
+  EY R R s <- EY        : 
+  EY R S i <- EY        : 
+  EY R S s <- EY        : 
+EY R SIL s <- EY        : 
+  EY R T b <- EY        : 
+  EY R T s <- EY        : 
+ EY R TH b <- EY        : 
+ EY R TH s <- EY        : 
+  EY R V s <- EY        : 
+  EY R W s <- EY        : 
+  EY R Y s <- EY        : 
+  EY R Z s <- EY        : 
+ EY S AA s <- EY        : 
+ EY S AE s <- EY        : 
+ EY S AH s <- EY        : 
+ EY S AO s <- EY        : 
+ EY S AY s <- EY        : 
+  EY S B s <- EY        : 
+ EY S CH b <- EY        : 
+  EY S D s <- EY        : 
+ EY S EH s <- EY        : 
+ EY S EY s <- EY        : 
+  EY S F s <- EY        : 
+  EY S G s <- EY        : 
+ EY S HH s <- EY        : 
+ EY S IH s <- EY        : 
+ EY S IY s <- EY        : 
+ EY S JH s <- EY        : 
+  EY S K s <- EY        : 
+  EY S M s <- EY        : 
+  EY S N s <- EY        : 
+ EY S OW s <- EY        : 
+  EY S P b <- EY        : 
+  EY S P s <- EY        : 
+  EY S R s <- EY        : 
+  EY S S s <- EY        : 
+EY S SIL s <- EY        : 
+  EY S T b <- EY        : 
+  EY S T s <- EY        : 
+ EY S TH b <- EY        : 
+ EY S TH s <- EY        : 
+  EY S V s <- EY        : 
+  EY S W s <- EY        : 
+  EY S Y s <- EY        : 
+  EY S Z s <- EY        : 
+EY SIL AA s <- EY        : 
+EY SIL AE s <- EY        : 
+EY SIL AH s <- EY        : 
+EY SIL AO s <- EY        : 
+EY SIL AY s <- EY        : 
+EY SIL B s <- EY        : 
+EY SIL CH b <- EY        : 
+EY SIL D s <- EY        : 
+EY SIL EH s <- EY        : 
+EY SIL EY s <- EY        : 
+EY SIL F s <- EY        : 
+EY SIL G s <- EY        : 
+EY SIL HH s <- EY        : 
+EY SIL IH s <- EY        : 
+EY SIL IY s <- EY        : 
+EY SIL JH s <- EY        : 
+EY SIL K s <- EY        : 
+EY SIL M s <- EY        : 
+EY SIL N s <- EY        : 
+EY SIL OW s <- EY        : 
+EY SIL P b <- EY        : 
+EY SIL P s <- EY        : 
+EY SIL R s <- EY        : 
+EY SIL S s <- EY        : 
+EY SIL SIL s <- EY        : 
+EY SIL T b <- EY        : 
+EY SIL T s <- EY        : 
+EY SIL TH b <- EY        : 
+EY SIL TH s <- EY        : 
+EY SIL V s <- EY        : 
+EY SIL W s <- EY        : 
+EY SIL Y s <- EY        : 
+EY SIL Z s <- EY        : 
+ EY T AA s <- EY        : 
+ EY T AE s <- EY        : 
+ EY T AH s <- EY        : 
+ EY T AO s <- EY        : 
+ EY T AY s <- EY        : 
+  EY T B s <- EY        : 
+ EY T CH b <- EY        : 
+  EY T D s <- EY        : 
+ EY T EH s <- EY        : 
+ EY T EY s <- EY        : 
+  EY T F s <- EY        : 
+  EY T G s <- EY        : 
+ EY T HH s <- EY        : 
+ EY T IH s <- EY        : 
+ EY T IY s <- EY        : 
+ EY T JH s <- EY        : 
+  EY T K s <- EY        : 
+  EY T M s <- EY        : 
+  EY T N s <- EY        : 
+ EY T OW s <- EY        : 
+  EY T P b <- EY        : 
+  EY T P s <- EY        : 
+  EY T R s <- EY        : 
+  EY T S s <- EY        : 
+EY T SIL s <- EY        : 
+  EY T T b <- EY        : 
+  EY T T s <- EY        : 
+ EY T TH b <- EY        : 
+ EY T TH s <- EY        : 
+  EY T V s <- EY        : 
+  EY T W s <- EY        : 
+  EY T Y s <- EY        : 
+  EY T Z s <- EY        : 
+EY TH AA s <- EY        : 
+EY TH AE s <- EY        : 
+EY TH AH s <- EY        : 
+EY TH AO s <- EY        : 
+EY TH AY s <- EY        : 
+ EY TH B s <- EY        : 
+EY TH CH b <- EY        : 
+ EY TH D s <- EY        : 
+EY TH EH s <- EY        : 
+EY TH EY s <- EY        : 
+ EY TH F s <- EY        : 
+ EY TH G s <- EY        : 
+EY TH HH s <- EY        : 
+EY TH IH s <- EY        : 
+EY TH IY s <- EY        : 
+EY TH JH s <- EY        : 
+ EY TH K s <- EY        : 
+ EY TH M s <- EY        : 
+ EY TH N s <- EY        : 
+EY TH OW s <- EY        : 
+ EY TH P b <- EY        : 
+ EY TH P s <- EY        : 
+ EY TH R s <- EY        : 
+ EY TH S s <- EY        : 
+EY TH SIL s <- EY        : 
+ EY TH T b <- EY        : 
+ EY TH T s <- EY        : 
+EY TH TH b <- EY        : 
+EY TH TH s <- EY        : 
+ EY TH V s <- EY        : 
+ EY TH W s <- EY        : 
+ EY TH Y s <- EY        : 
+ EY TH Z s <- EY        : 
+EY UW AA s <- EY        : 
+EY UW AE s <- EY        : 
+EY UW AH s <- EY        : 
+EY UW AO s <- EY        : 
+EY UW AY s <- EY        : 
+ EY UW B s <- EY        : 
+EY UW CH b <- EY        : 
+ EY UW D s <- EY        : 
+EY UW EH s <- EY        : 
+EY UW EY s <- EY        : 
+ EY UW F s <- EY        : 
+ EY UW G s <- EY        : 
+EY UW HH s <- EY        : 
+EY UW IH s <- EY        : 
+EY UW IY s <- EY        : 
+EY UW JH s <- EY        : 
+ EY UW K s <- EY        : 
+ EY UW M s <- EY        : 
+ EY UW N s <- EY        : 
+EY UW OW s <- EY        : 
+ EY UW P b <- EY        : 
+ EY UW P s <- EY        : 
+ EY UW R s <- EY        : 
+ EY UW S s <- EY        : 
+EY UW SIL s <- EY        : 
+ EY UW T b <- EY        : 
+ EY UW T s <- EY        : 
+EY UW TH b <- EY        : 
+EY UW TH s <- EY        : 
+ EY UW V s <- EY        : 
+ EY UW W s <- EY        : 
+ EY UW Y s <- EY        : 
+ EY UW Z s <- EY        : 
+ EY V AA s <- EY        : 
+ EY V AE s <- EY        : 
+ EY V AH s <- EY        : 
+ EY V AO s <- EY        : 
+ EY V AY s <- EY        : 
+  EY V B s <- EY        : 
+ EY V CH b <- EY        : 
+  EY V D s <- EY        : 
+ EY V EH s <- EY        : 
+ EY V EY s <- EY        : 
+  EY V F s <- EY        : 
+  EY V G s <- EY        : 
+ EY V HH s <- EY        : 
+ EY V IH s <- EY        : 
+ EY V IY s <- EY        : 
+ EY V JH s <- EY        : 
+  EY V K s <- EY        : 
+  EY V M s <- EY        : 
+  EY V N s <- EY        : 
+ EY V OW s <- EY        : 
+  EY V P b <- EY        : 
+  EY V P s <- EY        : 
+  EY V R s <- EY        : 
+  EY V S s <- EY        : 
+EY V SIL s <- EY        : 
+  EY V T b <- EY        : 
+  EY V T s <- EY        : 
+ EY V TH b <- EY        : 
+ EY V TH s <- EY        : 
+  EY V V s <- EY        : 
+  EY V W s <- EY        : 
+  EY V Y s <- EY        : 
+  EY V Z s <- EY        : 
+ F AE AA e <- F         : [mx   172(0) +=    36] [mx   173(1) +=    37] [mx   174(2) +=    38] 
+ F AE AE e <- F         : [mx   175(2) +=    38] 
+ F AE AH e <- F         : 
+ F AE AO e <- F         : 
+ F AE AY e <- F         : 
+  F AE B e <- F         : 
+  F AE D e <- F         : 
+ F AE EH e <- F         : 
+ F AE EY e <- F         : 
+  F AE F e <- F         : 
+  F AE G e <- F         : 
+ F AE HH e <- F         : 
+ F AE IH e <- F         : 
+ F AE IY e <- F         : 
+ F AE JH e <- F         : 
+  F AE K e <- F         : 
+  F AE M e <- F         : 
+  F AE N e <- F         : 
+ F AE OW e <- F         : 
+  F AE P e <- F         : 
+  F AE R e <- F         : 
+  F AE S e <- F         : 
+F AE SIL e <- F         : 
+  F AE T e <- F         : 
+ F AE TH e <- F         : 
+  F AE V e <- F         : 
+  F AE W e <- F         : 
+  F AE Y e <- F         : 
+  F AE Z e <- F         : 
+ F AH AO b <- F         : [mx   170(0) +=    36] 
+ F AH AY b <- F         : 
+ F AH EH b <- F         : 
+ F AH ER b <- F         : 
+ F AH IH b <- F         : 
+ F AH IY i <- F         : 
+ F AY AO b <- F         : 
+ F AY AY b <- F         : 
+ F AY EH b <- F         : 
+ F AY ER b <- F         : 
+ F AY IH b <- F         : 
+ F CH AO b <- F         : [mx   171(0) +=    36] 
+ F CH AY b <- F         : 
+ F CH EH b <- F         : 
+ F CH ER b <- F         : 
+ F CH IH b <- F         : 
+  F D AO b <- F         : 
+  F D AY b <- F         : 
+  F D EH b <- F         : 
+  F D ER b <- F         : 
+  F D IH b <- F         : 
+ F EH AA e <- F         : 
+ F EH AE e <- F         : 
+ F EH AH e <- F         : 
+ F EH AO e <- F         : 
+ F EH AY e <- F         : 
+  F EH B e <- F         : 
+  F EH D e <- F         : 
+ F EH EH e <- F         : 
+ F EH EY e <- F         : 
+  F EH F e <- F         : 
+  F EH G e <- F         : 
+ F EH HH e <- F         : 
+ F EH IH e <- F         : 
+ F EH IY e <- F         : 
+ F EH JH e <- F         : 
+  F EH K e <- F         : 
+  F EH M e <- F         : 
+  F EH N e <- F         : 
+ F EH OW e <- F         : 
+  F EH P e <- F         : 
+  F EH R e <- F         : 
+  F EH S e <- F         : 
+F EH SIL e <- F         : 
+  F EH T e <- F         : 
+ F EH TH e <- F         : 
+  F EH V e <- F         : 
+  F EH W e <- F         : 
+  F EH Y e <- F         : 
+  F EH Z e <- F         : 
+ F ER AO b <- F         : 
+ F ER AY b <- F         : 
+ F ER EH b <- F         : 
+ F ER ER b <- F         : 
+ F ER IH b <- F         : 
+ F EY AO b <- F         : 
+ F EY AY b <- F         : 
+ F EY EH b <- F         : 
+ F EY ER b <- F         : 
+ F EY IH b <- F         : 
+  F F AO b <- F         : 
+  F F AY b <- F         : 
+  F F EH b <- F         : 
+  F F ER b <- F         : 
+  F F IH b <- F         : 
+  F IH T i <- F         : 
+ F IH TH i <- F         : 
+ F IY AO b <- F         : 
+ F IY AY b <- F         : 
+ F IY EH b <- F         : 
+ F IY ER b <- F         : 
+ F IY IH b <- F         : 
+  F L AO b <- F         : 
+  F L AY b <- F         : 
+  F L EH b <- F         : 
+  F L ER b <- F         : 
+  F L IH b <- F         : 
+  F L TH i <- F         : 
+  F M AO b <- F         : 
+  F M AY b <- F         : 
+  F M EH b <- F         : 
+  F M ER b <- F         : 
+  F M IH b <- F         : 
+  F N AO b <- F         : 
+  F N AY b <- F         : 
+  F N EH b <- F         : 
+  F N ER b <- F         : 
+  F N IH b <- F         : 
+ F OW AO b <- F         : 
+ F OW AY b <- F         : 
+ F OW EH b <- F         : 
+ F OW ER b <- F         : 
+ F OW IH b <- F         : 
+  F P AO b <- F         : 
+  F P AY b <- F         : 
+  F P EH b <- F         : 
+  F P ER b <- F         : 
+  F P IH b <- F         : 
+  F R AO b <- F         : 
+  F R AY b <- F         : 
+  F R EH b <- F         : 
+  F R ER b <- F         : 
+  F R IH b <- F         : 
+  F S AO b <- F         : 
+  F S AY b <- F         : 
+  F S EH b <- F         : 
+  F S ER b <- F         : 
+  F S IH b <- F         : 
+F SIL AO b <- F         : 
+F SIL AY b <- F         : 
+F SIL EH b <- F         : 
+F SIL ER b <- F         : 
+F SIL IH b <- F         : 
+  F T AO b <- F         : 
+  F T AY b <- F         : 
+  F T EH b <- F         : 
+  F T ER b <- F         : 
+  F T IH b <- F         : 
+ F TH AO b <- F         : 
+ F TH AY b <- F         : 
+ F TH EH b <- F         : 
+ F TH ER b <- F         : 
+ F TH IH b <- F         : 
+ F UW AO b <- F         : 
+ F UW AY b <- F         : 
+ F UW EH b <- F         : 
+ F UW ER b <- F         : 
+ F UW IH b <- F         : 
+  F V AO b <- F         : 
+  F V AY b <- F         : 
+  F V EH b <- F         : 
+  F V ER b <- F         : 
+  F V IH b <- F         : 
+ G AA AH i <- G         : [mx   176(0) +=    39] [mx   177(1) +=    40] [mx   178(2) +=    41] 
+ G AH OW b <- G         : 
+ G AO AH i <- G         : 
+ G AY OW b <- G         : 
+ G CH OW b <- G         : 
+  G D OW b <- G         : 
+ G ER OW b <- G         : 
+ G EY OW b <- G         : 
+  G F OW b <- G         : 
+ G IY OW b <- G         : 
+  G L OW b <- G         : 
+  G M OW b <- G         : 
+  G N OW b <- G         : 
+ G OW OW b <- G         : 
+  G P OW b <- G         : 
+  G R OW b <- G         : 
+  G S OW b <- G         : 
+G SIL OW b <- G         : 
+  G T OW b <- G         : 
+ G TH OW b <- G         : 
+ G UW OW b <- G         : 
+  G V OW b <- G         : 
+HH AH AE b <- HH        : [mx   179(0) +=    42] [mx   181(1) +=    43] [mx   182(2) +=    44] 
+HH AH AH b <- HH        : 
+HH AH EH b <- HH        : 
+ HH AH W b <- HH        : 
+HH AY AE b <- HH        : [mx   180(0) +=    42] 
+HH AY AH b <- HH        : 
+HH AY EH b <- HH        : 
+ HH AY W b <- HH        : 
+HH CH AE b <- HH        : 
+HH CH AH b <- HH        : 
+HH CH EH b <- HH        : 
+ HH CH W b <- HH        : 
+ HH D AE b <- HH        : 
+ HH D AH b <- HH        : 
+ HH D EH b <- HH        : 
+  HH D W b <- HH        : 
+HH ER AE b <- HH        : 
+HH ER AH b <- HH        : 
+HH ER EH b <- HH        : 
+ HH ER W b <- HH        : 
+HH EY AE b <- HH        : 
+HH EY AH b <- HH        : 
+HH EY EH b <- HH        : 
+ HH EY W b <- HH        : 
+ HH F AE b <- HH        : 
+ HH F AH b <- HH        : 
+ HH F EH b <- HH        : 
+  HH F W b <- HH        : 
+HH IY AE b <- HH        : 
+HH IY AH b <- HH        : 
+HH IY EH b <- HH        : 
+ HH IY W b <- HH        : 
+ HH L AE b <- HH        : 
+ HH L AH b <- HH        : 
+ HH L EH b <- HH        : 
+  HH L W b <- HH        : 
+ HH M AE b <- HH        : 
+ HH M AH b <- HH        : 
+ HH M EH b <- HH        : 
+  HH M W b <- HH        : 
+ HH N AE b <- HH        : 
+ HH N AH b <- HH        : 
+ HH N EH b <- HH        : 
+  HH N W b <- HH        : 
+HH OW AE b <- HH        : 
+HH OW AH b <- HH        : 
+HH OW EH b <- HH        : 
+ HH OW W b <- HH        : 
+ HH P AE b <- HH        : 
+ HH P AH b <- HH        : 
+ HH P EH b <- HH        : 
+  HH P W b <- HH        : 
+ HH R AE b <- HH        : 
+ HH R AH b <- HH        : 
+ HH R EH b <- HH        : 
+  HH R W b <- HH        : 
+ HH S AE b <- HH        : 
+ HH S AH b <- HH        : 
+ HH S EH b <- HH        : 
+  HH S W b <- HH        : 
+HH SIL AE b <- HH        : 
+HH SIL AH b <- HH        : 
+HH SIL EH b <- HH        : 
+HH SIL W b <- HH        : 
+ HH T AE b <- HH        : 
+ HH T AH b <- HH        : 
+ HH T EH b <- HH        : 
+  HH T W b <- HH        : 
+HH TH AE b <- HH        : 
+HH TH AH b <- HH        : 
+HH TH EH b <- HH        : 
+ HH TH W b <- HH        : 
+HH UW AE b <- HH        : 
+HH UW AH b <- HH        : 
+HH UW EH b <- HH        : 
+ HH UW W b <- HH        : 
+ HH V AE b <- HH        : 
+ HH V AH b <- HH        : 
+ HH V EH b <- HH        : 
+  HH V W b <- HH        : 
+ IH AH L b <- IH        : [mx   183(0) +=    45] [mx   185(1) +=    46] [mx   187(2) +=    47] 
+ IH AH R b <- IH        : 
+ IH AY L b <- IH        : 
+ IH AY R b <- IH        : 
+ IH CH L b <- IH        : [mx   184(0) +=    45] 
+ IH CH R b <- IH        : 
+  IH D L b <- IH        : 
+  IH D R b <- IH        : 
+  IH D S i <- IH        : 
+ IH ER L b <- IH        : 
+ IH ER R b <- IH        : 
+ IH EY L b <- IH        : 
+ IH EY R b <- IH        : 
+  IH F F i <- IH        : [mx   186(1) +=    46] [mx   188(2) +=    47] 
+  IH F L b <- IH        : 
+  IH F R b <- IH        : 
+ IH F TH i <- IH        : 
+ IH IY L b <- IH        : 
+ IH IY R b <- IH        : 
+IH IY TH i <- IH        : 
+  IH L L b <- IH        : 
+  IH L R b <- IH        : 
+  IH M L b <- IH        : 
+  IH M R b <- IH        : 
+  IH N L b <- IH        : 
+  IH N R b <- IH        : 
+ IH OW L b <- IH        : 
+ IH OW R b <- IH        : 
+  IH P L b <- IH        : 
+  IH P R b <- IH        : 
+  IH R D i <- IH        : 
+  IH R L b <- IH        : 
+  IH R P i <- IH        : 
+  IH R R b <- IH        : 
+  IH S K i <- IH        : 
+  IH S L b <- IH        : 
+  IH S R b <- IH        : 
+IH SIL L b <- IH        : 
+IH SIL R b <- IH        : 
+  IH T L b <- IH        : 
+  IH T R b <- IH        : 
+ IH TH L b <- IH        : 
+ IH TH R b <- IH        : 
+ IH UW L b <- IH        : 
+ IH UW R b <- IH        : 
+  IH V L b <- IH        : 
+  IH V R b <- IH        : 
+  IH Z R i <- IH        : 
+IY AH AA s <- IY        : [mx   192(0) +=    48] [mx   194(1) +=    49] [mx   198(2) +=    50] 
+IY AH AE s <- IY        : [mx   200(2) +=    50] 
+IY AH AH s <- IY        : [mx   199(2) +=    50] 
+IY AH AO s <- IY        : [mx   201(2) +=    50] 
+IY AH AY s <- IY        : 
+ IY AH B s <- IY        : [mx   202(2) +=    50] 
+ IY AH D s <- IY        : 
+IY AH EH s <- IY        : [mx   197(2) +=    50] 
+IY AH EY s <- IY        : 
+ IY AH F s <- IY        : 
+ IY AH G s <- IY        : 
+IY AH HH s <- IY        : 
+IY AH IH s <- IY        : 
+IY AH IY s <- IY        : [mx   203(2) +=    50] 
+IY AH JH s <- IY        : 
+ IY AH K s <- IY        : 
+ IY AH L b <- IY        : [mx   189(0) +=    48] [mx   193(1) +=    49] 
+ IY AH M s <- IY        : 
+ IY AH N s <- IY        : 
+IY AH OW s <- IY        : 
+ IY AH P s <- IY        : 
+ IY AH R b <- IY        : 
+ IY AH R s <- IY        : 
+ IY AH S s <- IY        : 
+IY AH SIL s <- IY        : [mx   204(2) +=    50] 
+ IY AH T s <- IY        : 
+IY AH TH s <- IY        : 
+ IY AH V s <- IY        : 
+ IY AH W s <- IY        : 
+ IY AH Y s <- IY        : 
+ IY AH Z s <- IY        : 
+IY AY AA s <- IY        : 
+IY AY AE s <- IY        : 
+IY AY AH s <- IY        : 
+IY AY AO s <- IY        : 
+IY AY AY s <- IY        : 
+ IY AY B s <- IY        : 
+ IY AY D s <- IY        : 
+IY AY EH s <- IY        : 
+IY AY EY s <- IY        : 
+ IY AY F s <- IY        : 
+ IY AY G s <- IY        : 
+IY AY HH s <- IY        : 
+IY AY IH s <- IY        : 
+IY AY IY s <- IY        : 
+IY AY JH s <- IY        : 
+ IY AY K s <- IY        : 
+ IY AY L b <- IY        : 
+ IY AY M s <- IY        : 
+ IY AY N s <- IY        : 
+IY AY OW s <- IY        : 
+ IY AY P s <- IY        : 
+ IY AY R b <- IY        : 
+ IY AY R s <- IY        : 
+ IY AY S s <- IY        : 
+IY AY SIL s <- IY        : 
+ IY AY T s <- IY        : 
+IY AY TH s <- IY        : 
+ IY AY V s <- IY        : 
+ IY AY W s <- IY        : 
+ IY AY Y s <- IY        : 
+ IY AY Z s <- IY        : 
+ IY B AA e <- IY        : 
+ IY B AE e <- IY        : [mx   195(1) +=    49] 
+ IY B AH e <- IY        : 
+ IY B AO e <- IY        : 
+ IY B AY e <- IY        : 
+  IY B B e <- IY        : 
+  IY B D e <- IY        : 
+ IY B EH e <- IY        : 
+ IY B EY e <- IY        : 
+  IY B F e <- IY        : 
+  IY B G e <- IY        : 
+ IY B HH e <- IY        : 
+ IY B IH e <- IY        : 
+ IY B IY e <- IY        : 
+ IY B JH e <- IY        : 
+  IY B K e <- IY        : 
+  IY B M e <- IY        : 
+  IY B N e <- IY        : 
+ IY B OW e <- IY        : 
+  IY B P e <- IY        : 
+  IY B R e <- IY        : 
+  IY B S e <- IY        : 
+IY B SIL e <- IY        : 
+  IY B T e <- IY        : 
+ IY B TH e <- IY        : 
+  IY B V e <- IY        : 
+  IY B W e <- IY        : 
+  IY B Y e <- IY        : 
+  IY B Z e <- IY        : 
+IY CH AA s <- IY        : 
+IY CH AE s <- IY        : 
+IY CH AH s <- IY        : 
+IY CH AO s <- IY        : 
+IY CH AY s <- IY        : 
+ IY CH B s <- IY        : 
+ IY CH D s <- IY        : 
+IY CH EH s <- IY        : 
+IY CH EY s <- IY        : 
+ IY CH F s <- IY        : 
+ IY CH G s <- IY        : 
+IY CH HH s <- IY        : 
+IY CH IH s <- IY        : 
+IY CH IY s <- IY        : 
+IY CH JH s <- IY        : 
+ IY CH K s <- IY        : 
+ IY CH L b <- IY        : [mx   190(0) +=    48] 
+ IY CH M s <- IY        : 
+ IY CH N s <- IY        : 
+IY CH OW s <- IY        : 
+ IY CH P s <- IY        : 
+ IY CH R b <- IY        : 
+ IY CH R s <- IY        : 
+ IY CH S s <- IY        : 
+IY CH SIL s <- IY        : 
+ IY CH T s <- IY        : 
+IY CH TH s <- IY        : 
+ IY CH V s <- IY        : 
+ IY CH W s <- IY        : 
+ IY CH Y s <- IY        : 
+ IY CH Z s <- IY        : 
+ IY D AA e <- IY        : 
+ IY D AA s <- IY        : 
+ IY D AE e <- IY        : 
+ IY D AE s <- IY        : 
+ IY D AH e <- IY        : 
+ IY D AH s <- IY        : 
+ IY D AO e <- IY        : 
+ IY D AO s <- IY        : 
+ IY D AY e <- IY        : 
+ IY D AY s <- IY        : 
+  IY D B e <- IY        : 
+  IY D B s <- IY        : 
+  IY D D e <- IY        : 
+  IY D D s <- IY        : 
+ IY D EH e <- IY        : 
+ IY D EH s <- IY        : 
+ IY D EY e <- IY        : 
+ IY D EY s <- IY        : 
+  IY D F e <- IY        : 
+  IY D F s <- IY        : 
+  IY D G e <- IY        : 
+  IY D G s <- IY        : 
+ IY D HH e <- IY        : 
+ IY D HH s <- IY        : 
+ IY D IH e <- IY        : 
+ IY D IH s <- IY        : 
+ IY D IY e <- IY        : 
+ IY D IY s <- IY        : 
+ IY D JH e <- IY        : 
+ IY D JH s <- IY        : 
+  IY D K e <- IY        : 
+  IY D K s <- IY        : 
+  IY D L b <- IY        : 
+  IY D M e <- IY        : 
+  IY D M s <- IY        : 
+  IY D N e <- IY        : 
+  IY D N s <- IY        : 
+ IY D OW e <- IY        : 
+ IY D OW s <- IY        : 
+  IY D P e <- IY        : 
+  IY D P s <- IY        : 
+  IY D R b <- IY        : 
+  IY D R e <- IY        : 
+  IY D R s <- IY        : 
+  IY D S e <- IY        : 
+  IY D S s <- IY        : 
+IY D SIL e <- IY        : 
+IY D SIL s <- IY        : 
+  IY D T e <- IY        : 
+  IY D T s <- IY        : 
+ IY D TH e <- IY        : 
+ IY D TH s <- IY        : 
+  IY D V e <- IY        : 
+  IY D V s <- IY        : 
+  IY D W e <- IY        : 
+  IY D W s <- IY        : 
+  IY D Y e <- IY        : 
+  IY D Y s <- IY        : 
+  IY D Z e <- IY        : 
+  IY D Z s <- IY        : 
+IY ER AA s <- IY        : 
+IY ER AE s <- IY        : 
+IY ER AH s <- IY        : 
+IY ER AO s <- IY        : 
+IY ER AY s <- IY        : 
+ IY ER B s <- IY        : 
+ IY ER D s <- IY        : 
+IY ER EH s <- IY        : 
+IY ER EY s <- IY        : 
+ IY ER F s <- IY        : 
+ IY ER G s <- IY        : 
+IY ER HH s <- IY        : 
+IY ER IH s <- IY        : 
+IY ER IY s <- IY        : 
+IY ER JH s <- IY        : 
+ IY ER K s <- IY        : 
+ IY ER L b <- IY        : 
+ IY ER M s <- IY        : 
+ IY ER N s <- IY        : 
+IY ER OW s <- IY        : 
+ IY ER P s <- IY        : 
+ IY ER R b <- IY        : 
+ IY ER R s <- IY        : 
+ IY ER S s <- IY        : 
+IY ER SIL s <- IY        : 
+ IY ER T s <- IY        : 
+IY ER TH s <- IY        : 
+ IY ER V s <- IY        : 
+ IY ER W s <- IY        : 
+ IY ER Y s <- IY        : 
+ IY ER Z s <- IY        : 
+IY EY AA s <- IY        : 
+IY EY AE s <- IY        : 
+IY EY AH s <- IY        : 
+IY EY AO s <- IY        : 
+IY EY AY s <- IY        : 
+ IY EY B s <- IY        : 
+ IY EY D s <- IY        : 
+IY EY EH s <- IY        : 
+IY EY EY s <- IY        : 
+ IY EY F s <- IY        : 
+ IY EY G s <- IY        : 
+IY EY HH s <- IY        : 
+IY EY IH s <- IY        : 
+IY EY IY s <- IY        : 
+IY EY JH s <- IY        : 
+ IY EY K s <- IY        : 
+ IY EY L b <- IY        : 
+ IY EY M s <- IY        : 
+ IY EY N s <- IY        : 
+IY EY OW s <- IY        : 
+ IY EY P s <- IY        : 
+ IY EY R b <- IY        : 
+ IY EY R s <- IY        : 
+ IY EY S s <- IY        : 
+IY EY SIL s <- IY        : 
+ IY EY T s <- IY        : 
+IY EY TH s <- IY        : 
+ IY EY V s <- IY        : 
+ IY EY W s <- IY        : 
+ IY EY Y s <- IY        : 
+ IY EY Z s <- IY        : 
+ IY F AA e <- IY        : 
+ IY F AA s <- IY        : 
+ IY F AE e <- IY        : 
+ IY F AE s <- IY        : 
+ IY F AH e <- IY        : 
+ IY F AH s <- IY        : 
+ IY F AO e <- IY        : 
+ IY F AO s <- IY        : 
+ IY F AY e <- IY        : 
+ IY F AY s <- IY        : 
+  IY F B e <- IY        : 
+  IY F B s <- IY        : 
+  IY F D e <- IY        : 
+  IY F D s <- IY        : 
+ IY F EH e <- IY        : 
+ IY F EH s <- IY        : 
+ IY F EY e <- IY        : 
+ IY F EY s <- IY        : 
+  IY F F e <- IY        : 
+  IY F F s <- IY        : 
+  IY F G e <- IY        : 
+  IY F G s <- IY        : 
+ IY F HH e <- IY        : 
+ IY F HH s <- IY        : 
+ IY F IH e <- IY        : 
+ IY F IH s <- IY        : 
+ IY F IY e <- IY        : 
+ IY F IY s <- IY        : 
+ IY F JH e <- IY        : 
+ IY F JH s <- IY        : 
+  IY F K e <- IY        : 
+  IY F K s <- IY        : 
+  IY F L b <- IY        : 
+  IY F M e <- IY        : 
+  IY F M s <- IY        : 
+  IY F N e <- IY        : 
+  IY F N s <- IY        : 
+ IY F OW e <- IY        : 
+ IY F OW s <- IY        : 
+  IY F P e <- IY        : 
+  IY F P s <- IY        : 
+  IY F R b <- IY        : 
+  IY F R e <- IY        : 
+  IY F R s <- IY        : 
+  IY F S e <- IY        : 
+  IY F S s <- IY        : 
+IY F SIL e <- IY        : 
+IY F SIL s <- IY        : 
+  IY F T e <- IY        : 
+  IY F T s <- IY        : 
+ IY F TH e <- IY        : 
+ IY F TH s <- IY        : 
+  IY F V e <- IY        : 
+  IY F V s <- IY        : 
+  IY F W e <- IY        : 
+  IY F W s <- IY        : 
+  IY F Y e <- IY        : 
+  IY F Y s <- IY        : 
+  IY F Z e <- IY        : 
+  IY F Z s <- IY        : 
+IY IY AA s <- IY        : 
+IY IY AE s <- IY        : 
+IY IY AH s <- IY        : 
+IY IY AO s <- IY        : 
+IY IY AY s <- IY        : 
+ IY IY B s <- IY        : 
+ IY IY D s <- IY        : 
+IY IY EH s <- IY        : 
+IY IY EY s <- IY        : 
+ IY IY F s <- IY        : 
+ IY IY G s <- IY        : 
+IY IY HH s <- IY        : 
+IY IY IH s <- IY        : 
+IY IY IY s <- IY        : 
+IY IY JH s <- IY        : 
+ IY IY K s <- IY        : 
+ IY IY L b <- IY        : 
+ IY IY M s <- IY        : 
+ IY IY N s <- IY        : 
+IY IY OW s <- IY        : 
+ IY IY P s <- IY        : 
+ IY IY R b <- IY        : 
+ IY IY R s <- IY        : 
+ IY IY S s <- IY        : 
+IY IY SIL s <- IY        : 
+ IY IY T s <- IY        : 
+IY IY TH s <- IY        : 
+ IY IY V s <- IY        : 
+ IY IY W s <- IY        : 
+ IY IY Y s <- IY        : 
+ IY IY Z s <- IY        : 
+IY JH AA e <- IY        : 
+IY JH AE e <- IY        : 
+IY JH AH e <- IY        : 
+IY JH AO e <- IY        : 
+IY JH AY e <- IY        : 
+ IY JH B e <- IY        : 
+ IY JH D e <- IY        : 
+IY JH EH e <- IY        : 
+IY JH EY e <- IY        : 
+ IY JH F e <- IY        : 
+ IY JH G e <- IY        : 
+IY JH HH e <- IY        : 
+IY JH IH e <- IY        : 
+IY JH IY e <- IY        : 
+IY JH JH e <- IY        : 
+ IY JH K e <- IY        : 
+ IY JH M e <- IY        : 
+ IY JH N e <- IY        : 
+IY JH OW e <- IY        : 
+ IY JH P e <- IY        : 
+ IY JH R e <- IY        : 
+ IY JH S e <- IY        : 
+IY JH SIL e <- IY        : 
+ IY JH T e <- IY        : 
+IY JH TH e <- IY        : 
+ IY JH V e <- IY        : 
+ IY JH W e <- IY        : 
+ IY JH Y e <- IY        : 
+ IY JH Z e <- IY        : 
+ IY L AA s <- IY        : 
+ IY L AE s <- IY        : 
+ IY L AH s <- IY        : 
+ IY L AO s <- IY        : 
+ IY L AY s <- IY        : 
+  IY L B s <- IY        : 
+  IY L D s <- IY        : 
+ IY L EH s <- IY        : 
+ IY L EY s <- IY        : 
+  IY L F s <- IY        : 
+  IY L G s <- IY        : 
+ IY L HH s <- IY        : 
+ IY L IH s <- IY        : 
+ IY L IY s <- IY        : 
+ IY L JH s <- IY        : 
+  IY L K s <- IY        : 
+  IY L L b <- IY        : 
+  IY L M s <- IY        : 
+  IY L N s <- IY        : 
+ IY L OW s <- IY        : 
+  IY L P s <- IY        : 
+  IY L R b <- IY        : 
+  IY L R s <- IY        : 
+  IY L S s <- IY        : 
+IY L SIL s <- IY        : 
+  IY L T s <- IY        : 
+ IY L TH s <- IY        : 
+  IY L V s <- IY        : 
+  IY L W s <- IY        : 
+  IY L Y s <- IY        : 
+  IY L Z s <- IY        : 
+ IY M AA s <- IY        : 
+ IY M AE s <- IY        : 
+ IY M AH s <- IY        : 
+ IY M AO s <- IY        : 
+ IY M AY s <- IY        : 
+  IY M B s <- IY        : 
+  IY M D s <- IY        : 
+ IY M EH s <- IY        : 
+ IY M EY s <- IY        : 
+  IY M F s <- IY        : 
+  IY M G s <- IY        : 
+ IY M HH s <- IY        : 
+ IY M IH s <- IY        : 
+ IY M IY s <- IY        : 
+ IY M JH s <- IY        : 
+  IY M K s <- IY        : 
+  IY M L b <- IY        : 
+  IY M M s <- IY        : 
+  IY M N s <- IY        : 
+ IY M OW s <- IY        : 
+  IY M P s <- IY        : 
+  IY M R b <- IY        : 
+  IY M R s <- IY        : 
+  IY M S s <- IY        : 
+IY M SIL s <- IY        : 
+  IY M T s <- IY        : 
+ IY M TH s <- IY        : 
+  IY M V s <- IY        : 
+  IY M W s <- IY        : 
+  IY M Y s <- IY        : 
+  IY M Z s <- IY        : 
+ IY N AA e <- IY        : 
+ IY N AA s <- IY        : 
+ IY N AE e <- IY        : [mx   196(1) +=    49] 
+ IY N AE s <- IY        : 
+ IY N AH e <- IY        : 
+ IY N AH i <- IY        : 
+ IY N AH s <- IY        : 
+ IY N AO e <- IY        : 
+ IY N AO s <- IY        : 
+ IY N AY e <- IY        : 
+ IY N AY s <- IY        : 
+  IY N B e <- IY        : 
+  IY N B s <- IY        : 
+  IY N D e <- IY        : 
+  IY N D s <- IY        : 
+ IY N EH e <- IY        : 
+ IY N EH s <- IY        : 
+ IY N EY e <- IY        : 
+ IY N EY s <- IY        : 
+  IY N F e <- IY        : 
+  IY N F s <- IY        : 
+  IY N G e <- IY        : 
+  IY N G s <- IY        : 
+ IY N HH e <- IY        : 
+ IY N HH s <- IY        : 
+ IY N IH e <- IY        : 
+ IY N IH i <- IY        : 
+ IY N IH s <- IY        : 
+ IY N IY e <- IY        : 
+ IY N IY s <- IY        : 
+ IY N JH e <- IY        : 
+ IY N JH s <- IY        : 
+  IY N K e <- IY        : 
+  IY N K s <- IY        : 
+  IY N L b <- IY        : 
+  IY N M e <- IY        : 
+  IY N M s <- IY        : 
+  IY N N e <- IY        : 
+  IY N N s <- IY        : 
+ IY N OW e <- IY        : 
+ IY N OW s <- IY        : 
+  IY N P e <- IY        : 
+  IY N P s <- IY        : 
+  IY N R b <- IY        : 
+  IY N R e <- IY        : 
+  IY N R s <- IY        : 
+  IY N S e <- IY        : 
+  IY N S s <- IY        : 
+IY N SIL e <- IY        : 
+IY N SIL s <- IY        : 
+  IY N T e <- IY        : 
+  IY N T s <- IY        : 
+ IY N TH e <- IY        : 
+ IY N TH s <- IY        : 
+  IY N V e <- IY        : 
+  IY N V s <- IY        : 
+  IY N W e <- IY        : 
+  IY N W s <- IY        : 
+  IY N Y e <- IY        : 
+  IY N Y s <- IY        : 
+  IY N Z e <- IY        : 
+  IY N Z s <- IY        : 
+IY OW AA s <- IY        : 
+IY OW AE s <- IY        : 
+IY OW AH s <- IY        : 
+IY OW AO s <- IY        : 
+IY OW AY s <- IY        : 
+ IY OW B s <- IY        : 
+ IY OW D s <- IY        : 
+IY OW EH s <- IY        : 
+IY OW EY s <- IY        : 
+ IY OW F s <- IY        : 
+ IY OW G s <- IY        : 
+IY OW HH s <- IY        : 
+IY OW IH s <- IY        : 
+IY OW IY s <- IY        : 
+IY OW JH s <- IY        : 
+ IY OW K s <- IY        : 
+ IY OW L b <- IY        : 
+ IY OW M s <- IY        : 
+ IY OW N s <- IY        : 
+IY OW OW s <- IY        : 
+ IY OW P s <- IY        : 
+ IY OW R b <- IY        : 
+ IY OW R s <- IY        : 
+ IY OW S s <- IY        : 
+IY OW SIL s <- IY        : 
+ IY OW T s <- IY        : 
+IY OW TH s <- IY        : 
+ IY OW V s <- IY        : 
+ IY OW W s <- IY        : 
+ IY OW Y s <- IY        : 
+ IY OW Z s <- IY        : 
+ IY P AA e <- IY        : 
+ IY P AA s <- IY        : 
+ IY P AE e <- IY        : 
+ IY P AE s <- IY        : 
+ IY P AH e <- IY        : 
+ IY P AH s <- IY        : 
+ IY P AO e <- IY        : 
+ IY P AO s <- IY        : 
+ IY P AY e <- IY        : 
+ IY P AY s <- IY        : 
+  IY P B e <- IY        : 
+  IY P B s <- IY        : 
+  IY P D e <- IY        : 
+  IY P D s <- IY        : 
+ IY P EH e <- IY        : 
+ IY P EH s <- IY        : 
+ IY P EY e <- IY        : 
+ IY P EY s <- IY        : 
+  IY P F e <- IY        : 
+  IY P F s <- IY        : 
+  IY P G e <- IY        : 
+  IY P G s <- IY        : 
+ IY P HH e <- IY        : 
+ IY P HH s <- IY        : 
+ IY P IH e <- IY        : 
+ IY P IH s <- IY        : 
+ IY P IY e <- IY        : 
+ IY P IY s <- IY        : 
+ IY P JH e <- IY        : 
+ IY P JH s <- IY        : 
+  IY P K e <- IY        : 
+  IY P K s <- IY        : 
+  IY P L b <- IY        : 
+  IY P M e <- IY        : 
+  IY P M s <- IY        : 
+  IY P N e <- IY        : 
+  IY P N s <- IY        : 
+ IY P OW e <- IY        : 
+ IY P OW s <- IY        : 
+  IY P P e <- IY        : 
+  IY P P s <- IY        : 
+  IY P R b <- IY        : 
+  IY P R e <- IY        : 
+  IY P R s <- IY        : 
+  IY P S e <- IY        : 
+  IY P S s <- IY        : 
+IY P SIL e <- IY        : 
+IY P SIL s <- IY        : 
+  IY P T e <- IY        : 
+  IY P T i <- IY        : 
+  IY P T s <- IY        : 
+ IY P TH e <- IY        : 
+ IY P TH s <- IY        : 
+  IY P V e <- IY        : 
+  IY P V s <- IY        : 
+  IY P W e <- IY        : 
+  IY P W s <- IY        : 
+  IY P Y e <- IY        : 
+  IY P Y s <- IY        : 
+  IY P Z e <- IY        : 
+  IY P Z s <- IY        : 
+ IY R AA e <- IY        : [mx   191(0) +=    48] 
+ IY R AA s <- IY        : 
+ IY R AE e <- IY        : 
+ IY R AE s <- IY        : 
+ IY R AH e <- IY        : 
+ IY R AH i <- IY        : 
+ IY R AH s <- IY        : 
+ IY R AO e <- IY        : 
+ IY R AO s <- IY        : 
+ IY R AY e <- IY        : 
+ IY R AY s <- IY        : 
+  IY R B e <- IY        : 
+  IY R B s <- IY        : 
+  IY R D e <- IY        : 
+  IY R D s <- IY        : 
+ IY R EH e <- IY        : 
+ IY R EH s <- IY        : 
+ IY R EY e <- IY        : 
+ IY R EY s <- IY        : 
+  IY R F e <- IY        : 
+  IY R F s <- IY        : 
+  IY R G e <- IY        : 
+  IY R G s <- IY        : 
+ IY R HH e <- IY        : 
+ IY R HH s <- IY        : 
+ IY R IH e <- IY        : 
+ IY R IH s <- IY        : 
+ IY R IY e <- IY        : 
+ IY R IY s <- IY        : 
+ IY R JH e <- IY        : 
+ IY R JH s <- IY        : 
+  IY R K e <- IY        : 
+  IY R K s <- IY        : 
+  IY R L b <- IY        : 
+  IY R M e <- IY        : 
+  IY R M s <- IY        : 
+  IY R N e <- IY        : 
+  IY R N s <- IY        : 
+ IY R OW e <- IY        : 
+ IY R OW s <- IY        : 
+  IY R P e <- IY        : 
+  IY R P i <- IY        : 
+  IY R P s <- IY        : 
+  IY R R b <- IY        : 
+  IY R R e <- IY        : 
+  IY R R s <- IY        : 
+  IY R S e <- IY        : 
+  IY R S s <- IY        : 
+IY R SIL e <- IY        : 
+IY R SIL s <- IY        : 
+  IY R T e <- IY        : 
+  IY R T s <- IY        : 
+ IY R TH e <- IY        : 
+ IY R TH s <- IY        : 
+  IY R V e <- IY        : 
+  IY R V s <- IY        : 
+  IY R W e <- IY        : 
+  IY R W s <- IY        : 
+  IY R Y e <- IY        : 
+  IY R Y s <- IY        : 
+  IY R Z e <- IY        : 
+  IY R Z s <- IY        : 
+ IY S AA e <- IY        : 
+ IY S AA s <- IY        : 
+ IY S AE e <- IY        : 
+ IY S AE s <- IY        : 
+ IY S AH e <- IY        : 
+ IY S AH s <- IY        : 
+ IY S AO e <- IY        : 
+ IY S AO s <- IY        : 
+ IY S AY e <- IY        : 
+ IY S AY s <- IY        : 
+  IY S B e <- IY        : 
+  IY S B s <- IY        : 
+  IY S D e <- IY        : 
+  IY S D s <- IY        : 
+ IY S EH e <- IY        : 
+ IY S EH s <- IY        : 
+ IY S EY e <- IY        : 
+ IY S EY s <- IY        : 
+  IY S F e <- IY        : 
+  IY S F s <- IY        : 
+  IY S G e <- IY        : 
+  IY S G s <- IY        : 
+ IY S HH e <- IY        : 
+ IY S HH s <- IY        : 
+ IY S IH e <- IY        : 
+ IY S IH s <- IY        : 
+ IY S IY e <- IY        : 
+ IY S IY s <- IY        : 
+ IY S JH e <- IY        : 
+ IY S JH s <- IY        : 
+  IY S K e <- IY        : 
+  IY S K s <- IY        : 
+  IY S L b <- IY        : 
+  IY S M e <- IY        : 
+  IY S M s <- IY        : 
+  IY S N e <- IY        : 
+  IY S N s <- IY        : 
+ IY S OW e <- IY        : 
+ IY S OW s <- IY        : 
+  IY S P e <- IY        : 
+  IY S P s <- IY        : 
+  IY S R b <- IY        : 
+  IY S R e <- IY        : 
+  IY S R s <- IY        : 
+  IY S S e <- IY        : 
+  IY S S s <- IY        : 
+IY S SIL e <- IY        : 
+IY S SIL s <- IY        : 
+  IY S T e <- IY        : 
+  IY S T s <- IY        : 
+ IY S TH e <- IY        : 
+ IY S TH s <- IY        : 
+  IY S V e <- IY        : 
+  IY S V s <- IY        : 
+  IY S W e <- IY        : 
+  IY S W s <- IY        : 
+  IY S Y e <- IY        : 
+  IY S Y s <- IY        : 
+  IY S Z e <- IY        : 
+  IY S Z s <- IY        : 
+IY SIL AA s <- IY        : 
+IY SIL AE s <- IY        : 
+IY SIL AH s <- IY        : 
+IY SIL AO s <- IY        : 
+IY SIL AY s <- IY        : 
+IY SIL B s <- IY        : 
+IY SIL D s <- IY        : 
+IY SIL EH s <- IY        : 
+IY SIL EY s <- IY        : 
+IY SIL F s <- IY        : 
+IY SIL G s <- IY        : 
+IY SIL HH s <- IY        : 
+IY SIL IH s <- IY        : 
+IY SIL IY s <- IY        : 
+IY SIL JH s <- IY        : 
+IY SIL K s <- IY        : 
+IY SIL L b <- IY        : 
+IY SIL M s <- IY        : 
+IY SIL N s <- IY        : 
+IY SIL OW s <- IY        : 
+IY SIL P s <- IY        : 
+IY SIL R b <- IY        : 
+IY SIL R s <- IY        : 
+IY SIL S s <- IY        : 
+IY SIL SIL s <- IY        : 
+IY SIL T s <- IY        : 
+IY SIL TH s <- IY        : 
+IY SIL V s <- IY        : 
+IY SIL W s <- IY        : 
+IY SIL Y s <- IY        : 
+IY SIL Z s <- IY        : 
+ IY T AA e <- IY        : 
+ IY T AA s <- IY        : 
+ IY T AE e <- IY        : 
+ IY T AE s <- IY        : 
+ IY T AH e <- IY        : 
+ IY T AH i <- IY        : 
+ IY T AH s <- IY        : 
+ IY T AO e <- IY        : 
+ IY T AO s <- IY        : 
+ IY T AY e <- IY        : 
+ IY T AY s <- IY        : 
+  IY T B e <- IY        : 
+  IY T B s <- IY        : 
+  IY T D e <- IY        : 
+  IY T D s <- IY        : 
+ IY T EH e <- IY        : 
+ IY T EH s <- IY        : 
+ IY T EY e <- IY        : 
+ IY T EY s <- IY        : 
+  IY T F e <- IY        : 
+  IY T F s <- IY        : 
+  IY T G e <- IY        : 
+  IY T G s <- IY        : 
+ IY T HH e <- IY        : 
+ IY T HH s <- IY        : 
+ IY T IH e <- IY        : 
+ IY T IH i <- IY        : 
+ IY T IH s <- IY        : 
+ IY T IY e <- IY        : 
+ IY T IY s <- IY        : 
+ IY T JH e <- IY        : 
+ IY T JH s <- IY        : 
+  IY T K e <- IY        : 
+  IY T K s <- IY        : 
+  IY T L b <- IY        : 
+  IY T M e <- IY        : 
+  IY T M s <- IY        : 
+  IY T N e <- IY        : 
+  IY T N i <- IY        : 
+  IY T N s <- IY        : 
+ IY T OW e <- IY        : 
+ IY T OW s <- IY        : 
+  IY T P e <- IY        : 
+  IY T P s <- IY        : 
+  IY T R b <- IY        : 
+  IY T R e <- IY        : 
+  IY T R s <- IY        : 
+  IY T S e <- IY        : 
+  IY T S s <- IY        : 
+IY T SIL e <- IY        : 
+IY T SIL s <- IY        : 
+  IY T T e <- IY        : 
+  IY T T s <- IY        : 
+ IY T TH e <- IY        : 
+ IY T TH s <- IY        : 
+  IY T V e <- IY        : 
+  IY T V s <- IY        : 
+  IY T W e <- IY        : 
+  IY T W s <- IY        : 
+  IY T Y e <- IY        : 
+  IY T Y s <- IY        : 
+  IY T Z e <- IY        : 
+  IY T Z s <- IY        : 
+IY TH AA s <- IY        : 
+IY TH AE s <- IY        : 
+IY TH AH s <- IY        : 
+IY TH AO s <- IY        : 
+IY TH AY s <- IY        : 
+ IY TH B s <- IY        : 
+ IY TH D s <- IY        : 
+IY TH EH s <- IY        : 
+IY TH EY s <- IY        : 
+ IY TH F s <- IY        : 
+ IY TH G s <- IY        : 
+IY TH HH s <- IY        : 
+IY TH IH s <- IY        : 
+IY TH IY s <- IY        : 
+IY TH JH s <- IY        : 
+ IY TH K s <- IY        : 
+ IY TH L b <- IY        : 
+ IY TH M s <- IY        : 
+ IY TH N s <- IY        : 
+IY TH OW s <- IY        : 
+ IY TH P s <- IY        : 
+ IY TH R b <- IY        : 
+ IY TH R s <- IY        : 
+ IY TH S s <- IY        : 
+IY TH SIL s <- IY        : 
+ IY TH T s <- IY        : 
+IY TH TH s <- IY        : 
+ IY TH V s <- IY        : 
+ IY TH W s <- IY        : 
+ IY TH Y s <- IY        : 
+ IY TH Z s <- IY        : 
+IY UW AA s <- IY        : 
+IY UW AE s <- IY        : 
+IY UW AH s <- IY        : 
+IY UW AO s <- IY        : 
+IY UW AY s <- IY        : 
+ IY UW B s <- IY        : 
+ IY UW D s <- IY        : 
+IY UW EH s <- IY        : 
+IY UW EY s <- IY        : 
+ IY UW F s <- IY        : 
+ IY UW G s <- IY        : 
+IY UW HH s <- IY        : 
+IY UW IH s <- IY        : 
+IY UW IY s <- IY        : 
+IY UW JH s <- IY        : 
+ IY UW K s <- IY        : 
+ IY UW L b <- IY        : 
+ IY UW M s <- IY        : 
+ IY UW N s <- IY        : 
+IY UW OW s <- IY        : 
+ IY UW P s <- IY        : 
+ IY UW R b <- IY        : 
+ IY UW R s <- IY        : 
+ IY UW S s <- IY        : 
+IY UW SIL s <- IY        : 
+ IY UW T s <- IY        : 
+IY UW TH s <- IY        : 
+ IY UW V s <- IY        : 
+ IY UW W s <- IY        : 
+ IY UW Y s <- IY        : 
+ IY UW Z s <- IY        : 
+ IY V AA e <- IY        : 
+ IY V AA s <- IY        : 
+ IY V AE e <- IY        : 
+ IY V AE s <- IY        : 
+ IY V AH e <- IY        : 
+ IY V AH s <- IY        : 
+ IY V AO e <- IY        : 
+ IY V AO s <- IY        : 
+ IY V AY e <- IY        : 
+ IY V AY s <- IY        : 
+  IY V B e <- IY        : 
+  IY V B s <- IY        : 
+  IY V D e <- IY        : 
+  IY V D s <- IY        : 
+ IY V EH e <- IY        : 
+ IY V EH s <- IY        : 
+ IY V EY e <- IY        : 
+ IY V EY s <- IY        : 
+  IY V F e <- IY        : 
+  IY V F s <- IY        : 
+  IY V G e <- IY        : 
+  IY V G s <- IY        : 
+ IY V HH e <- IY        : 
+ IY V HH s <- IY        : 
+ IY V IH e <- IY        : 
+ IY V IH s <- IY        : 
+ IY V IY e <- IY        : 
+ IY V IY s <- IY        : 
+ IY V JH e <- IY        : 
+ IY V JH s <- IY        : 
+  IY V K e <- IY        : 
+  IY V K s <- IY        : 
+  IY V L b <- IY        : 
+  IY V M e <- IY        : 
+  IY V M s <- IY        : 
+  IY V N e <- IY        : 
+  IY V N s <- IY        : 
+ IY V OW e <- IY        : 
+ IY V OW s <- IY        : 
+  IY V P e <- IY        : 
+  IY V P s <- IY        : 
+  IY V R b <- IY        : 
+  IY V R e <- IY        : 
+  IY V R s <- IY        : 
+  IY V S e <- IY        : 
+  IY V S s <- IY        : 
+IY V SIL e <- IY        : 
+IY V SIL s <- IY        : 
+  IY V T e <- IY        : 
+  IY V T s <- IY        : 
+ IY V TH e <- IY        : 
+ IY V TH s <- IY        : 
+  IY V V e <- IY        : 
+  IY V V s <- IY        : 
+  IY V W e <- IY        : 
+  IY V W s <- IY        : 
+  IY V Y e <- IY        : 
+  IY V Y s <- IY        : 
+  IY V Z e <- IY        : 
+  IY V Z s <- IY        : 
+ IY Z AA e <- IY        : 
+ IY Z AE e <- IY        : 
+ IY Z AH e <- IY        : 
+ IY Z AO e <- IY        : 
+ IY Z AY e <- IY        : 
+  IY Z B e <- IY        : 
+  IY Z D e <- IY        : 
+ IY Z EH e <- IY        : 
+ IY Z EY e <- IY        : 
+  IY Z F e <- IY        : 
+  IY Z G e <- IY        : 
+ IY Z HH e <- IY        : 
+ IY Z IH e <- IY        : 
+ IY Z IY e <- IY        : 
+ IY Z JH e <- IY        : 
+  IY Z K e <- IY        : 
+  IY Z M e <- IY        : 
+  IY Z N e <- IY        : 
+ IY Z OW e <- IY        : 
+  IY Z P e <- IY        : 
+  IY Z R e <- IY        : 
+  IY Z R i <- IY        : 
+  IY Z S e <- IY        : 
+IY Z SIL e <- IY        : 
+  IY Z T e <- IY        : 
+ IY Z TH e <- IY        : 
+  IY Z V e <- IY        : 
+  IY Z W e <- IY        : 
+  IY Z Y e <- IY        : 
+  IY Z Z e <- IY        : 
+JH AH AE b <- JH        : [mx   205(0) +=    51] [mx   206(1) +=    52] [mx   207(2) +=    53] 
+JH AH AH b <- JH        : 
+JH AH EY b <- JH        : 
+JH AH IY b <- JH        : 
+JH AH UW b <- JH        : 
+JH AY AE b <- JH        : 
+JH AY AH b <- JH        : 
+JH AY EY b <- JH        : 
+JH AY IY b <- JH        : 
+JH AY UW b <- JH        : 
+JH CH AE b <- JH        : 
+JH CH AH b <- JH        : 
+JH CH EY b <- JH        : 
+JH CH IY b <- JH        : 
+JH CH UW b <- JH        : 
+ JH D AE b <- JH        : 
+ JH D AH b <- JH        : 
+ JH D EY b <- JH        : 
+ JH D IY b <- JH        : 
+ JH D UW b <- JH        : 
+JH ER AE b <- JH        : 
+JH ER AH b <- JH        : 
+JH ER EY b <- JH        : 
+JH ER IY b <- JH        : 
+JH ER UW b <- JH        : 
+JH EY AE b <- JH        : 
+JH EY AH b <- JH        : 
+JH EY EY b <- JH        : 
+JH EY IY b <- JH        : 
+JH EY UW b <- JH        : 
+ JH F AE b <- JH        : 
+ JH F AH b <- JH        : 
+ JH F EY b <- JH        : 
+ JH F IY b <- JH        : 
+ JH F UW b <- JH        : 
+JH IY AE b <- JH        : 
+JH IY AH b <- JH        : 
+JH IY EY b <- JH        : 
+JH IY IY b <- JH        : 
+JH IY UW b <- JH        : 
+ JH L AE b <- JH        : 
+ JH L AH b <- JH        : 
+ JH L EY b <- JH        : 
+ JH L IY b <- JH        : 
+ JH L UW b <- JH        : 
+ JH M AE b <- JH        : 
+ JH M AH b <- JH        : 
+ JH M EY b <- JH        : 
+ JH M IY b <- JH        : 
+ JH M UW b <- JH        : 
+ JH N AE b <- JH        : 
+ JH N AH b <- JH        : 
+ JH N EY b <- JH        : 
+ JH N IY b <- JH        : 
+ JH N UW b <- JH        : 
+JH OW AE b <- JH        : 
+JH OW AH b <- JH        : 
+JH OW EY b <- JH        : 
+JH OW IY b <- JH        : 
+JH OW UW b <- JH        : 
+ JH P AE b <- JH        : 
+ JH P AH b <- JH        : 
+ JH P EY b <- JH        : 
+ JH P IY b <- JH        : 
+ JH P UW b <- JH        : 
+ JH R AE b <- JH        : 
+ JH R AH b <- JH        : 
+ JH R EY b <- JH        : 
+ JH R IY b <- JH        : 
+ JH R UW b <- JH        : 
+ JH S AE b <- JH        : 
+ JH S AH b <- JH        : 
+ JH S EY b <- JH        : 
+ JH S IY b <- JH        : 
+ JH S UW b <- JH        : 
+JH SIL AE b <- JH        : 
+JH SIL AH b <- JH        : 
+JH SIL EY b <- JH        : 
+JH SIL IY b <- JH        : 
+JH SIL UW b <- JH        : 
+ JH T AE b <- JH        : 
+ JH T AH b <- JH        : 
+ JH T EY b <- JH        : 
+ JH T IY b <- JH        : 
+ JH T UW b <- JH        : 
+JH TH AE b <- JH        : 
+JH TH AH b <- JH        : 
+JH TH EY b <- JH        : 
+JH TH IY b <- JH        : 
+JH TH UW b <- JH        : 
+JH UW AE b <- JH        : 
+JH UW AH b <- JH        : 
+JH UW EY b <- JH        : 
+JH UW IY b <- JH        : 
+JH UW UW b <- JH        : 
+ JH V AE b <- JH        : 
+ JH V AH b <- JH        : 
+ JH V EY b <- JH        : 
+ JH V IY b <- JH        : 
+ JH V UW b <- JH        : 
+  K AA T i <- K         : [mx   209(0) +=    54] [mx   211(1) +=    55] [mx   212(2) +=    56] 
+ K AH EY b <- K         : [mx   208(0) +=    54] [mx   210(1) +=    55] 
+ K AH OW b <- K         : 
+  K AH Y b <- K         : 
+ K AY EY b <- K         : 
+ K AY OW b <- K         : 
+  K AY Y b <- K         : 
+ K CH EY b <- K         : 
+ K CH OW b <- K         : 
+  K CH Y b <- K         : 
+  K D EY b <- K         : 
+  K D OW b <- K         : 
+   K D Y b <- K         : 
+ K EH AH i <- K         : 
+  K EH S i <- K         : [mx   213(2) +=    56] 
+ K ER EY b <- K         : 
+ K ER OW b <- K         : 
+  K ER Y b <- K         : 
+ K EY EY b <- K         : 
+ K EY OW b <- K         : 
+  K EY Y b <- K         : 
+  K F EY b <- K         : 
+  K F OW b <- K         : 
+   K F Y b <- K         : 
+  K IH S i <- K         : 
+ K IY EY b <- K         : 
+ K IY OW b <- K         : 
+  K IY Y b <- K         : 
+  K L EY b <- K         : 
+  K L OW b <- K         : 
+   K L Y b <- K         : 
+  K M EY b <- K         : 
+  K M OW b <- K         : 
+   K M Y b <- K         : 
+  K N EY b <- K         : 
+  K N OW b <- K         : 
+   K N Y b <- K         : 
+ K OW EY b <- K         : 
+ K OW OW b <- K         : 
+  K OW Y b <- K         : 
+  K P EY b <- K         : 
+  K P OW b <- K         : 
+   K P Y b <- K         : 
+  K R EY b <- K         : 
+  K R OW b <- K         : 
+   K R Y b <- K         : 
+  K S EY b <- K         : 
+  K S OW b <- K         : 
+   K S Y b <- K         : 
+K SIL EY b <- K         : 
+K SIL OW b <- K         : 
+ K SIL Y b <- K         : 
+  K T EY b <- K         : 
+  K T OW b <- K         : 
+   K T Y b <- K         : 
+ K TH EY b <- K         : 
+ K TH OW b <- K         : 
+  K TH Y b <- K         : 
+ K UW EY b <- K         : 
+ K UW OW b <- K         : 
+  K UW Y b <- K         : 
+  K V EY b <- K         : 
+  K V OW b <- K         : 
+   K V Y b <- K         : 
+ L AH AA e <- L         : [mx   214(0) +=    57] [mx   216(1) +=    58] [mx   217(2) +=    59] 
+ L AH AE e <- L         : 
+ L AH AH e <- L         : 
+ L AH AO e <- L         : 
+ L AH AY e <- L         : 
+ L AH AY i <- L         : 
+  L AH B e <- L         : 
+  L AH D e <- L         : 
+ L AH EH e <- L         : 
+ L AH EY e <- L         : [mx   218(2) +=    59] 
+  L AH F e <- L         : 
+  L AH G e <- L         : 
+ L AH HH e <- L         : 
+ L AH IH e <- L         : 
+ L AH IY e <- L         : 
+ L AH JH e <- L         : 
+  L AH K e <- L         : 
+  L AH M e <- L         : 
+  L AH N e <- L         : 
+ L AH OW e <- L         : 
+  L AH P e <- L         : 
+  L AH R e <- L         : 
+  L AH S e <- L         : 
+L AH SIL e <- L         : 
+  L AH T e <- L         : 
+ L AH TH e <- L         : 
+  L AH V e <- L         : 
+  L AH W e <- L         : 
+  L AH Y e <- L         : 
+  L AH Y i <- L         : 
+  L AH Z e <- L         : 
+ L EH AA e <- L         : [mx   215(1) +=    58] 
+ L EH AE e <- L         : 
+ L EH AH e <- L         : 
+ L EH AO e <- L         : 
+ L EH AY e <- L         : 
+  L EH B e <- L         : 
+  L EH D e <- L         : 
+ L EH EH e <- L         : 
+ L EH EY e <- L         : 
+  L EH F e <- L         : 
+  L EH F i <- L         : 
+  L EH G e <- L         : 
+ L EH HH e <- L         : 
+ L EH IH e <- L         : 
+ L EH IY e <- L         : 
+ L EH JH e <- L         : 
+  L EH K e <- L         : 
+  L EH M e <- L         : 
+  L EH N e <- L         : 
+ L EH OW e <- L         : 
+  L EH P e <- L         : 
+  L EH P i <- L         : 
+  L EH R e <- L         : 
+  L EH S e <- L         : 
+L EH SIL e <- L         : 
+  L EH T e <- L         : 
+ L EH TH e <- L         : 
+  L EH V e <- L         : 
+  L EH V i <- L         : 
+  L EH W e <- L         : 
+  L EH Y e <- L         : 
+  L EH Z e <- L         : 
+ L IH EH i <- L         : 
+ L IY EH i <- L         : 
+ L UW AY i <- L         : 
+ M AH AA b <- M         : [mx   219(0) +=    60] [mx   220(1) +=    61] [mx   221(2) +=    62] 
+ M AH EY b <- M         : 
+ M AY AA b <- M         : 
+ M AY EY b <- M         : 
+ M CH AA b <- M         : 
+ M CH EY b <- M         : 
+  M D AA b <- M         : 
+  M D EY b <- M         : 
+ M EH AA e <- M         : 
+ M EH AE e <- M         : 
+ M EH AH e <- M         : 
+ M EH AO e <- M         : 
+ M EH AY e <- M         : 
+  M EH B e <- M         : 
+  M EH B i <- M         : 
+  M EH D e <- M         : 
+ M EH EH e <- M         : 
+ M EH EY e <- M         : 
+  M EH F e <- M         : 
+  M EH G e <- M         : 
+ M EH HH e <- M         : 
+ M EH IH e <- M         : 
+ M EH IY e <- M         : 
+ M EH JH e <- M         : 
+  M EH K e <- M         : 
+  M EH M e <- M         : 
+  M EH N e <- M         : 
+ M EH OW e <- M         : 
+  M EH P e <- M         : 
+  M EH R e <- M         : 
+  M EH S e <- M         : 
+M EH SIL e <- M         : 
+  M EH T e <- M         : 
+ M EH TH e <- M         : 
+  M EH V e <- M         : 
+  M EH W e <- M         : 
+  M EH Y e <- M         : 
+  M EH Z e <- M         : 
+ M ER AA b <- M         : 
+ M ER EY b <- M         : 
+ M EY AA b <- M         : 
+ M EY EY b <- M         : 
+  M F AA b <- M         : 
+  M F EY b <- M         : 
+ M IY AA b <- M         : 
+ M IY EY b <- M         : 
+  M L AA b <- M         : 
+  M L EY b <- M         : 
+  M M AA b <- M         : 
+  M M EY b <- M         : 
+  M N AA b <- M         : 
+  M N EY b <- M         : 
+ M OW AA b <- M         : 
+ M OW EY b <- M         : 
+  M P AA b <- M         : 
+  M P EY b <- M         : 
+  M R AA b <- M         : 
+  M R EY b <- M         : 
+  M S AA b <- M         : 
+  M S EY b <- M         : 
+M SIL AA b <- M         : 
+M SIL EY b <- M         : 
+  M T AA b <- M         : 
+  M T EY b <- M         : 
+ M TH AA b <- M         : 
+ M TH EY b <- M         : 
+ M UW AA b <- M         : 
+ M UW EY b <- M         : 
+  M V AA b <- M         : 
+  M V EY b <- M         : 
+  N AE D i <- N         : [mx   222(0) +=    63] [mx   227(1) +=    64] [mx   233(2) +=    65] 
+  N AE Y i <- N         : 
+ N AH AA e <- N         : [mx   224(0) +=    63] [mx   225(1) +=    64] [mx   230(2) +=    65] 
+ N AH AE e <- N         : [mx   229(2) +=    65] 
+ N AH AH e <- N         : 
+ N AH AO e <- N         : 
+ N AH AY b <- N         : [mx   228(1) +=    64] [mx   232(2) +=    65] 
+ N AH AY e <- N         : 
+  N AH B e <- N         : 
+  N AH D e <- N         : 
+  N AH D i <- N         : 
+ N AH EH e <- N         : 
+ N AH ER i <- N         : 
+ N AH EY e <- N         : 
+  N AH F e <- N         : [mx   231(2) +=    65] 
+  N AH G e <- N         : 
+ N AH HH e <- N         : 
+ N AH IH e <- N         : 
+ N AH IY e <- N         : 
+ N AH IY i <- N         : 
+ N AH JH e <- N         : 
+  N AH K e <- N         : 
+  N AH M e <- N         : 
+  N AH N e <- N         : 
+ N AH OW b <- N         : 
+ N AH OW e <- N         : 
+  N AH P e <- N         : 
+  N AH R e <- N         : 
+  N AH S e <- N         : 
+N AH SIL e <- N         : [mx   226(1) +=    64] 
+  N AH T e <- N         : 
+  N AH T i <- N         : 
+ N AH TH e <- N         : 
+ N AH TH i <- N         : 
+  N AH V e <- N         : 
+  N AH W e <- N         : 
+  N AH Y e <- N         : 
+  N AH Z e <- N         : 
+ N AY AA e <- N         : 
+ N AY AE e <- N         : 
+ N AY AH e <- N         : 
+ N AY AO e <- N         : 
+ N AY AY b <- N         : 
+ N AY AY e <- N         : 
+  N AY B e <- N         : 
+  N AY D e <- N         : 
+ N AY EH e <- N         : 
+ N AY EY e <- N         : 
+  N AY F e <- N         : 
+  N AY G e <- N         : 
+ N AY HH e <- N         : 
+ N AY IH e <- N         : 
+ N AY IY e <- N         : 
+ N AY JH e <- N         : 
+  N AY K e <- N         : 
+  N AY M e <- N         : 
+  N AY N e <- N         : 
+ N AY OW b <- N         : 
+ N AY OW e <- N         : 
+  N AY P e <- N         : 
+  N AY R e <- N         : 
+  N AY S e <- N         : 
+N AY SIL e <- N         : 
+  N AY T e <- N         : 
+  N AY T i <- N         : 
+ N AY TH e <- N         : 
+ N AY TH i <- N         : 
+  N AY V e <- N         : 
+  N AY W e <- N         : 
+  N AY Y e <- N         : 
+  N AY Z e <- N         : 
+ N CH AY b <- N         : [mx   223(0) +=    63] 
+ N CH OW b <- N         : 
+  N D AY b <- N         : 
+  N D OW b <- N         : 
+ N EH AA e <- N         : 
+ N EH AE e <- N         : 
+ N EH AH e <- N         : 
+ N EH AO e <- N         : 
+ N EH AY e <- N         : 
+  N EH B e <- N         : 
+  N EH D e <- N         : 
+ N EH EH e <- N         : 
+ N EH ER i <- N         : 
+ N EH EY e <- N         : 
+  N EH F e <- N         : 
+  N EH G e <- N         : 
+ N EH HH e <- N         : 
+ N EH IH e <- N         : 
+ N EH IY e <- N         : 
+ N EH IY i <- N         : 
+ N EH JH e <- N         : 
+  N EH K e <- N         : 
+  N EH M e <- N         : 
+  N EH N e <- N         : 
+ N EH OW e <- N         : 
+  N EH P e <- N         : 
+  N EH R e <- N         : 
+  N EH S e <- N         : 
+N EH SIL e <- N         : 
+  N EH T e <- N         : 
+  N EH T i <- N         : 
+ N EH TH e <- N         : 
+  N EH V e <- N         : 
+  N EH W e <- N         : 
+  N EH Y e <- N         : 
+  N EH Z e <- N         : 
+ N ER AY b <- N         : 
+ N ER OW b <- N         : 
+ N EY AY b <- N         : 
+ N EY OW b <- N         : 
+  N F AY b <- N         : 
+  N F OW b <- N         : 
+ N IY AA e <- N         : 
+ N IY AE e <- N         : 
+ N IY AH e <- N         : 
+ N IY AO e <- N         : 
+ N IY AY b <- N         : 
+ N IY AY e <- N         : 
+  N IY B e <- N         : 
+  N IY D e <- N         : 
+ N IY EH e <- N         : 
+ N IY EY e <- N         : 
+  N IY F e <- N         : 
+  N IY G e <- N         : 
+ N IY HH e <- N         : 
+ N IY IH e <- N         : 
+ N IY IY e <- N         : 
+ N IY JH e <- N         : 
+  N IY K e <- N         : 
+  N IY M e <- N         : 
+  N IY N e <- N         : 
+ N IY OW b <- N         : 
+ N IY OW e <- N         : 
+  N IY P e <- N         : 
+  N IY R e <- N         : 
+  N IY S e <- N         : 
+N IY SIL e <- N         : 
+  N IY T e <- N         : 
+ N IY TH e <- N         : 
+ N IY TH i <- N         : 
+  N IY V e <- N         : 
+  N IY W e <- N         : 
+  N IY Y e <- N         : 
+  N IY Z e <- N         : 
+  N L AY b <- N         : 
+  N L OW b <- N         : 
+  N M AY b <- N         : 
+  N M OW b <- N         : 
+  N N AY b <- N         : 
+  N N OW b <- N         : 
+ N OW AY b <- N         : 
+ N OW OW b <- N         : 
+  N P AY b <- N         : 
+  N P OW b <- N         : 
+  N R AY b <- N         : 
+  N R OW b <- N         : 
+  N S AY b <- N         : 
+  N S OW b <- N         : 
+N SIL AY b <- N         : 
+N SIL OW b <- N         : 
+  N T AY b <- N         : 
+  N T OW b <- N         : 
+ N TH AY b <- N         : 
+ N TH OW b <- N         : 
+ N UW AA e <- N         : 
+ N UW AE e <- N         : 
+ N UW AH e <- N         : 
+ N UW AO e <- N         : 
+ N UW AY b <- N         : 
+ N UW AY e <- N         : 
+  N UW B e <- N         : 
+  N UW D e <- N         : 
+ N UW EH e <- N         : 
+ N UW EY e <- N         : 
+  N UW F e <- N         : 
+  N UW G e <- N         : 
+ N UW HH e <- N         : 
+ N UW IH e <- N         : 
+ N UW IY e <- N         : 
+ N UW JH e <- N         : 
+  N UW K e <- N         : 
+  N UW M e <- N         : 
+  N UW N e <- N         : 
+ N UW OW b <- N         : 
+ N UW OW e <- N         : 
+  N UW P e <- N         : 
+  N UW R e <- N         : 
+  N UW S e <- N         : 
+N UW SIL e <- N         : 
+  N UW T e <- N         : 
+ N UW TH e <- N         : 
+  N UW V e <- N         : 
+  N UW W e <- N         : 
+  N UW Y e <- N         : 
+  N UW Z e <- N         : 
+  N V AY b <- N         : 
+  N V OW b <- N         : 
+OW AH AA s <- OW        : [mx   234(0) +=    66] [mx   236(1) +=    67] [mx   238(2) +=    68] 
+OW AH AE s <- OW        : [mx   237(2) +=    68] 
+OW AH AH s <- OW        : [mx   235(0) +=    66] 
+OW AH AO s <- OW        : 
+OW AH AY s <- OW        : 
+ OW AH B s <- OW        : 
+ OW AH D s <- OW        : 
+OW AH EH s <- OW        : 
+OW AH EY s <- OW        : 
+ OW AH F s <- OW        : 
+ OW AH G s <- OW        : 
+OW AH HH s <- OW        : 
+OW AH IH s <- OW        : 
+OW AH IY s <- OW        : 
+OW AH JH s <- OW        : 
+ OW AH K s <- OW        : 
+ OW AH M s <- OW        : 
+ OW AH N s <- OW        : 
+OW AH OW s <- OW        : 
+ OW AH P s <- OW        : 
+ OW AH R s <- OW        : 
+ OW AH S s <- OW        : 
+OW AH SIL s <- OW        : 
+ OW AH T s <- OW        : 
+OW AH TH s <- OW        : 
+ OW AH V s <- OW        : 
+ OW AH W s <- OW        : 
+ OW AH Y s <- OW        : 
+ OW AH Z s <- OW        : 
+OW AY AA s <- OW        : 
+OW AY AE s <- OW        : 
+OW AY AH s <- OW        : 
+OW AY AO s <- OW        : 
+OW AY AY s <- OW        : 
+ OW AY B s <- OW        : 
+ OW AY D s <- OW        : 
+OW AY EH s <- OW        : 
+OW AY EY s <- OW        : 
+ OW AY F s <- OW        : 
+ OW AY G s <- OW        : 
+OW AY HH s <- OW        : 
+OW AY IH s <- OW        : 
+OW AY IY s <- OW        : 
+OW AY JH s <- OW        : 
+ OW AY K s <- OW        : 
+ OW AY M s <- OW        : 
+ OW AY N s <- OW        : 
+OW AY OW s <- OW        : 
+ OW AY P s <- OW        : 
+ OW AY R s <- OW        : 
+ OW AY S s <- OW        : 
+OW AY SIL s <- OW        : 
+ OW AY T s <- OW        : 
+OW AY TH s <- OW        : 
+ OW AY V s <- OW        : 
+ OW AY W s <- OW        : 
+ OW AY Y s <- OW        : 
+ OW AY Z s <- OW        : 
+OW CH AA s <- OW        : 
+OW CH AE s <- OW        : 
+OW CH AH s <- OW        : 
+OW CH AO s <- OW        : 
+OW CH AY s <- OW        : 
+ OW CH B s <- OW        : 
+ OW CH D s <- OW        : 
+OW CH EH s <- OW        : 
+OW CH EY s <- OW        : 
+ OW CH F s <- OW        : 
+ OW CH G s <- OW        : 
+OW CH HH s <- OW        : 
+OW CH IH s <- OW        : 
+OW CH IY s <- OW        : 
+OW CH JH s <- OW        : 
+ OW CH K s <- OW        : 
+ OW CH M s <- OW        : 
+ OW CH N s <- OW        : 
+OW CH OW s <- OW        : 
+ OW CH P s <- OW        : 
+ OW CH R s <- OW        : 
+ OW CH S s <- OW        : 
+OW CH SIL s <- OW        : 
+ OW CH T s <- OW        : 
+OW CH TH s <- OW        : 
+ OW CH V s <- OW        : 
+ OW CH W s <- OW        : 
+ OW CH Y s <- OW        : 
+ OW CH Z s <- OW        : 
+ OW D AA s <- OW        : 
+ OW D AE s <- OW        : 
+ OW D AH s <- OW        : 
+ OW D AO s <- OW        : 
+ OW D AY s <- OW        : 
+  OW D B s <- OW        : 
+  OW D D s <- OW        : 
+ OW D EH s <- OW        : 
+ OW D EY s <- OW        : 
+  OW D F s <- OW        : 
+  OW D G s <- OW        : 
+ OW D HH s <- OW        : 
+ OW D IH s <- OW        : 
+ OW D IY s <- OW        : 
+ OW D JH s <- OW        : 
+  OW D K s <- OW        : 
+  OW D M s <- OW        : 
+  OW D N s <- OW        : 
+ OW D OW s <- OW        : 
+  OW D P s <- OW        : 
+  OW D R s <- OW        : 
+  OW D S s <- OW        : 
+OW D SIL s <- OW        : 
+  OW D T s <- OW        : 
+ OW D TH s <- OW        : 
+  OW D V s <- OW        : 
+  OW D W s <- OW        : 
+  OW D Y s <- OW        : 
+  OW D Z s <- OW        : 
+OW ER AA s <- OW        : 
+OW ER AE s <- OW        : 
+OW ER AH s <- OW        : 
+OW ER AO s <- OW        : 
+OW ER AY s <- OW        : 
+ OW ER B s <- OW        : 
+ OW ER D s <- OW        : 
+OW ER EH s <- OW        : 
+OW ER EY s <- OW        : 
+ OW ER F s <- OW        : 
+ OW ER G s <- OW        : 
+OW ER HH s <- OW        : 
+OW ER IH s <- OW        : 
+OW ER IY s <- OW        : 
+OW ER JH s <- OW        : 
+ OW ER K s <- OW        : 
+ OW ER M s <- OW        : 
+ OW ER N s <- OW        : 
+OW ER OW s <- OW        : 
+ OW ER P s <- OW        : 
+ OW ER R s <- OW        : 
+ OW ER S s <- OW        : 
+OW ER SIL s <- OW        : 
+ OW ER T s <- OW        : 
+OW ER TH s <- OW        : 
+ OW ER V s <- OW        : 
+ OW ER W s <- OW        : 
+ OW ER Y s <- OW        : 
+ OW ER Z s <- OW        : 
+OW EY AA s <- OW        : 
+OW EY AE s <- OW        : 
+OW EY AH s <- OW        : 
+OW EY AO s <- OW        : 
+OW EY AY s <- OW        : 
+ OW EY B s <- OW        : 
+ OW EY D s <- OW        : 
+OW EY EH s <- OW        : 
+OW EY EY s <- OW        : 
+ OW EY F s <- OW        : 
+ OW EY G s <- OW        : 
+OW EY HH s <- OW        : 
+OW EY IH s <- OW        : 
+OW EY IY s <- OW        : 
+OW EY JH s <- OW        : 
+ OW EY K s <- OW        : 
+ OW EY M s <- OW        : 
+ OW EY N s <- OW        : 
+OW EY OW s <- OW        : 
+ OW EY P s <- OW        : 
+ OW EY R s <- OW        : 
+ OW EY S s <- OW        : 
+OW EY SIL s <- OW        : 
+ OW EY T s <- OW        : 
+OW EY TH s <- OW        : 
+ OW EY V s <- OW        : 
+ OW EY W s <- OW        : 
+ OW EY Y s <- OW        : 
+ OW EY Z s <- OW        : 
+ OW F AA s <- OW        : 
+ OW F AE s <- OW        : 
+ OW F AH s <- OW        : 
+ OW F AO s <- OW        : 
+ OW F AY s <- OW        : 
+  OW F B s <- OW        : 
+  OW F D s <- OW        : 
+ OW F EH s <- OW        : 
+ OW F EY s <- OW        : 
+  OW F F s <- OW        : 
+  OW F G s <- OW        : 
+ OW F HH s <- OW        : 
+ OW F IH s <- OW        : 
+ OW F IY s <- OW        : 
+ OW F JH s <- OW        : 
+  OW F K s <- OW        : 
+  OW F M s <- OW        : 
+  OW F N s <- OW        : 
+ OW F OW s <- OW        : 
+  OW F P s <- OW        : 
+  OW F R s <- OW        : 
+  OW F S s <- OW        : 
+OW F SIL s <- OW        : 
+  OW F T s <- OW        : 
+ OW F TH s <- OW        : 
+  OW F V s <- OW        : 
+  OW F W s <- OW        : 
+  OW F Y s <- OW        : 
+  OW F Z s <- OW        : 
+ OW G AA e <- OW        : 
+ OW G AE e <- OW        : 
+ OW G AH e <- OW        : 
+ OW G AO e <- OW        : 
+ OW G AY e <- OW        : 
+  OW G B e <- OW        : 
+  OW G D e <- OW        : 
+ OW G EH e <- OW        : 
+ OW G EY e <- OW        : 
+  OW G F e <- OW        : 
+  OW G G e <- OW        : 
+ OW G HH e <- OW        : 
+ OW G IH e <- OW        : 
+ OW G IY e <- OW        : 
+ OW G JH e <- OW        : 
+  OW G K e <- OW        : 
+  OW G M e <- OW        : 
+  OW G N e <- OW        : 
+ OW G OW e <- OW        : 
+  OW G P e <- OW        : 
+  OW G R e <- OW        : 
+  OW G S e <- OW        : 
+OW G SIL e <- OW        : 
+  OW G T e <- OW        : 
+ OW G TH e <- OW        : 
+  OW G V e <- OW        : 
+  OW G W e <- OW        : 
+  OW G Y e <- OW        : 
+  OW G Z e <- OW        : 
+OW IY AA s <- OW        : 
+OW IY AE s <- OW        : 
+OW IY AH s <- OW        : 
+OW IY AO s <- OW        : 
+OW IY AY s <- OW        : 
+ OW IY B s <- OW        : 
+ OW IY D s <- OW        : 
+OW IY EH s <- OW        : 
+OW IY EY s <- OW        : 
+ OW IY F s <- OW        : 
+ OW IY G s <- OW        : 
+OW IY HH s <- OW        : 
+OW IY IH s <- OW        : 
+OW IY IY s <- OW        : 
+OW IY JH s <- OW        : 
+ OW IY K s <- OW        : 
+ OW IY M s <- OW        : 
+ OW IY N s <- OW        : 
+OW IY OW s <- OW        : 
+ OW IY P s <- OW        : 
+ OW IY R s <- OW        : 
+ OW IY S s <- OW        : 
+OW IY SIL s <- OW        : 
+ OW IY T s <- OW        : 
+OW IY TH s <- OW        : 
+ OW IY V s <- OW        : 
+ OW IY W s <- OW        : 
+ OW IY Y s <- OW        : 
+ OW IY Z s <- OW        : 
+  OW K D i <- OW        : 
+ OW L AA s <- OW        : 
+ OW L AE s <- OW        : 
+ OW L AH s <- OW        : 
+ OW L AO s <- OW        : 
+ OW L AY s <- OW        : 
+  OW L B s <- OW        : 
+  OW L D s <- OW        : 
+ OW L EH s <- OW        : 
+ OW L EY s <- OW        : 
+  OW L F s <- OW        : 
+  OW L G s <- OW        : 
+ OW L HH s <- OW        : 
+ OW L IH s <- OW        : 
+ OW L IY s <- OW        : 
+ OW L JH s <- OW        : 
+  OW L K s <- OW        : 
+  OW L M s <- OW        : 
+  OW L N s <- OW        : 
+ OW L OW s <- OW        : 
+  OW L P s <- OW        : 
+  OW L R s <- OW        : 
+  OW L S s <- OW        : 
+OW L SIL s <- OW        : 
+  OW L T s <- OW        : 
+ OW L TH s <- OW        : 
+  OW L V s <- OW        : 
+  OW L W s <- OW        : 
+  OW L Y s <- OW        : 
+  OW L Z s <- OW        : 
+ OW M AA s <- OW        : 
+ OW M AE s <- OW        : 
+ OW M AH s <- OW        : 
+ OW M AO s <- OW        : 
+ OW M AY s <- OW        : 
+  OW M B s <- OW        : 
+  OW M D s <- OW        : 
+ OW M EH s <- OW        : 
+ OW M EY s <- OW        : 
+  OW M F s <- OW        : 
+  OW M G s <- OW        : 
+ OW M HH s <- OW        : 
+ OW M IH s <- OW        : 
+ OW M IY s <- OW        : 
+ OW M JH s <- OW        : 
+  OW M K s <- OW        : 
+  OW M M s <- OW        : 
+  OW M N s <- OW        : 
+ OW M OW s <- OW        : 
+  OW M P s <- OW        : 
+  OW M R s <- OW        : 
+  OW M S s <- OW        : 
+OW M SIL s <- OW        : 
+  OW M T s <- OW        : 
+ OW M TH s <- OW        : 
+  OW M V s <- OW        : 
+  OW M W s <- OW        : 
+  OW M Y s <- OW        : 
+  OW M Z s <- OW        : 
+ OW N AA e <- OW        : 
+ OW N AA s <- OW        : 
+ OW N AE e <- OW        : 
+ OW N AE s <- OW        : 
+ OW N AH e <- OW        : 
+ OW N AH s <- OW        : 
+ OW N AO e <- OW        : 
+ OW N AO s <- OW        : 
+ OW N AY e <- OW        : 
+ OW N AY s <- OW        : 
+  OW N B e <- OW        : 
+  OW N B s <- OW        : 
+  OW N D e <- OW        : 
+  OW N D s <- OW        : 
+ OW N EH e <- OW        : 
+ OW N EH s <- OW        : 
+ OW N EY e <- OW        : 
+ OW N EY s <- OW        : 
+  OW N F e <- OW        : 
+  OW N F s <- OW        : 
+  OW N G e <- OW        : 
+  OW N G s <- OW        : 
+ OW N HH e <- OW        : 
+ OW N HH s <- OW        : 
+ OW N IH e <- OW        : 
+ OW N IH s <- OW        : 
+ OW N IY e <- OW        : 
+ OW N IY s <- OW        : 
+ OW N JH e <- OW        : 
+ OW N JH s <- OW        : 
+  OW N K e <- OW        : 
+  OW N K s <- OW        : 
+  OW N M e <- OW        : 
+  OW N M s <- OW        : 
+  OW N N e <- OW        : 
+  OW N N s <- OW        : 
+ OW N OW e <- OW        : 
+ OW N OW s <- OW        : 
+  OW N P e <- OW        : 
+  OW N P s <- OW        : 
+  OW N R e <- OW        : 
+  OW N R s <- OW        : 
+  OW N S e <- OW        : 
+  OW N S s <- OW        : 
+OW N SIL e <- OW        : 
+OW N SIL s <- OW        : 
+  OW N T e <- OW        : 
+  OW N T s <- OW        : 
+ OW N TH e <- OW        : 
+ OW N TH s <- OW        : 
+  OW N V e <- OW        : 
+  OW N V i <- OW        : 
+  OW N V s <- OW        : 
+  OW N W e <- OW        : 
+  OW N W s <- OW        : 
+  OW N Y e <- OW        : 
+  OW N Y s <- OW        : 
+  OW N Z e <- OW        : 
+  OW N Z s <- OW        : 
+OW OW AA s <- OW        : 
+OW OW AE s <- OW        : 
+OW OW AH s <- OW        : 
+OW OW AO s <- OW        : 
+OW OW AY s <- OW        : 
+ OW OW B s <- OW        : 
+ OW OW D s <- OW        : 
+OW OW EH s <- OW        : 
+OW OW EY s <- OW        : 
+ OW OW F s <- OW        : 
+ OW OW G s <- OW        : 
+OW OW HH s <- OW        : 
+OW OW IH s <- OW        : 
+OW OW IY s <- OW        : 
+OW OW JH s <- OW        : 
+ OW OW K s <- OW        : 
+ OW OW M s <- OW        : 
+ OW OW N s <- OW        : 
+OW OW OW s <- OW        : 
+ OW OW P s <- OW        : 
+ OW OW R s <- OW        : 
+ OW OW S s <- OW        : 
+OW OW SIL s <- OW        : 
+ OW OW T s <- OW        : 
+OW OW TH s <- OW        : 
+ OW OW V s <- OW        : 
+ OW OW W s <- OW        : 
+ OW OW Y s <- OW        : 
+ OW OW Z s <- OW        : 
+ OW P AA s <- OW        : 
+ OW P AE s <- OW        : 
+ OW P AH s <- OW        : 
+ OW P AO s <- OW        : 
+ OW P AY s <- OW        : 
+  OW P B s <- OW        : 
+  OW P D s <- OW        : 
+ OW P EH s <- OW        : 
+ OW P EY s <- OW        : 
+  OW P F s <- OW        : 
+  OW P G s <- OW        : 
+ OW P HH s <- OW        : 
+ OW P IH s <- OW        : 
+ OW P IY s <- OW        : 
+ OW P JH s <- OW        : 
+  OW P K s <- OW        : 
+  OW P M s <- OW        : 
+  OW P N s <- OW        : 
+ OW P OW s <- OW        : 
+  OW P P s <- OW        : 
+  OW P R s <- OW        : 
+  OW P S s <- OW        : 
+OW P SIL s <- OW        : 
+  OW P T s <- OW        : 
+ OW P TH s <- OW        : 
+  OW P V s <- OW        : 
+  OW P W s <- OW        : 
+  OW P Y s <- OW        : 
+  OW P Z s <- OW        : 
+ OW R AA e <- OW        : 
+ OW R AA s <- OW        : 
+ OW R AE e <- OW        : 
+ OW R AE s <- OW        : 
+ OW R AH e <- OW        : 
+ OW R AH s <- OW        : 
+ OW R AO e <- OW        : 
+ OW R AO s <- OW        : 
+ OW R AY e <- OW        : 
+ OW R AY s <- OW        : 
+  OW R B e <- OW        : 
+  OW R B s <- OW        : 
+  OW R D e <- OW        : 
+  OW R D s <- OW        : 
+ OW R EH e <- OW        : 
+ OW R EH s <- OW        : 
+ OW R EY e <- OW        : 
+ OW R EY s <- OW        : 
+  OW R F e <- OW        : 
+  OW R F s <- OW        : 
+  OW R G e <- OW        : 
+  OW R G s <- OW        : 
+ OW R HH e <- OW        : 
+ OW R HH s <- OW        : 
+ OW R IH e <- OW        : 
+ OW R IH s <- OW        : 
+ OW R IY e <- OW        : 
+ OW R IY s <- OW        : 
+ OW R JH e <- OW        : 
+ OW R JH s <- OW        : 
+  OW R K e <- OW        : 
+  OW R K s <- OW        : 
+  OW R M e <- OW        : 
+  OW R M s <- OW        : 
+  OW R N e <- OW        : 
+  OW R N s <- OW        : 
+ OW R OW e <- OW        : 
+ OW R OW s <- OW        : 
+  OW R P e <- OW        : 
+  OW R P s <- OW        : 
+  OW R R e <- OW        : 
+  OW R R s <- OW        : 
+  OW R S e <- OW        : 
+  OW R S s <- OW        : 
+OW R SIL e <- OW        : 
+OW R SIL s <- OW        : 
+  OW R T e <- OW        : 
+  OW R T s <- OW        : 
+ OW R TH e <- OW        : 
+ OW R TH s <- OW        : 
+  OW R V e <- OW        : 
+  OW R V s <- OW        : 
+  OW R W e <- OW        : 
+  OW R W s <- OW        : 
+  OW R Y e <- OW        : 
+  OW R Y s <- OW        : 
+  OW R Z e <- OW        : 
+  OW R Z s <- OW        : 
+ OW S AA s <- OW        : 
+ OW S AE s <- OW        : 
+ OW S AH s <- OW        : 
+ OW S AO s <- OW        : 
+ OW S AY s <- OW        : 
+  OW S B s <- OW        : 
+  OW S D s <- OW        : 
+ OW S EH s <- OW        : 
+ OW S EY s <- OW        : 
+  OW S F s <- OW        : 
+  OW S G s <- OW        : 
+ OW S HH s <- OW        : 
+ OW S IH s <- OW        : 
+ OW S IY s <- OW        : 
+ OW S JH s <- OW        : 
+  OW S K s <- OW        : 
+  OW S M s <- OW        : 
+  OW S N s <- OW        : 
+ OW S OW s <- OW        : 
+  OW S P s <- OW        : 
+  OW S R s <- OW        : 
+  OW S S s <- OW        : 
+OW S SIL s <- OW        : 
+  OW S T s <- OW        : 
+ OW S TH s <- OW        : 
+  OW S V s <- OW        : 
+  OW S W s <- OW        : 
+  OW S Y s <- OW        : 
+  OW S Z s <- OW        : 
+OW SIL AA s <- OW        : 
+OW SIL AE s <- OW        : 
+OW SIL AH s <- OW        : 
+OW SIL AO s <- OW        : 
+OW SIL AY s <- OW        : 
+OW SIL B s <- OW        : 
+OW SIL D s <- OW        : 
+OW SIL EH s <- OW        : 
+OW SIL EY s <- OW        : 
+OW SIL F s <- OW        : 
+OW SIL G s <- OW        : 
+OW SIL HH s <- OW        : 
+OW SIL IH s <- OW        : 
+OW SIL IY s <- OW        : 
+OW SIL JH s <- OW        : 
+OW SIL K s <- OW        : 
+OW SIL M s <- OW        : 
+OW SIL N s <- OW        : 
+OW SIL OW s <- OW        : 
+OW SIL P s <- OW        : 
+OW SIL R s <- OW        : 
+OW SIL S s <- OW        : 
+OW SIL SIL s <- OW        : 
+OW SIL T s <- OW        : 
+OW SIL TH s <- OW        : 
+OW SIL V s <- OW        : 
+OW SIL W s <- OW        : 
+OW SIL Y s <- OW        : 
+OW SIL Z s <- OW        : 
+ OW T AA s <- OW        : 
+ OW T AE s <- OW        : 
+ OW T AH s <- OW        : 
+ OW T AO s <- OW        : 
+ OW T AY s <- OW        : 
+  OW T B i <- OW        : 
+  OW T B s <- OW        : 
+  OW T D s <- OW        : 
+ OW T EH s <- OW        : 
+ OW T EY s <- OW        : 
+  OW T F s <- OW        : 
+  OW T G s <- OW        : 
+ OW T HH s <- OW        : 
+ OW T IH s <- OW        : 
+ OW T IY s <- OW        : 
+ OW T JH s <- OW        : 
+  OW T K s <- OW        : 
+  OW T M s <- OW        : 
+  OW T N s <- OW        : 
+ OW T OW s <- OW        : 
+  OW T P s <- OW        : 
+  OW T R s <- OW        : 
+  OW T S s <- OW        : 
+OW T SIL s <- OW        : 
+  OW T T s <- OW        : 
+ OW T TH s <- OW        : 
+  OW T V s <- OW        : 
+  OW T W s <- OW        : 
+  OW T Y s <- OW        : 
+  OW T Z s <- OW        : 
+OW TH AA s <- OW        : 
+OW TH AE s <- OW        : 
+OW TH AH s <- OW        : 
+OW TH AO s <- OW        : 
+OW TH AY s <- OW        : 
+ OW TH B s <- OW        : 
+ OW TH D s <- OW        : 
+OW TH EH s <- OW        : 
+OW TH EY s <- OW        : 
+ OW TH F s <- OW        : 
+ OW TH G s <- OW        : 
+OW TH HH s <- OW        : 
+OW TH IH s <- OW        : 
+OW TH IY s <- OW        : 
+OW TH JH s <- OW        : 
+ OW TH K s <- OW        : 
+ OW TH M s <- OW        : 
+ OW TH N s <- OW        : 
+OW TH OW s <- OW        : 
+ OW TH P s <- OW        : 
+ OW TH R s <- OW        : 
+ OW TH S s <- OW        : 
+OW TH SIL s <- OW        : 
+ OW TH T s <- OW        : 
+OW TH TH s <- OW        : 
+ OW TH V s <- OW        : 
+ OW TH W s <- OW        : 
+ OW TH Y s <- OW        : 
+ OW TH Z s <- OW        : 
+OW UW AA s <- OW        : 
+OW UW AE s <- OW        : 
+OW UW AH s <- OW        : 
+OW UW AO s <- OW        : 
+OW UW AY s <- OW        : 
+ OW UW B s <- OW        : 
+ OW UW D s <- OW        : 
+OW UW EH s <- OW        : 
+OW UW EY s <- OW        : 
+ OW UW F s <- OW        : 
+ OW UW G s <- OW        : 
+OW UW HH s <- OW        : 
+OW UW IH s <- OW        : 
+OW UW IY s <- OW        : 
+OW UW JH s <- OW        : 
+ OW UW K s <- OW        : 
+ OW UW M s <- OW        : 
+ OW UW N s <- OW        : 
+OW UW OW s <- OW        : 
+ OW UW P s <- OW        : 
+ OW UW R s <- OW        : 
+ OW UW S s <- OW        : 
+OW UW SIL s <- OW        : 
+ OW UW T s <- OW        : 
+OW UW TH s <- OW        : 
+ OW UW V s <- OW        : 
+ OW UW W s <- OW        : 
+ OW UW Y s <- OW        : 
+ OW UW Z s <- OW        : 
+ OW V AA s <- OW        : 
+ OW V AE s <- OW        : 
+ OW V AH s <- OW        : 
+ OW V AO s <- OW        : 
+ OW V AY s <- OW        : 
+  OW V B s <- OW        : 
+  OW V D s <- OW        : 
+ OW V EH s <- OW        : 
+ OW V EY s <- OW        : 
+  OW V F s <- OW        : 
+  OW V G s <- OW        : 
+ OW V HH s <- OW        : 
+ OW V IH s <- OW        : 
+ OW V IY s <- OW        : 
+ OW V JH s <- OW        : 
+  OW V K s <- OW        : 
+  OW V M s <- OW        : 
+  OW V N s <- OW        : 
+ OW V OW s <- OW        : 
+  OW V P s <- OW        : 
+  OW V R s <- OW        : 
+  OW V S s <- OW        : 
+OW V SIL s <- OW        : 
+  OW V T s <- OW        : 
+ OW V TH s <- OW        : 
+  OW V V s <- OW        : 
+  OW V W s <- OW        : 
+  OW V Y s <- OW        : 
+  OW V Z s <- OW        : 
+ P AA AA e <- P         : [mx   239(0) +=    69] [mx   240(1) +=    70] [mx   241(2) +=    71] 
+ P AA AE e <- P         : 
+ P AA AH e <- P         : 
+ P AA AO e <- P         : 
+ P AA AY e <- P         : 
+  P AA B e <- P         : 
+  P AA D e <- P         : 
+ P AA EH e <- P         : 
+ P AA EY e <- P         : 
+  P AA F e <- P         : 
+  P AA G e <- P         : 
+ P AA HH e <- P         : 
+ P AA IH e <- P         : 
+ P AA IY e <- P         : 
+ P AA JH e <- P         : 
+  P AA K e <- P         : 
+  P AA M e <- P         : 
+  P AA N e <- P         : 
+ P AA OW e <- P         : 
+  P AA P e <- P         : 
+  P AA R e <- P         : 
+  P AA S e <- P         : 
+P AA SIL e <- P         : 
+  P AA T e <- P         : 
+ P AA TH e <- P         : 
+  P AA V e <- P         : 
+  P AA W e <- P         : 
+  P AA Y e <- P         : 
+  P AA Z e <- P         : 
+ P AH AA i <- P         : 
+ P AH IY b <- P         : 
+ P AY IY b <- P         : 
+ P CH IY b <- P         : 
+  P D IY b <- P         : 
+  P EH T i <- P         : 
+ P ER IY b <- P         : 
+ P EY IY b <- P         : 
+  P EY R i <- P         : 
+  P F IY b <- P         : 
+ P IH IY i <- P         : 
+ P IY IY b <- P         : 
+ P IY IY i <- P         : 
+  P L AA e <- P         : 
+  P L AE e <- P         : 
+  P L AH e <- P         : 
+  P L AO e <- P         : 
+  P L AY e <- P         : 
+   P L B e <- P         : 
+   P L D e <- P         : 
+  P L EH e <- P         : 
+  P L EY e <- P         : 
+   P L F e <- P         : 
+   P L G e <- P         : 
+  P L HH e <- P         : 
+  P L IH e <- P         : 
+  P L IY b <- P         : 
+  P L IY e <- P         : 
+  P L JH e <- P         : 
+   P L K e <- P         : 
+   P L M e <- P         : 
+   P L N e <- P         : 
+  P L OW e <- P         : 
+   P L P e <- P         : 
+   P L R e <- P         : 
+   P L S e <- P         : 
+ P L SIL e <- P         : 
+   P L T e <- P         : 
+  P L TH e <- P         : 
+   P L V e <- P         : 
+   P L W e <- P         : 
+   P L Y e <- P         : 
+   P L Z e <- P         : 
+  P M IY b <- P         : 
+  P N IY b <- P         : 
+ P OW IY b <- P         : 
+  P P IY b <- P         : 
+  P R IY b <- P         : 
+  P S IY b <- P         : 
+P SIL IY b <- P         : 
+  P T IY b <- P         : 
+ P TH IY b <- P         : 
+ P UW IY b <- P         : 
+  P V IY b <- P         : 
+ R AA AA e <- R         : [mx   246(0) +=    72] [mx   248(1) +=    73] [mx   251(2) +=    74] 
+ R AA AE e <- R         : [mx   245(0) +=    72] [mx   252(2) +=    74] 
+ R AA AH e <- R         : 
+ R AA AO e <- R         : 
+ R AA AY e <- R         : 
+  R AA B e <- R         : [mx   247(1) +=    73] 
+ R AA CH i <- R         : [mx   253(2) +=    74] 
+  R AA D e <- R         : 
+ R AA EH e <- R         : 
+ R AA EY e <- R         : 
+  R AA F e <- R         : 
+  R AA G e <- R         : 
+ R AA HH e <- R         : 
+ R AA IH e <- R         : 
+ R AA IY e <- R         : 
+ R AA JH e <- R         : 
+  R AA K e <- R         : 
+  R AA M e <- R         : 
+  R AA N e <- R         : 
+ R AA OW e <- R         : 
+  R AA P e <- R         : 
+  R AA R e <- R         : 
+  R AA S e <- R         : 
+R AA SIL e <- R         : 
+  R AA T e <- R         : 
+  R AA T i <- R         : 
+ R AA TH e <- R         : 
+  R AA V e <- R         : 
+  R AA W e <- R         : 
+  R AA Y e <- R         : 
+  R AA Z e <- R         : 
+ R AH AH b <- R         : [mx   249(1) +=    73] [mx   254(2) +=    74] 
+ R AH IH b <- R         : [mx   250(1) +=    73] [mx   255(2) +=    74] 
+ R AH IY b <- R         : 
+ R AO AA e <- R         : 
+ R AO AE e <- R         : 
+ R AO AH e <- R         : 
+ R AO AO e <- R         : 
+ R AO AY e <- R         : 
+  R AO B e <- R         : 
+  R AO D e <- R         : 
+ R AO EH e <- R         : 
+ R AO EY e <- R         : 
+  R AO F e <- R         : 
+  R AO G e <- R         : 
+ R AO HH e <- R         : 
+ R AO IH e <- R         : 
+ R AO IY e <- R         : 
+ R AO JH e <- R         : 
+  R AO K e <- R         : 
+  R AO M e <- R         : 
+  R AO N e <- R         : 
+ R AO OW e <- R         : 
+  R AO P e <- R         : 
+  R AO R e <- R         : 
+  R AO S e <- R         : 
+R AO SIL e <- R         : 
+  R AO T e <- R         : 
+  R AO T i <- R         : 
+ R AO TH e <- R         : 
+ R AO TH i <- R         : 
+  R AO V e <- R         : 
+  R AO W e <- R         : 
+  R AO Y e <- R         : 
+  R AO Z e <- R         : 
+ R AY AH b <- R         : 
+ R AY IH b <- R         : 
+ R AY IY b <- R         : 
+  R B UW i <- R         : [mx   244(0) +=    72] 
+ R CH AH b <- R         : [mx   242(0) +=    72] 
+ R CH IH b <- R         : 
+ R CH IY b <- R         : 
+  R D AH b <- R         : 
+  R D AH i <- R         : 
+  R D IH b <- R         : 
+  R D IH i <- R         : 
+  R D IY b <- R         : 
+ R EH IY i <- R         : 
+ R ER AH b <- R         : 
+ R ER IH b <- R         : 
+ R ER IY b <- R         : 
+ R EY AH b <- R         : 
+ R EY IH b <- R         : 
+ R EY IY b <- R         : 
+  R F AH b <- R         : 
+  R F IH b <- R         : 
+  R F IY b <- R         : 
+ R IH EY i <- R         : [mx   243(0) +=    72] 
+ R IH OW i <- R         : 
+ R IY AH b <- R         : 
+ R IY EY i <- R         : 
+ R IY IH b <- R         : 
+ R IY IY b <- R         : 
+ R IY OW i <- R         : 
+  R L AH b <- R         : 
+  R L IH b <- R         : 
+  R L IY b <- R         : 
+  R M AH b <- R         : 
+  R M IH b <- R         : 
+  R M IY b <- R         : 
+  R N AH b <- R         : 
+  R N IH b <- R         : 
+  R N IY b <- R         : 
+ R OW AH b <- R         : 
+ R OW IH b <- R         : 
+ R OW IY b <- R         : 
+  R P AH b <- R         : 
+  R P AH i <- R         : 
+  R P IH b <- R         : 
+  R P IY b <- R         : 
+  R R AH b <- R         : 
+  R R IH b <- R         : 
+  R R IY b <- R         : 
+  R S AH b <- R         : 
+  R S IH b <- R         : 
+  R S IY b <- R         : 
+R SIL AH b <- R         : 
+R SIL IH b <- R         : 
+R SIL IY b <- R         : 
+  R T AH b <- R         : 
+  R T AH i <- R         : 
+  R T IH b <- R         : 
+  R T IY b <- R         : 
+ R TH AH b <- R         : 
+ R TH IH b <- R         : 
+ R TH IY b <- R         : 
+ R TH IY i <- R         : 
+ R UW AH b <- R         : 
+ R UW IH b <- R         : 
+ R UW IY b <- R         : 
+  R V AH b <- R         : 
+  R V IH b <- R         : 
+  R V IY b <- R         : 
+  S AA T i <- S         : [mx   257(0) +=    75] [mx   261(1) +=    76] [mx   263(2) +=    77] 
+ S AH EH b <- S         : [mx   260(1) +=    76] [mx   264(2) +=    77] 
+ S AH IH b <- S         : 
+ S AH IY b <- S         : 
+  S AH T b <- S         : 
+  S AH T i <- S         : 
+ S AY EH b <- S         : 
+ S AY IH b <- S         : 
+ S AY IY b <- S         : 
+  S AY T b <- S         : 
+ S CH EH b <- S         : [mx   256(0) +=    75] 
+ S CH IH b <- S         : 
+ S CH IY b <- S         : 
+  S CH T b <- S         : 
+  S D EH b <- S         : 
+  S D IH b <- S         : 
+  S D IY b <- S         : 
+   S D T b <- S         : 
+ S EH AA e <- S         : [mx   258(0) +=    75] 
+ S EH AE e <- S         : 
+ S EH AH e <- S         : 
+ S EH AO e <- S         : 
+ S EH AY e <- S         : 
+  S EH B e <- S         : 
+  S EH D e <- S         : 
+ S EH EH e <- S         : 
+ S EH EY e <- S         : 
+  S EH F e <- S         : 
+  S EH G e <- S         : 
+ S EH HH e <- S         : 
+ S EH IH e <- S         : 
+ S EH IY e <- S         : 
+ S EH JH e <- S         : 
+  S EH K e <- S         : 
+  S EH M e <- S         : 
+  S EH N e <- S         : 
+ S EH OW e <- S         : 
+  S EH P e <- S         : 
+  S EH R e <- S         : 
+  S EH S e <- S         : 
+S EH SIL e <- S         : [mx   262(2) +=    77] 
+  S EH T e <- S         : 
+ S EH TH e <- S         : 
+  S EH V e <- S         : 
+  S EH W e <- S         : 
+  S EH Y e <- S         : 
+  S EH Z e <- S         : 
+ S ER EH b <- S         : 
+ S ER IH b <- S         : 
+ S ER IY b <- S         : 
+  S ER T b <- S         : 
+  S ER T i <- S         : 
+ S EY AA e <- S         : 
+ S EY AE e <- S         : 
+ S EY AH e <- S         : 
+ S EY AO e <- S         : 
+ S EY AY e <- S         : 
+  S EY B e <- S         : 
+  S EY D e <- S         : 
+ S EY EH b <- S         : 
+ S EY EH e <- S         : 
+ S EY EY e <- S         : 
+  S EY F e <- S         : 
+  S EY G e <- S         : 
+ S EY HH e <- S         : 
+ S EY IH b <- S         : 
+ S EY IH e <- S         : 
+ S EY IY b <- S         : 
+ S EY IY e <- S         : 
+ S EY JH e <- S         : 
+  S EY K e <- S         : 
+  S EY M e <- S         : 
+  S EY N e <- S         : 
+ S EY OW e <- S         : 
+  S EY P e <- S         : 
+  S EY R e <- S         : 
+  S EY S e <- S         : 
+S EY SIL e <- S         : 
+  S EY T b <- S         : 
+  S EY T e <- S         : 
+ S EY TH e <- S         : 
+  S EY V e <- S         : 
+  S EY W e <- S         : 
+  S EY Y e <- S         : 
+  S EY Z e <- S         : 
+  S F EH b <- S         : 
+  S F IH b <- S         : 
+  S F IY b <- S         : 
+   S F T b <- S         : 
+ S IH EH i <- S         : 
+ S IY EH b <- S         : 
+ S IY IH b <- S         : 
+ S IY IY b <- S         : 
+  S IY T b <- S         : 
+  S K AA e <- S         : [mx   259(0) +=    75] 
+  S K AE e <- S         : 
+  S K AH e <- S         : 
+  S K AO e <- S         : 
+  S K AY e <- S         : 
+   S K B e <- S         : 
+   S K D e <- S         : 
+  S K EH e <- S         : 
+  S K EY e <- S         : 
+   S K F e <- S         : 
+   S K G e <- S         : 
+  S K HH e <- S         : 
+  S K IH e <- S         : 
+  S K IY e <- S         : 
+  S K JH e <- S         : 
+   S K K e <- S         : 
+   S K M e <- S         : 
+   S K N e <- S         : 
+  S K OW e <- S         : 
+   S K P e <- S         : 
+   S K R e <- S         : 
+   S K S e <- S         : 
+ S K SIL e <- S         : 
+   S K T e <- S         : 
+   S K T i <- S         : 
+  S K TH e <- S         : 
+  S K TH i <- S         : 
+   S K V e <- S         : 
+   S K W e <- S         : 
+   S K Y e <- S         : 
+   S K Z e <- S         : 
+  S L EH b <- S         : 
+  S L IH b <- S         : 
+  S L IY b <- S         : 
+   S L T b <- S         : 
+  S M EH b <- S         : 
+  S M IH b <- S         : 
+  S M IY b <- S         : 
+   S M T b <- S         : 
+  S N EH b <- S         : 
+  S N IH b <- S         : 
+  S N IY b <- S         : 
+   S N T b <- S         : 
+ S OW EH b <- S         : 
+ S OW IH b <- S         : 
+ S OW IY b <- S         : 
+  S OW T b <- S         : 
+  S P EH b <- S         : 
+  S P IH b <- S         : 
+  S P IY b <- S         : 
+   S P T b <- S         : 
+  S R EH b <- S         : 
+  S R IH b <- S         : 
+  S R IY b <- S         : 
+   S R T b <- S         : 
+  S S EH b <- S         : 
+  S S IH b <- S         : 
+  S S IY b <- S         : 
+   S S T b <- S         : 
+S SIL EH b <- S         : 
+S SIL IH b <- S         : 
+S SIL IY b <- S         : 
+ S SIL T b <- S         : 
+  S T EH b <- S         : 
+  S T IH b <- S         : 
+  S T IY b <- S         : 
+   S T T b <- S         : 
+ S TH EH b <- S         : 
+ S TH IH b <- S         : 
+ S TH IY b <- S         : 
+  S TH T b <- S         : 
+ S UW EH b <- S         : 
+ S UW IH b <- S         : 
+ S UW IY b <- S         : 
+  S UW T b <- S         : 
+  S V EH b <- S         : 
+  S V IH b <- S         : 
+  S V IY b <- S         : 
+   S V T b <- S         : 
+ T AH EH b <- T         : [mx   267(0) +=    81] [mx   268(1) +=    82] [mx   271(2) +=    83] 
+ T AH IY b <- T         : [mx   269(1) +=    82] [mx   273(2) +=    83] 
+ T AH UW b <- T         : [mx   270(1) +=    82] [mx   272(2) +=    83] 
+  T AH W b <- T         : 
+ T AW AA e <- T         : [mx   265(0) +=    81] 
+ T AW AE e <- T         : 
+ T AW AH e <- T         : 
+ T AW AO e <- T         : 
+ T AW AY e <- T         : 
+  T AW B e <- T         : 
+  T AW D e <- T         : 
+ T AW EH e <- T         : 
+ T AW EY e <- T         : 
+  T AW F e <- T         : 
+  T AW G e <- T         : 
+ T AW HH e <- T         : 
+ T AW IH e <- T         : 
+ T AW IY e <- T         : 
+ T AW JH e <- T         : 
+  T AW K e <- T         : 
+  T AW M e <- T         : 
+  T AW N e <- T         : 
+ T AW OW e <- T         : 
+  T AW P e <- T         : 
+  T AW R e <- T         : 
+  T AW S e <- T         : 
+T AW SIL e <- T         : 
+  T AW T e <- T         : 
+ T AW TH e <- T         : 
+  T AW V e <- T         : 
+  T AW W e <- T         : 
+  T AW Y e <- T         : 
+  T AW Z e <- T         : 
+ T AY EH b <- T         : 
+ T AY IY b <- T         : 
+ T AY UW b <- T         : 
+  T AY W b <- T         : 
+ T CH EH b <- T         : 
+ T CH IY b <- T         : 
+ T CH UW b <- T         : 
+  T CH W b <- T         : 
+  T D EH b <- T         : 
+  T D IY b <- T         : 
+  T D UW b <- T         : 
+   T D W b <- T         : 
+ T ER EH b <- T         : 
+ T ER IY b <- T         : 
+ T ER IY i <- T         : 
+ T ER UW b <- T         : 
+  T ER W b <- T         : 
+ T EY AA e <- T         : 
+ T EY AE e <- T         : 
+ T EY AH e <- T         : 
+ T EY AO e <- T         : 
+ T EY AY e <- T         : 
+  T EY B e <- T         : 
+  T EY D e <- T         : 
+ T EY EH b <- T         : 
+ T EY EH e <- T         : 
+ T EY EY e <- T         : 
+  T EY F e <- T         : 
+  T EY G e <- T         : 
+ T EY HH e <- T         : 
+ T EY IH e <- T         : 
+ T EY IY b <- T         : 
+ T EY IY e <- T         : 
+ T EY IY i <- T         : 
+ T EY JH e <- T         : 
+  T EY K e <- T         : 
+  T EY M e <- T         : 
+  T EY N e <- T         : 
+ T EY OW e <- T         : 
+  T EY P e <- T         : 
+  T EY R e <- T         : 
+  T EY S e <- T         : 
+T EY SIL e <- T         : 
+  T EY T e <- T         : 
+ T EY TH e <- T         : 
+ T EY TH i <- T         : 
+ T EY UW b <- T         : 
+  T EY V e <- T         : 
+  T EY W b <- T         : 
+  T EY W e <- T         : 
+  T EY Y e <- T         : 
+  T EY Z e <- T         : 
+  T F EH b <- T         : 
+  T F IY b <- T         : 
+  T F IY i <- T         : [mx   266(0) +=    81] 
+  T F UW b <- T         : 
+   T F W b <- T         : 
+ T IY AA e <- T         : 
+ T IY AE e <- T         : 
+ T IY AH e <- T         : 
+ T IY AO e <- T         : 
+ T IY AY e <- T         : 
+  T IY B e <- T         : 
+  T IY D e <- T         : 
+ T IY EH b <- T         : 
+ T IY EH e <- T         : 
+ T IY EY e <- T         : 
+  T IY F e <- T         : 
+  T IY G e <- T         : 
+ T IY HH e <- T         : 
+ T IY IH e <- T         : 
+ T IY IY b <- T         : 
+ T IY IY e <- T         : 
+ T IY JH e <- T         : 
+  T IY K e <- T         : 
+  T IY M e <- T         : 
+  T IY N e <- T         : 
+ T IY OW e <- T         : 
+  T IY P e <- T         : 
+  T IY R e <- T         : 
+  T IY S e <- T         : 
+T IY SIL e <- T         : 
+  T IY T e <- T         : 
+ T IY TH e <- T         : 
+ T IY UW b <- T         : 
+  T IY V e <- T         : 
+  T IY W b <- T         : 
+  T IY W e <- T         : 
+  T IY Y e <- T         : 
+  T IY Z e <- T         : 
+  T K OW i <- T         : 
+  T L EH b <- T         : 
+  T L IY b <- T         : 
+  T L UW b <- T         : 
+   T L W b <- T         : 
+  T M EH b <- T         : 
+  T M IY b <- T         : 
+  T M UW b <- T         : 
+   T M W b <- T         : 
+  T N EH b <- T         : 
+  T N ER i <- T         : 
+  T N IY b <- T         : 
+  T N IY i <- T         : 
+  T N UW b <- T         : 
+   T N W b <- T         : 
+ T OW EH b <- T         : 
+ T OW IY b <- T         : 
+ T OW UW b <- T         : 
+  T OW W b <- T         : 
+  T P EH b <- T         : 
+  T P EH i <- T         : 
+  T P IY b <- T         : 
+  T P UW b <- T         : 
+   T P W b <- T         : 
+  T R AA e <- T         : 
+  T R AE e <- T         : 
+  T R AH e <- T         : 
+  T R AO e <- T         : 
+  T R AY e <- T         : 
+   T R B e <- T         : 
+   T R D e <- T         : 
+  T R EH b <- T         : 
+  T R EH e <- T         : 
+  T R EY e <- T         : 
+   T R F e <- T         : 
+   T R G e <- T         : 
+  T R HH e <- T         : 
+  T R IH e <- T         : 
+  T R IY b <- T         : 
+  T R IY e <- T         : 
+  T R IY i <- T         : 
+  T R JH e <- T         : 
+   T R K e <- T         : 
+   T R M e <- T         : 
+   T R N e <- T         : 
+  T R OW e <- T         : 
+   T R P e <- T         : 
+   T R R e <- T         : 
+   T R S e <- T         : 
+ T R SIL e <- T         : 
+   T R T e <- T         : 
+  T R TH e <- T         : 
+  T R UW b <- T         : 
+   T R V e <- T         : 
+   T R W b <- T         : 
+   T R W e <- T         : 
+   T R Y e <- T         : 
+   T R Z e <- T         : 
+  T S AA e <- T         : 
+  T S AA i <- T         : 
+  T S AE e <- T         : 
+  T S AH e <- T         : 
+  T S AO e <- T         : 
+  T S AY e <- T         : 
+   T S B e <- T         : 
+   T S D e <- T         : 
+  T S EH b <- T         : 
+  T S EH e <- T         : 
+  T S EY e <- T         : 
+   T S F e <- T         : 
+   T S G e <- T         : 
+  T S HH e <- T         : 
+  T S IH e <- T         : 
+  T S IY b <- T         : 
+  T S IY e <- T         : 
+  T S IY i <- T         : 
+  T S JH e <- T         : 
+   T S K e <- T         : 
+   T S M e <- T         : 
+   T S N e <- T         : 
+  T S OW e <- T         : 
+   T S P e <- T         : 
+   T S R e <- T         : 
+   T S R i <- T         : 
+   T S S e <- T         : 
+ T S SIL e <- T         : 
+   T S T e <- T         : 
+  T S TH e <- T         : 
+  T S UW b <- T         : 
+   T S V e <- T         : 
+   T S W b <- T         : 
+   T S W e <- T         : 
+   T S Y e <- T         : 
+   T S Z e <- T         : 
+T SIL EH b <- T         : 
+T SIL IY b <- T         : 
+T SIL UW b <- T         : 
+ T SIL W b <- T         : 
+  T T EH b <- T         : 
+  T T IY b <- T         : 
+  T T UW b <- T         : 
+   T T W b <- T         : 
+ T TH EH b <- T         : 
+ T TH IY b <- T         : 
+ T TH UW b <- T         : 
+  T TH W b <- T         : 
+ T UW EH b <- T         : 
+ T UW IY b <- T         : 
+ T UW UW b <- T         : 
+  T UW W b <- T         : 
+  T V EH b <- T         : 
+  T V IY b <- T         : 
+  T V UW b <- T         : 
+   T V W b <- T         : 
+TH AH AA e <- TH        : [mx   274(0) +=    84] [mx   275(1) +=    85] [mx   276(2) +=    86] 
+TH AH AE e <- TH        : 
+TH AH AH e <- TH        : 
+TH AH AO e <- TH        : 
+TH AH AW b <- TH        : 
+TH AH AY e <- TH        : 
+ TH AH B e <- TH        : 
+ TH AH D e <- TH        : 
+TH AH EH e <- TH        : 
+TH AH ER b <- TH        : 
+TH AH EY e <- TH        : 
+ TH AH F e <- TH        : 
+ TH AH G e <- TH        : 
+TH AH HH e <- TH        : 
+TH AH IH e <- TH        : 
+TH AH IY e <- TH        : 
+TH AH JH e <- TH        : 
+ TH AH K e <- TH        : 
+ TH AH M e <- TH        : 
+ TH AH N e <- TH        : 
+TH AH OW e <- TH        : 
+ TH AH P e <- TH        : 
+ TH AH R b <- TH        : 
+ TH AH R e <- TH        : 
+ TH AH S e <- TH        : 
+TH AH SIL e <- TH        : 
+ TH AH T e <- TH        : 
+TH AH TH e <- TH        : 
+ TH AH V e <- TH        : 
+ TH AH W e <- TH        : 
+ TH AH Y e <- TH        : 
+ TH AH Z e <- TH        : 
+TH AY AW b <- TH        : 
+TH AY ER b <- TH        : 
+ TH AY R b <- TH        : 
+TH CH AW b <- TH        : 
+TH CH ER b <- TH        : 
+ TH CH R b <- TH        : 
+ TH D AW b <- TH        : 
+ TH D ER b <- TH        : 
+  TH D R b <- TH        : 
+TH ER AW b <- TH        : 
+TH ER ER b <- TH        : 
+ TH ER R b <- TH        : 
+TH EY AA e <- TH        : 
+TH EY AE e <- TH        : 
+TH EY AH e <- TH        : 
+TH EY AO e <- TH        : 
+TH EY AW b <- TH        : 
+TH EY AY e <- TH        : 
+ TH EY B e <- TH        : 
+ TH EY D e <- TH        : 
+TH EY EH e <- TH        : 
+TH EY ER b <- TH        : 
+TH EY EY e <- TH        : 
+ TH EY F e <- TH        : 
+ TH EY G e <- TH        : 
+TH EY HH e <- TH        : 
+TH EY IH e <- TH        : 
+TH EY IY e <- TH        : 
+TH EY JH e <- TH        : 
+ TH EY K e <- TH        : 
+ TH EY M e <- TH        : 
+ TH EY N e <- TH        : 
+TH EY OW e <- TH        : 
+ TH EY P e <- TH        : 
+ TH EY R b <- TH        : 
+ TH EY R e <- TH        : 
+ TH EY S e <- TH        : 
+TH EY SIL e <- TH        : 
+ TH EY T e <- TH        : 
+TH EY TH e <- TH        : 
+ TH EY V e <- TH        : 
+ TH EY W e <- TH        : 
+ TH EY Y e <- TH        : 
+ TH EY Z e <- TH        : 
+ TH F AA e <- TH        : 
+ TH F AE e <- TH        : 
+ TH F AH e <- TH        : 
+ TH F AO e <- TH        : 
+ TH F AW b <- TH        : 
+ TH F AY e <- TH        : 
+  TH F B e <- TH        : 
+  TH F D e <- TH        : 
+ TH F EH e <- TH        : 
+ TH F ER b <- TH        : 
+ TH F EY e <- TH        : 
+  TH F F e <- TH        : 
+  TH F G e <- TH        : 
+ TH F HH e <- TH        : 
+ TH F IH e <- TH        : 
+ TH F IY e <- TH        : 
+ TH F JH e <- TH        : 
+  TH F K e <- TH        : 
+  TH F M e <- TH        : 
+  TH F N e <- TH        : 
+ TH F OW e <- TH        : 
+  TH F P e <- TH        : 
+  TH F R b <- TH        : 
+  TH F R e <- TH        : 
+  TH F S e <- TH        : 
+TH F SIL e <- TH        : 
+  TH F T e <- TH        : 
+ TH F TH e <- TH        : 
+  TH F V e <- TH        : 
+  TH F W e <- TH        : 
+  TH F Y e <- TH        : 
+  TH F Z e <- TH        : 
+TH IH AA e <- TH        : 
+TH IH AE e <- TH        : 
+TH IH AH e <- TH        : 
+TH IH AO e <- TH        : 
+TH IH AY e <- TH        : 
+ TH IH B e <- TH        : 
+ TH IH D e <- TH        : 
+TH IH EH e <- TH        : 
+TH IH EY e <- TH        : 
+ TH IH F e <- TH        : 
+ TH IH G e <- TH        : 
+TH IH HH e <- TH        : 
+TH IH IH e <- TH        : 
+TH IH IY e <- TH        : 
+TH IH JH e <- TH        : 
+ TH IH K e <- TH        : 
+ TH IH M e <- TH        : 
+ TH IH N e <- TH        : 
+TH IH OW e <- TH        : 
+ TH IH P e <- TH        : 
+ TH IH R e <- TH        : 
+ TH IH S e <- TH        : 
+TH IH SIL e <- TH        : 
+ TH IH T e <- TH        : 
+TH IH TH e <- TH        : 
+ TH IH V e <- TH        : 
+ TH IH W e <- TH        : 
+ TH IH Y e <- TH        : 
+ TH IH Z e <- TH        : 
+TH IY AW b <- TH        : 
+TH IY ER b <- TH        : 
+ TH IY R b <- TH        : 
+ TH L AW b <- TH        : 
+ TH L ER b <- TH        : 
+  TH L R b <- TH        : 
+ TH M AW b <- TH        : 
+ TH M ER b <- TH        : 
+  TH M R b <- TH        : 
+ TH N AA e <- TH        : 
+ TH N AE e <- TH        : 
+ TH N AH e <- TH        : 
+ TH N AO e <- TH        : 
+ TH N AW b <- TH        : 
+ TH N AY e <- TH        : 
+  TH N B e <- TH        : 
+  TH N D e <- TH        : 
+ TH N EH e <- TH        : 
+ TH N ER b <- TH        : 
+ TH N EY e <- TH        : 
+  TH N F e <- TH        : 
+  TH N G e <- TH        : 
+ TH N HH e <- TH        : 
+ TH N IH e <- TH        : 
+ TH N IY e <- TH        : 
+ TH N JH e <- TH        : 
+  TH N K e <- TH        : 
+  TH N M e <- TH        : 
+  TH N N e <- TH        : 
+ TH N OW e <- TH        : 
+  TH N P e <- TH        : 
+  TH N R b <- TH        : 
+  TH N R e <- TH        : 
+  TH N S e <- TH        : 
+TH N SIL e <- TH        : 
+  TH N T e <- TH        : 
+ TH N TH e <- TH        : 
+  TH N V e <- TH        : 
+  TH N W e <- TH        : 
+  TH N Y e <- TH        : 
+  TH N Z e <- TH        : 
+TH OW AW b <- TH        : 
+TH OW ER b <- TH        : 
+ TH OW R b <- TH        : 
+ TH P AW b <- TH        : 
+ TH P ER b <- TH        : 
+  TH P R b <- TH        : 
+ TH R AA e <- TH        : 
+ TH R AE e <- TH        : 
+ TH R AH e <- TH        : 
+ TH R AO e <- TH        : 
+ TH R AW b <- TH        : 
+ TH R AY e <- TH        : 
+  TH R B e <- TH        : 
+  TH R D e <- TH        : 
+ TH R EH e <- TH        : 
+ TH R ER b <- TH        : 
+ TH R EY e <- TH        : 
+  TH R F e <- TH        : 
+  TH R G e <- TH        : 
+ TH R HH e <- TH        : 
+ TH R IH e <- TH        : 
+ TH R IY e <- TH        : 
+ TH R JH e <- TH        : 
+  TH R K e <- TH        : 
+  TH R M e <- TH        : 
+  TH R N e <- TH        : 
+ TH R OW e <- TH        : 
+  TH R P e <- TH        : 
+  TH R R b <- TH        : 
+  TH R R e <- TH        : 
+  TH R S e <- TH        : 
+TH R SIL e <- TH        : 
+  TH R T e <- TH        : 
+ TH R TH e <- TH        : 
+  TH R V e <- TH        : 
+  TH R W e <- TH        : 
+  TH R Y e <- TH        : 
+  TH R Z e <- TH        : 
+ TH S AA e <- TH        : 
+ TH S AE e <- TH        : 
+ TH S AH e <- TH        : 
+ TH S AO e <- TH        : 
+ TH S AW b <- TH        : 
+ TH S AY e <- TH        : 
+  TH S B e <- TH        : 
+  TH S D e <- TH        : 
+ TH S EH e <- TH        : 
+ TH S ER b <- TH        : 
+ TH S EY e <- TH        : 
+  TH S F e <- TH        : 
+  TH S G e <- TH        : 
+ TH S HH e <- TH        : 
+ TH S IH e <- TH        : 
+ TH S IY e <- TH        : 
+ TH S JH e <- TH        : 
+  TH S K e <- TH        : 
+  TH S M e <- TH        : 
+  TH S N e <- TH        : 
+ TH S OW e <- TH        : 
+  TH S P e <- TH        : 
+  TH S R b <- TH        : 
+  TH S R e <- TH        : 
+  TH S S e <- TH        : 
+TH S SIL e <- TH        : 
+  TH S T e <- TH        : 
+ TH S TH e <- TH        : 
+  TH S V e <- TH        : 
+  TH S W e <- TH        : 
+  TH S Y e <- TH        : 
+  TH S Z e <- TH        : 
+TH SIL AW b <- TH        : 
+TH SIL ER b <- TH        : 
+TH SIL R b <- TH        : 
+ TH T AA e <- TH        : 
+ TH T AE e <- TH        : 
+ TH T AH e <- TH        : 
+ TH T AO e <- TH        : 
+ TH T AW b <- TH        : 
+ TH T AY e <- TH        : 
+  TH T B e <- TH        : 
+  TH T D e <- TH        : 
+ TH T EH e <- TH        : 
+ TH T ER b <- TH        : 
+ TH T EY e <- TH        : 
+  TH T F e <- TH        : 
+  TH T G e <- TH        : 
+ TH T HH e <- TH        : 
+ TH T IH e <- TH        : 
+ TH T IY e <- TH        : 
+ TH T JH e <- TH        : 
+  TH T K e <- TH        : 
+  TH T M e <- TH        : 
+  TH T N e <- TH        : 
+ TH T OW e <- TH        : 
+  TH T P e <- TH        : 
+  TH T R b <- TH        : 
+  TH T R e <- TH        : 
+  TH T S e <- TH        : 
+TH T SIL e <- TH        : 
+  TH T T e <- TH        : 
+ TH T TH e <- TH        : 
+  TH T V e <- TH        : 
+  TH T W e <- TH        : 
+  TH T Y e <- TH        : 
+  TH T Z e <- TH        : 
+TH TH AW b <- TH        : 
+TH TH ER b <- TH        : 
+ TH TH R b <- TH        : 
+TH UW AW b <- TH        : 
+TH UW ER b <- TH        : 
+ TH UW R b <- TH        : 
+ TH V AW b <- TH        : 
+ TH V ER b <- TH        : 
+  TH V R b <- TH        : 
+  UW B W i <- UW        : [mx   277(0) +=    87] [mx   279(1) +=    88] [mx   282(2) +=    89] 
+ UW JH L i <- UW        : 
+ UW JH N i <- UW        : [mx   281(2) +=    89] 
+  UW R W i <- UW        : 
+ UW T AA e <- UW        : 
+ UW T AE e <- UW        : 
+ UW T AH e <- UW        : 
+ UW T AO e <- UW        : 
+ UW T AY e <- UW        : 
+  UW T B e <- UW        : 
+  UW T D e <- UW        : 
+ UW T EH e <- UW        : 
+ UW T EY e <- UW        : 
+  UW T F e <- UW        : [mx   280(1) +=    88] 
+  UW T G e <- UW        : 
+ UW T HH e <- UW        : 
+ UW T IH e <- UW        : 
+ UW T IY e <- UW        : 
+ UW T JH e <- UW        : 
+  UW T K e <- UW        : 
+  UW T M e <- UW        : 
+  UW T N e <- UW        : 
+ UW T OW e <- UW        : 
+  UW T P e <- UW        : 
+  UW T R e <- UW        : 
+  UW T S e <- UW        : 
+UW T SIL e <- UW        : 
+  UW T T e <- UW        : 
+ UW T TH e <- UW        : 
+  UW T V e <- UW        : 
+  UW T W e <- UW        : 
+  UW T Y e <- UW        : 
+  UW T Z e <- UW        : 
+ UW Y AA e <- UW        : [mx   278(0) +=    87] 
+ UW Y AE e <- UW        : 
+ UW Y AH e <- UW        : 
+ UW Y AO e <- UW        : 
+ UW Y AY e <- UW        : 
+  UW Y B e <- UW        : 
+  UW Y D e <- UW        : 
+ UW Y EH e <- UW        : 
+ UW Y EH i <- UW        : 
+ UW Y EY e <- UW        : 
+  UW Y F e <- UW        : 
+  UW Y G e <- UW        : 
+ UW Y HH e <- UW        : 
+ UW Y IH e <- UW        : 
+ UW Y IY e <- UW        : 
+ UW Y JH e <- UW        : 
+  UW Y K e <- UW        : 
+  UW Y M e <- UW        : 
+  UW Y N e <- UW        : 
+ UW Y OW e <- UW        : 
+  UW Y P e <- UW        : 
+  UW Y R e <- UW        : 
+  UW Y S e <- UW        : 
+UW Y SIL e <- UW        : 
+  UW Y T e <- UW        : 
+ UW Y TH e <- UW        : 
+  UW Y V e <- UW        : 
+  UW Y W e <- UW        : 
+  UW Y W i <- UW        : 
+  UW Y Y e <- UW        : 
+  UW Y Z e <- UW        : 
+ V AH AA e <- V         : [mx   283(0) +=    90] [mx   285(1) +=    91] [mx   287(2) +=    92] 
+ V AH AE e <- V         : 
+ V AH AH e <- V         : [mx   289(2) +=    92] 
+ V AH AO e <- V         : 
+ V AH AY e <- V         : 
+  V AH B e <- V         : 
+  V AH D e <- V         : 
+ V AH EH e <- V         : 
+ V AH EY e <- V         : 
+  V AH F e <- V         : 
+  V AH G e <- V         : 
+ V AH HH e <- V         : 
+ V AH IH e <- V         : 
+ V AH IY b <- V         : [mx   288(2) +=    92] 
+ V AH IY e <- V         : 
+ V AH JH e <- V         : 
+  V AH K e <- V         : 
+  V AH M e <- V         : 
+  V AH N e <- V         : 
+ V AH OW e <- V         : 
+  V AH P e <- V         : 
+  V AH R e <- V         : 
+  V AH S e <- V         : 
+V AH SIL e <- V         : 
+  V AH T e <- V         : 
+ V AH TH e <- V         : 
+  V AH V e <- V         : 
+  V AH W e <- V         : 
+  V AH Y e <- V         : 
+  V AH Z e <- V         : 
+ V AY AA e <- V         : 
+ V AY AE e <- V         : 
+ V AY AH e <- V         : 
+ V AY AO e <- V         : 
+ V AY AY e <- V         : 
+  V AY B e <- V         : 
+  V AY D e <- V         : 
+ V AY EH e <- V         : 
+ V AY EY e <- V         : 
+  V AY F e <- V         : 
+  V AY G e <- V         : 
+ V AY HH e <- V         : 
+ V AY IH e <- V         : 
+ V AY IY b <- V         : 
+ V AY IY e <- V         : 
+ V AY JH e <- V         : 
+  V AY K e <- V         : 
+  V AY M e <- V         : 
+  V AY N e <- V         : 
+ V AY OW e <- V         : 
+  V AY P e <- V         : 
+  V AY R e <- V         : 
+  V AY S e <- V         : 
+V AY SIL e <- V         : 
+  V AY T e <- V         : 
+ V AY TH e <- V         : 
+  V AY V e <- V         : 
+  V AY W e <- V         : 
+  V AY Y e <- V         : 
+  V AY Z e <- V         : 
+ V CH IY b <- V         : 
+  V D IY b <- V         : 
+ V EH AH i <- V         : [mx   284(0) +=    90] [mx   286(1) +=    91] 
+ V ER IY b <- V         : 
+ V EY IY b <- V         : 
+  V F IY b <- V         : 
+ V IY IY b <- V         : 
+  V L AA e <- V         : 
+  V L AE e <- V         : 
+  V L AH e <- V         : 
+  V L AO e <- V         : 
+  V L AY e <- V         : 
+   V L B e <- V         : 
+   V L D e <- V         : 
+  V L EH e <- V         : 
+  V L EY e <- V         : 
+   V L F e <- V         : 
+   V L G e <- V         : 
+  V L HH e <- V         : 
+  V L IH e <- V         : 
+  V L IY b <- V         : 
+  V L IY e <- V         : 
+  V L JH e <- V         : 
+   V L K e <- V         : 
+   V L M e <- V         : 
+   V L N e <- V         : 
+  V L OW e <- V         : 
+   V L P e <- V         : 
+   V L R e <- V         : 
+   V L S e <- V         : 
+ V L SIL e <- V         : 
+   V L T e <- V         : 
+  V L TH e <- V         : 
+   V L V e <- V         : 
+   V L W e <- V         : 
+   V L Y e <- V         : 
+   V L Z e <- V         : 
+  V M IY b <- V         : 
+  V N IY b <- V         : 
+ V OW EH i <- V         : 
+ V OW IY b <- V         : 
+  V P IY b <- V         : 
+  V R IY b <- V         : 
+  V S IY b <- V         : 
+V SIL IY b <- V         : 
+  V T IY b <- V         : 
+ V TH IY b <- V         : 
+ V UW IY b <- V         : 
+  V V IY b <- V         : 
+ W AH AH b <- W         : [mx   292(0) +=    93] [mx   293(1) +=    94] [mx   294(2) +=    95] 
+ W AH AY b <- W         : [mx   290(0) +=    93] 
+ W AH EH i <- W         : [mx   291(0) +=    93] 
+ W AY AH b <- W         : 
+ W AY AY b <- W         : 
+ W CH AH b <- W         : 
+ W CH AY b <- W         : 
+  W D AH b <- W         : 
+  W D AY b <- W         : 
+ W ER AH b <- W         : 
+ W ER AY b <- W         : 
+ W EY AH b <- W         : 
+ W EY AY b <- W         : 
+  W F AH b <- W         : 
+  W F AY b <- W         : 
+ W HH AH i <- W         : 
+ W IY AH b <- W         : 
+ W IY AY b <- W         : 
+  W L AH b <- W         : 
+  W L AY b <- W         : 
+  W M AH b <- W         : 
+  W M AY b <- W         : 
+  W N AH b <- W         : 
+  W N AY b <- W         : 
+ W OW AH b <- W         : 
+ W OW AY b <- W         : 
+  W P AH b <- W         : 
+  W P AY b <- W         : 
+  W R AH b <- W         : 
+  W R AY b <- W         : 
+  W S AH b <- W         : 
+  W S AY b <- W         : 
+W SIL AH b <- W         : 
+W SIL AY b <- W         : 
+  W T AH b <- W         : 
+  W T AY b <- W         : 
+  W T EH i <- W         : 
+ W TH AH b <- W         : 
+ W TH AY b <- W         : 
+ W UW AH b <- W         : 
+ W UW AY b <- W         : 
+ W UW EH i <- W         : 
+  W V AH b <- W         : 
+  W V AY b <- W         : 
+ Y AH EH b <- Y         : [mx   296(0) +=    96] [mx   297(1) +=    97] [mx   298(2) +=    98] 
+ Y AH UW b <- Y         : 
+ Y AY EH b <- Y         : 
+ Y AY UW b <- Y         : 
+  Y B AH i <- Y         : [mx   295(0) +=    96] 
+  Y B UW i <- Y         : 
+ Y CH EH b <- Y         : 
+ Y CH UW b <- Y         : 
+  Y D EH b <- Y         : 
+  Y D UW b <- Y         : 
+ Y ER EH b <- Y         : 
+ Y ER UW b <- Y         : 
+ Y EY EH b <- Y         : 
+ Y EY UW b <- Y         : 
+  Y F EH b <- Y         : 
+  Y F UW b <- Y         : 
+ Y IY EH b <- Y         : 
+ Y IY UW b <- Y         : 
+  Y K UW i <- Y         : 
+  Y L EH b <- Y         : 
+  Y L UW b <- Y         : 
+  Y L UW i <- Y         : 
+  Y M EH b <- Y         : 
+  Y M UW b <- Y         : 
+  Y N EH b <- Y         : 
+  Y N UW b <- Y         : 
+  Y N UW i <- Y         : 
+ Y OW EH b <- Y         : 
+ Y OW UW b <- Y         : 
+  Y P EH b <- Y         : 
+  Y P UW b <- Y         : 
+  Y R EH b <- Y         : 
+  Y R UW b <- Y         : 
+  Y S EH b <- Y         : 
+  Y S UW b <- Y         : 
+Y SIL EH b <- Y         : 
+Y SIL UW b <- Y         : 
+  Y T EH b <- Y         : 
+  Y T UW b <- Y         : 
+ Y TH EH b <- Y         : 
+ Y TH UW b <- Y         : 
+ Y UW EH b <- Y         : 
+ Y UW UW b <- Y         : 
+  Y V EH b <- Y         : 
+  Y V UW b <- Y         : 
+ Z AH IH b <- Z         : [mx   299(0) +=    99] [mx   300(1) +=   100] [mx   301(2) +=   101] 
+ Z AH IY b <- Z         : 
+ Z AW AH i <- Z         : 
+ Z AY IH b <- Z         : 
+ Z AY IY b <- Z         : 
+ Z CH IH b <- Z         : 
+ Z CH IY b <- Z         : 
+  Z D IH b <- Z         : 
+  Z D IY b <- Z         : 
+ Z ER IH b <- Z         : 
+ Z ER IY b <- Z         : 
+ Z EY IH b <- Z         : 
+ Z EY IY b <- Z         : 
+  Z F IH b <- Z         : 
+  Z F IY b <- Z         : 
+ Z IY IH b <- Z         : 
+ Z IY IY b <- Z         : 
+  Z L IH b <- Z         : 
+  Z L IY b <- Z         : 
+  Z M IH b <- Z         : 
+  Z M IY b <- Z         : 
+  Z N IH b <- Z         : 
+  Z N IY b <- Z         : 
+ Z OW IH b <- Z         : 
+ Z OW IY b <- Z         : 
+  Z P IH b <- Z         : 
+  Z P IY b <- Z         : 
+  Z R IH b <- Z         : 
+  Z R IY b <- Z         : 
+  Z S IH b <- Z         : 
+  Z S IY b <- Z         : 
+Z SIL IH b <- Z         : 
+Z SIL IY b <- Z         : 
+  Z T IH b <- Z         : 
+  Z T IY b <- Z         : 
+ Z TH IH b <- Z         : 
+ Z TH IY b <- Z         : 
+ Z UW IH b <- Z         : 
+ Z UW IY b <- Z         : 
+  Z V IH b <- Z         : 
+  Z V IY b <- Z         : INFO: main.c(529): Writing dest /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_initial/transition_matrices
+INFO: s3tmat_io.c(176): Wrote /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_initial/transition_matrices [34x3x4 array]
+INFO: main.c(540): Writing dest /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_initial/mixture_weights
+INFO: s3mixw_io.c(233): Wrote /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_initial/mixture_weights [302x4x256 array]
+INFO: main.c(549): Writing dest /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_initial/means
+INFO: s3gau_io.c(228): Wrote /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_initial/means [1x4x256 array]
+INFO: main.c(561): Writing dest /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_initial/variances
+INFO: s3gau_io.c(228): Wrote /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.cd_semi_initial/variances [1x4x256 array]
+
+Fri Nov  2 10:08:03 2018

@@ -1,0 +1,24 @@
+Current configuration:
+[NAME]		[DEFLT]	[VALUE]
+-example	no	no
+-help		no	no
+-mixwfn			/home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.ci_semi_flatinitial/mixture_weights
+-moddeffn		/home/sdv/Documents/SDV/SDVoice/an4/model_architecture/an4.ci.mdef
+-ndensity	256	256
+-nstream	4	4
+-tmatfn			/home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.ci_semi_flatinitial/transition_matrices
+-topo			/home/sdv/Documents/SDV/SDVoice/an4/model_architecture/an4.topology
+
+INFO: model_def_io.c(573): Model definition info:
+INFO: model_def_io.c(574): 34 total models defined (34 base, 0 tri)
+INFO: model_def_io.c(575): 136 total states
+INFO: model_def_io.c(576): 102 total tied states
+INFO: model_def_io.c(577): 102 total tied CI states
+INFO: model_def_io.c(578): 34 total tied transition matrices
+INFO: model_def_io.c(579): 4 max state/model
+INFO: model_def_io.c(580): 4 min state/model
+INFO: s3tmat_io.c(176): Wrote /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.ci_semi_flatinitial/transition_matrices [34x3x4 array]
+INFO: s3mixw_io.c(233): Wrote /home/sdv/Documents/SDV/SDVoice/an4/model_parameters/an4.ci_semi_flatinitial/mixture_weights [102x4x256 array]
+main.c(83): Reading model definition file /home/sdv/Documents/SDV/SDVoice/an4/model_architecture/an4.ci.mdef
+main.c(90): 34 models defined
+Fri Nov  2 09:52:04 2018

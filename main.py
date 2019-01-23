@@ -1,11 +1,15 @@
 import sys
- 	
+import time
+import rospy
 import socket
+import roslaunch
+import subprocess
 from paramiko import client
 from firebase import firebase
 from PyQt5 import uic, QtGui, QtCore
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QGridLayout, QTextEdit, QPushButton
-
+import includes
+from ros_utils import *
 #load ui file
 RELATIVE_DIR = './'
 GUI_DIR = RELATIVE_DIR + './'
@@ -67,6 +71,7 @@ class ssh():
 #----------------------------------------------------
 class DOYViewer(Q_MAIN_WINDOW, UI_MAIN_WINDOW):
     ''' Principal class in the way it contains the main GUI's objects '''
+    roscore = Roscore()
     #----------------------------------------------------
     # Name: __init__
     # Type: Constructor
@@ -88,6 +93,14 @@ class DOYViewer(Q_MAIN_WINDOW, UI_MAIN_WINDOW):
         #self.btn_sdv_experimental.clicked.connect(lambda: self.sdvGoToExperimental())
         #self.btn_sdv_manufactura.clicked.connect(lambda: self.sdvGoToManufactura())
         #self.btn_sdv_industrial.clicked.connect(lambda: self.sdvGoToIndustrial())
+        
+        # Lanzar ROS Core:
+        self.roscore.run()
+        # Verificar lista de topicos
+        #print rospy.client.get_published_topics()
+        # Identificar los robots conectados
+        #node = roslaunch.core.Node('sdvoice', 'sdvoice')
+        
         # inicializar conexion
         self.initSocket()
         self.statusBar.showMessage("System Status | Ready. Welcome!")
@@ -114,7 +127,11 @@ class DOYViewer(Q_MAIN_WINDOW, UI_MAIN_WINDOW):
             self.ssh_clients[i].client.close()
             self.ssh_clients[i] = None
             self.EstadosDeConexion_model.removeRow(index.row())
-
+            
+    def closeEvent(self, event):
+        print ("inside the close")
+        # Cerrar todos los subprocesos abiertos
+        self.roscore.terminate()
 
     
 '''
@@ -168,12 +185,15 @@ pose:\
 # output args: None
 #----------------------------------------------------
 def main():
-    ''' Main function of execution for the application. It generates the QT App and executes it '''
+    '''
+    Main function of execution for the application. 
+    It generates the QT App and executes it 
+    '''
     app = QApplication(sys.argv)
     app.setApplicationName(GUI_TITLE)
     gui = DOYViewer()
     gui.show()
     sys.exit(app.exec_())
-
+    
 if __name__ == '__main__':
     main()

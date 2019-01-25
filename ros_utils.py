@@ -27,6 +27,7 @@ class Roscore(object):
         if Roscore.__initialized:
             raise Exception("You can't create more than 1 instance of Roscore.")
         Roscore.__initialized = True
+    
     def run(self):
         try:
             self.roscore_process = subprocess.Popen(['roscore'])
@@ -34,6 +35,7 @@ class Roscore(object):
         except OSError as e:
             sys.stderr.write('roscore could not be run')
             raise e
+    
     def terminate(self):
         print("try to kill child pids of roscore pid: " + str(self.roscore_pid))
         kill_child_processes(self.roscore_pid)

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sys
 import time
 import rospy
@@ -7,9 +8,12 @@ import subprocess
 from paramiko import client
 from firebase import firebase
 from PyQt5 import uic, QtGui, QtCore
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QGridLayout, QTextEdit, QPushButton
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QGridLayout, QTextEdit, QPushButton, QMessageBox
+
+# Custom Libraries
 import includes
 from ros_utils import *
+
 #load ui file
 RELATIVE_DIR = './'
 GUI_DIR = RELATIVE_DIR + './'
@@ -33,8 +37,6 @@ class ssh():
     client = None
 
     def __init__(self, address, username, password):
-        # Let the user know we're connecting to the server
-        print("Connecting to server.")
         # Create a new SSH client
         self.client = client.SSHClient()
         # The following line is required if you want the script to be able to access a server that's not yet in the known_hosts file
@@ -61,6 +63,7 @@ class ssh():
                     # Print as string with utf8 encoding
                     print(str(alldata, "utf8"))
         else:
+            #self.statusBar.showMessage("Connection not opened.")
             print("Connection not opened.")
 
 #----------------------------------------------------
@@ -99,7 +102,6 @@ class DOYViewer(Q_MAIN_WINDOW, UI_MAIN_WINDOW):
         # Verificar lista de topicos
         #print rospy.client.get_published_topics()
         # Identificar los robots conectados
-        #node = roslaunch.core.Node('sdvoice', 'sdvoice')
         
         # inicializar conexion
         self.initSocket()
@@ -112,14 +114,37 @@ class DOYViewer(Q_MAIN_WINDOW, UI_MAIN_WINDOW):
 
     def connectSSH(self):
         i = self.ListaConexiones.currentIndex()
+        # Let the user know we're connecting to the server
+        self.statusBar.showMessage("Connecting to server.")
         self.ssh_clients[i] = ssh(SERVER_IP[i], SERVER_USERNAME[i], SERVER_PASSWORD[i])
         # Agregar a EstadosDeConexion lista de hosts conectados
         if self.ssh_clients[i].client != None:
+            # Lanzar el proyecto de sdvoice en el robot SDV
+            #node = roslaunch.core.Node('sdvoice', 'agv_nav.launch')
+            #launch = roslaunch.scriptapi.ROSLaunch()
+            #launch.start()
+            #process = launch.launch(node)
+            #print process.is_alive()
+            
+            #self.ssh_clients[i].sendCommand("roslaunch sdvoice agv_nav.launch")
+            #self.ssh_clients[i].sendCommand("ls")
+
+            # Actualizar GUI
             item = QtGui.QStandardItem(self.ListaConexiones.currentText())
             self.EstadosDeConexion_model.appendRow(item)
+            self.ListaMaquinas.addItem(self.ListaConexiones.currentText())
+            # TODO: Agregar lista de comandos
         else:
-            # TODO: Agregar widget de error de conexion
-            self.statusBar.showMessage("No se pudo conectar a %s!"%(self.ListaConexiones.currentText()))
+            # QDialog de Warning por error de conexión
+            # TODO: Cambiar tamaño de la ventana del mensaje
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Warning)
+            msg.setText("Error de Conexión:")
+            msg.setInformativeText("No se pudo conectar a %s!"%(self.ListaConexiones.currentText()))
+            msg.setWindowTitle("Warning")
+            ret = msg.exec_()
+        self.statusBar.showMessage("")
+
 
     def disconnectSSH(self):
         for index in self.EstadosDeConexion.selectedIndexes():
@@ -127,9 +152,10 @@ class DOYViewer(Q_MAIN_WINDOW, UI_MAIN_WINDOW):
             self.ssh_clients[i].client.close()
             self.ssh_clients[i] = None
             self.EstadosDeConexion_model.removeRow(index.row())
-            
+            # TODO: Remover robot de la lista
+            #self.ListaMaquinas.removeItem(self.ListaConexiones.currentText())
+    
     def closeEvent(self, event):
-        print ("inside the close")
         # Cerrar todos los subprocesos abiertos
         self.roscore.terminate()
 

@@ -6,8 +6,8 @@ PLACES = {
 }
 
 COMMANDS = {
-    'PARAR'      : 0,
-    'IR A'       : 1,
-    'RECOGER EN' : 2,
-    'LLEVAR A'   : 3,
+    'DIRIGIRSE A'   : 0,
+    'RECOGER EN'    : 1,
+    'TRANSPORTAR A' : 2,
+    'ENTREGAR EN'   : 3,
 }

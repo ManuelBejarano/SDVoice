@@ -10,11 +10,11 @@
     <x>0</x>
     <y>0</y>
     <width>1280</width>
-    <height>720</height>
+    <height>480</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -22,7 +22,7 @@
   <property name="minimumSize">
    <size>
     <width>1280</width>
-    <height>720</height>
+    <height>480</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -47,7 +47,7 @@
       <property name="minimumSize">
        <size>
         <width>390</width>
-        <height>650</height>
+        <height>400</height>
        </size>
       </property>
       <property name="frameShape">
@@ -82,19 +82,6 @@
         <string>Conectar</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="Anadir">
-       <property name="geometry">
-        <rect>
-         <x>260</x>
-         <y>590</y>
-         <width>101</width>
-         <height>27</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Añadir</string>
-       </property>
-      </widget>
       <widget class="QPushButton" name="Borrar">
        <property name="geometry">
         <rect>
@@ -106,39 +93,6 @@
        </property>
        <property name="text">
         <string>Borrar</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_3">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>270</y>
-         <width>134</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Instrucciones&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="ListaMaquinas">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>530</y>
-         <width>191</width>
-         <height>27</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="ListaInstrucciones">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>590</y>
-         <width>191</width>
-         <height>27</height>
-        </rect>
        </property>
       </widget>
       <widget class="QPushButton" name="Ejecutar">
@@ -200,20 +154,123 @@
         </rect>
        </property>
       </widget>
-      <widget class="QTableView" name="TablaInstrucciones">
+      <widget class="QPushButton" name="Stop">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>310</y>
-         <width>371</width>
-         <height>191</height>
+         <x>260</x>
+         <y>300</y>
+         <width>101</width>
+         <height>25</height>
         </rect>
+       </property>
+       <property name="palette">
+        <palette>
+         <active>
+          <colorrole role="Button">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>239</red>
+             <green>41</green>
+             <blue>41</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </active>
+         <inactive>
+          <colorrole role="Button">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>239</red>
+             <green>41</green>
+             <blue>41</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </inactive>
+         <disabled>
+          <colorrole role="Button">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>239</red>
+             <green>41</green>
+             <blue>41</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </disabled>
+        </palette>
+       </property>
+       <property name="text">
+        <string>Stop</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="Reset">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>340</y>
+         <width>101</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="palette">
+        <palette>
+         <active>
+          <colorrole role="Button">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>252</red>
+             <green>233</green>
+             <blue>79</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </active>
+         <inactive>
+          <colorrole role="Button">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>252</red>
+             <green>233</green>
+             <blue>79</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </inactive>
+         <disabled>
+          <colorrole role="Button">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>252</red>
+             <green>233</green>
+             <blue>79</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </disabled>
+        </palette>
+       </property>
+       <property name="text">
+        <string>Reset</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>270</y>
+         <width>171</width>
+         <height>24</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Panel de control&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </widget>
     </item>
     <item>
-     <widget class="QFrame" name="Frame_Centro">
+     <widget class="QFrame" name="Frame_Cent">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -222,128 +279,145 @@
       </property>
       <property name="minimumSize">
        <size>
-        <width>460</width>
-        <height>650</height>
+        <width>390</width>
+        <height>400</height>
        </size>
       </property>
       <property name="frameShape">
-       <enum>QFrame::Panel</enum>
+       <enum>QFrame::StyledPanel</enum>
       </property>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QLabel" name="label_4">
+      <widget class="QPushButton" name="Anadir">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>205</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Comandos Manuales&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-      <widget class="QPlainTextEdit" name="Codigo">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>180</y>
-         <width>421</width>
-         <height>331</height>
-        </rect>
-       </property>
-       <property name="plainText">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QPlainTextEdit" name="Titulo">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>110</y>
-         <width>291</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_2">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>90</y>
-         <width>40</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Título</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="BorrarTodo_2">
-       <property name="geometry">
-        <rect>
-         <x>310</x>
-         <y>530</y>
-         <width>99</width>
-         <height>27</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Borrar Todo</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="Cargar">
-       <property name="geometry">
-        <rect>
-         <x>310</x>
-         <y>570</y>
+         <x>260</x>
+         <y>340</y>
          <width>101</width>
          <height>27</height>
         </rect>
        </property>
        <property name="text">
-        <string>Cargar</string>
+        <string>Añadir</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="Compilar">
+      <widget class="QComboBox" name="ListaInstrucciones">
        <property name="geometry">
         <rect>
-         <x>310</x>
-         <y>610</y>
-         <width>99</width>
+         <x>20</x>
+         <y>340</y>
+         <width>191</width>
+         <height>27</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="ListaMaquinas">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>300</y>
+         <width>191</width>
+         <height>27</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>130</y>
+         <width>81</width>
          <height>27</height>
         </rect>
        </property>
        <property name="text">
-        <string>Compilar</string>
+        <string>Enviar</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="ListaMaquinas_2">
-       <property name="enabled">
-        <bool>true</bool>
+      <widget class="QComboBox" name="PuertoCOM">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>80</y>
+         <width>121</width>
+         <height>27</height>
+        </rect>
        </property>
+      </widget>
+      <widget class="QPushButton" name="GenerarComandos">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>130</y>
+         <width>141</width>
+         <height>27</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Generar Comandos</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="Grabar">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>80</y>
+         <width>81</width>
+         <height>27</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Grabar</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_6">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>176</width>
+         <height>24</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Comandos de Voz&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_7">
        <property name="geometry">
         <rect>
          <x>20</x>
          <y>60</y>
-         <width>201</width>
-         <height>21</height>
+         <width>47</width>
+         <height>17</height>
         </rect>
+       </property>
+       <property name="text">
+        <string>Puerto</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_5">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>150</y>
-         <width>49</width>
-         <height>17</height>
+         <x>10</x>
+         <y>260</y>
+         <width>211</width>
+         <height>24</height>
         </rect>
        </property>
        <property name="text">
-        <string>Código</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Comandos manuales&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="textEdit">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>180</y>
+         <width>351</width>
+         <height>70</height>
+        </rect>
        </property>
       </widget>
      </widget>
@@ -359,7 +433,7 @@
       <property name="minimumSize">
        <size>
         <width>390</width>
-        <height>650</height>
+        <height>400</height>
        </size>
       </property>
       <property name="frameShape">
@@ -368,117 +442,6 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QLabel" name="label_6">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>10</y>
-         <width>176</width>
-         <height>24</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Comandos de Voz&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-      <widget class="QGraphicsView" name="Graficas">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>280</y>
-         <width>351</width>
-         <height>271</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="PuertoCOM">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>70</y>
-         <width>121</width>
-         <height>27</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_7">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>50</y>
-         <width>47</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Puerto</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="ConectarPuerto">
-       <property name="geometry">
-        <rect>
-         <x>270</x>
-         <y>70</y>
-         <width>99</width>
-         <height>27</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Conectar</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="DesconectarPuerto">
-       <property name="geometry">
-        <rect>
-         <x>270</x>
-         <y>110</y>
-         <width>99</width>
-         <height>27</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Desconectar</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="Grabar">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>170</y>
-         <width>81</width>
-         <height>27</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Grabar</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="Graficar">
-       <property name="geometry">
-        <rect>
-         <x>280</x>
-         <y>170</y>
-         <width>81</width>
-         <height>27</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Graficar</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="Procesar">
-       <property name="geometry">
-        <rect>
-         <x>160</x>
-         <y>170</y>
-         <width>81</width>
-         <height>27</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Procesar</string>
-       </property>
-      </widget>
       <widget class="QListView" name="ListaComandos">
        <property name="geometry">
         <rect>
@@ -489,61 +452,32 @@
         </rect>
        </property>
       </widget>
-      <widget class="QPushButton" name="GenerarComandos">
+      <widget class="QTableView" name="TablaInstrucciones">
        <property name="geometry">
         <rect>
-         <x>210</x>
-         <y>570</y>
-         <width>141</width>
-         <height>27</height>
+         <x>10</x>
+         <y>50</y>
+         <width>371</width>
+         <height>311</height>
         </rect>
-       </property>
-       <property name="text">
-        <string>Generar Comandos</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="Detener">
+      <widget class="QLabel" name="label_3">
        <property name="geometry">
         <rect>
-         <x>90</x>
-         <y>230</y>
-         <width>81</width>
-         <height>27</height>
+         <x>10</x>
+         <y>20</y>
+         <width>134</width>
+         <height>24</height>
         </rect>
        </property>
        <property name="text">
-        <string>Detener</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton">
-       <property name="geometry">
-        <rect>
-         <x>240</x>
-         <y>230</y>
-         <width>81</width>
-         <height>27</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Enviar</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Instrucciones&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1280</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="nativeMenuBar">
-    <bool>true</bool>
-   </property>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">

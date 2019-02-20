@@ -6,6 +6,7 @@ import rospkg
 from paramiko import client
 from qt_gui.plugin import Plugin
 from geometry_msgs.msg import PoseStamped
+from actionlib_msgs.msg import GoalStatusArray
 from python_qt_binding import QtGui, QtCore, loadUi
 from python_qt_binding.QtWidgets import QWidget, QMessageBox
 
@@ -29,6 +30,24 @@ SERVER_PORT = 11311
 SERVER_IP = ['192.168.1.11', '192.168.1.12', '192.168.1.13']
 SERVER_USERNAME = ['sdvun1', 'sdvun2', 'sdvun3']
 SERVER_PASSWORD = ['sdvun1', 'sdvun2', 'sdvun3']
+
+SDVUN_LAST_COMMAND = [[], [], []]
+
+#----------------------------------------------------
+# Name: SDV
+# Type: Class
+# input args:
+# output args: client for server connections
+#----------------------------------------------------
+class SDV():
+    def __init__(self, name, address, username, password):
+        self.name = name
+        self.address = address
+        self.username = username
+        self.password = password
+        # Objetos
+        self.ssh = None
+        self.sender = Sender(name)
 
 #----------------------------------------------------
 # Name: ssh
@@ -76,7 +95,9 @@ class ssh():
 # output args: Rospy message publisher for robots
 #----------------------------------------------------
 class Sender():
-    def __init__(self):
+    def __init__(self, name):
+        self.status = ''
+        self.name = name
         # Crear mensaje PoseStamped
         self.pose = PoseStamped()
         self.pose.header.stamp = rospy.Time.now()
@@ -88,7 +109,8 @@ class Sender():
         self.pose.pose.orientation.y = 0
         self.pose.pose.orientation.z = 0
         self.pose.pose.orientation.w = 1
-        self.pub = rospy.Publisher('/move_base_simple/goal', PoseStamped, queue_size=100)
+        self.pub = rospy.Publisher('/%s/move_base_simple/goal'%self.name, PoseStamped, queue_size=100)
+        self.subs = rospy.Subscriber('/%s/move_base/status'%self.name, GoalStatusArray, self.callbackStatus)
 
     def sendSDVtoHome(self):
         self.pose.header.stamp = rospy.Time().now()
@@ -96,7 +118,6 @@ class Sender():
         self.pose.pose.position.y = 0.0
         self.pose.pose.orientation.z = 0.0
         self.pose.pose.orientation.w = 1.0
-        self.publishPoseStamped()
 
     def sendSDVtoCeldaExperimental(self):
         self.pose.header.stamp = rospy.Time().now()
@@ -104,7 +125,6 @@ class Sender():
         self.pose.pose.position.y = 5.8
         self.pose.pose.orientation.z = 0.0
         self.pose.pose.orientation.w = 0.1
-        self.publishPoseStamped()
 
     def sendSDVtoCeldaManufactura(self):
         self.pose.header.stamp = rospy.Time().now()
@@ -112,7 +132,6 @@ class Sender():
         self.pose.pose.position.y = -4.6122341156
         self.pose.pose.orientation.z = 0.700009406104
         self.pose.pose.orientation.w = 0.714133622907
-        self.publishPoseStamped()
 
     def sendSDVtoCeldaIndustrial(self):
         self.pose.header.stamp = rospy.Time().now()
@@ -120,7 +139,6 @@ class Sender():
         self.pose.pose.position.y = 3.13956570625
         self.pose.pose.orientation.z = 1.0
         self.pose.pose.orientation.w = 0.0
-        self.publishPoseStamped()
 
     def sendSDVtoDescargaMotoman(self):
         self.pose.header.stamp = rospy.Time().now()
@@ -128,10 +146,26 @@ class Sender():
         self.pose.pose.position.y = 3.13956570625
         self.pose.pose.orientation.z = 1.0
         self.pose.pose.orientation.w = 0.0
-        self.publishPoseStamped()
 
     def publishPoseStamped(self):
         self.pub.publish(self.pose)
+        print self.pose
+        
+    def callbackStatus(self, status):
+        print status
+        for stat in status.status_list:
+            if (stat == '1') and (self.status != stat): print '%s: CAMINANDO'%self.name#, stat.text
+            #elif stat == '2': print '%s: NUEVA POSE RECIBIDA'%self.name#, stat.text
+            elif (stat == '3') and (self.status != stat): print u'%s: LLEGUÉ!'%self.name#, stat.text
+            # SDV no llega a la posición deseada
+            elif (stat == '4') and (self.status != stat):
+                self.status = stat
+                print '%s: NO LLEGO'%self.name#, stat.text
+                # TODO: LLamar a publicar firebase
+        
+    def SDVisMoving(self, stat):
+        # New status detected
+        if self.status != stat:
 
 #----------------------------------------------------
 # Name: SDVoice
@@ -175,16 +209,19 @@ class SDVoice():
         #self.btn_sdv_manufactura.clicked.connect(lambda: self.sdvGoToManufactura())
         #self.btn_sdv_industrial.clicked.connect(lambda: self.sdvGoToIndustrial())
         
-        # Crear Sender
-        self.sender = Sender()
-        
+        # Crear robots SDV
+        self.sdvs = []
+        for i, uname in enumerate(SERVER_USERNAME):
+            self.sdvs.append(SDV(SERVER_USERNAME[i], SERVER_IP[i], SERVER_USERNAME[i], SERVER_PASSWORD[i]))
+            #self.sdvs[i].sender = Sender(SERVER_USERNAME[i])
         # inicializar conexion
         self.initSocket()
         self._widget.statusBar.showMessage("System Status | Ready. Welcome!")
     
     
     def initSocket(self):
-        self.ssh_clients = [None for i in SERVER_USERNAME]
+        #for i, name in enumerate(SERVER_USERNAME):
+        #    self.sdvs[i].ssh = None
         # Agregar a ListaConexiones lista de hosts maquinas
         self._widget.ListaConexiones.addItems(SERVER_USERNAME)
     
@@ -193,9 +230,9 @@ class SDVoice():
         i = self._widget.ListaConexiones.currentIndex()
         # Let the user know we're connecting to the server
         self._widget.statusBar.showMessage("Connecting to server.")
-        self.ssh_clients[i] = ssh(SERVER_IP[i], SERVER_USERNAME[i], SERVER_PASSWORD[i])
+        self.sdvs[i].ssh = ssh(SERVER_IP[i], SERVER_USERNAME[i], SERVER_PASSWORD[i])
         # Agregar a EstadosDeConexion lista de hosts conectados
-        if self.ssh_clients[i].client != None:
+        if self.sdvs[i].ssh.client != None:
             # TODO: Lanzar el proyecto de sdvoice en el robot SDV
             #node = roslaunch.core.Node('sdvoice', 'agv_nav.launch')
             #launch = roslaunch.scriptapi.ROSLaunch()
@@ -224,8 +261,8 @@ class SDVoice():
     def disconnectSSH(self):
         for index in self._widget.EstadosDeConexion.selectedIndexes():
             i = SERVER_USERNAME.index(index.data())
-            self.ssh_clients[i].client.close()
-            self.ssh_clients[i] = None
+            self.sdvs[i].ssh.client.close()
+            self.sdvs[i].ssh = None
             self.EstadosDeConexion_model.removeRow(index.row())
             # TODO: Remover robot de la lista
             #self.ListaMaquinas.removeItem(self.ListaConexiones.currentText())
@@ -250,15 +287,23 @@ class SDVoice():
        
     def sendCommand(self):
         name, instr, place = sorted(self._widget.TablaInstrucciones.selectedIndexes())
-        place = str(place.data())
+        name, place = str(name.data()), str(place.data())
+        
+        # TODO: If robot not connected, show error
+        i = 0
+        if name == SERVER_USERNAME[0]:   i=0#SDVUN_LAST_COMMAND[0] = self.sender.pose
+        elif name == SERVER_USERNAME[1]: i=1#SDVUN_LAST_COMMAND[1] = self.sender.pose
+        elif name == SERVER_USERNAME[2]: i=2#SDVUN_LAST_COMMAND[2] = self.sender.pose
+    
+        
         # HOME
-        if inc.PLACES[place] == 0: self.sender.sendSDVtoHome()
+        if inc.PLACES[place] == 0: self.sdvs[i].sender.sendSDVtoHome()
         # MALLA
-        elif inc.PLACES[place] == 1: self.sender.sendSDVtoCeldaExperimental()
+        elif inc.PLACES[place] == 1: self.sdvs[i].sender.sendSDVtoCeldaExperimental()
         # INDUSTRIAL
-        elif inc.PLACES[place] == 2: self.sender.sendSDVtoCeldaIndustrial()
+        elif inc.PLACES[place] == 2: self.sdvs[i].sender.sendSDVtoCeldaIndustrial()
         # MANUFACTURA
-        elif inc.PLACES[place] == 3: self.sender.sendSDVtoCeldaManufactura()
+        elif inc.PLACES[place] == 3: self.sdvs[i].sender.sendSDVtoCeldaManufactura()
         else:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Warning)
@@ -266,6 +311,11 @@ class SDVoice():
             msg.setInformativeText("No se ha reconocido el destino del SDV")
             msg.setWindowTitle("Error")
             ret = msg.exec_()
+        
+        # TODO: If robot not connected, show error
+        if name == SERVER_USERNAME[0]: self.sdvs[i].sender.publishPoseStamped()
+        elif name == SERVER_USERNAME[1]: self.sdvs[i].sender.publishPoseStamped()
+        elif name == SERVER_USERNAME[2]: self.sdvs[i].sender.publishPoseStamped()
     
     def closeEvent(self, event):
         # Cerrar todos los subprocesos abiertos

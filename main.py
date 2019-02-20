@@ -20,7 +20,7 @@ from ros_utils import *
 RELATIVE_DIR = './'
 GUI_DIR = RELATIVE_DIR + './'
 GUI_TITLE = 'Comandos SDV'
-MAIN_WINDOW = GUI_DIR + 'home/sdvun/catkin_ws/src/SDVoice/resource/mainwindow.ui' #'mainwindow.ui'
+MAIN_WINDOW = GUI_DIR + 'mainwindow.ui'
 UI_MAIN_WINDOW, Q_MAIN_WINDOW = uic.loadUiType(MAIN_WINDOW)
 
 # Sockets connection
@@ -145,6 +145,8 @@ class SDVoice(Q_MAIN_WINDOW, UI_MAIN_WINDOW):
         self.TablaInstrucciones_model = QtGui.QStandardItemModel()
         self.TablaInstrucciones_model.setHorizontalHeaderLabels(['Robot', u'Acción', u'Máquina'])
         self.TablaInstrucciones.setModel(self.TablaInstrucciones_model)
+        self.ListaComandos_model = QtGui.QStandardItemModel()  ## ADDED: 14/02/19
+        self.ListaComandos.setModel(self.ListaComandos_model) ## ADDED: 14/02/19
         #print socket.gethostname()
         #IP1 = socket.gethostbyname(socket.gethostname()) # local IP adress of your computer
         #IP2 = socket.gethostbyname('name_of_your_computer') # IP adress of remote computer
@@ -153,9 +155,14 @@ class SDVoice(Q_MAIN_WINDOW, UI_MAIN_WINDOW):
         self.ListaInstrucciones.addItems(inc.COMMANDS) # Cargar lista de comandos
         # Definir callbacks de cada elemento de la gui
         self.Conectar.clicked.connect(lambda: self.connectSSH())
-        self.Desconectar.clicked.connect(lambda: self.disconnectSSH())
-        self.Anadir.clicked.connect(lambda: self.addManualCommand())
-        self.Compilar.clicked.connect(lambda: self.sendCommand())
+        self.Desconectar.clicked.connect(lambda: self.disconnectSSH())           
+        #self.Stop.clicked.connect(lambda: self.addVoiceCommand()) # TODO      ## ADDED: 14/02/19
+        #self.Reset.clicked.connect(lambda: self.addVoiceCommand()) # TODO   ## ADDED: 14/02/19
+        #self.Grabar.clicked.connect(lambda: self.addVoiceCommand()) # TODO   ## ADDED: 14/02/19   
+        self.GenerarComandos.clicked.connect(lambda: self.listVoiceCommand())  ## ADDED: 14/02/19
+        self.Enviar.clicked.connect(lambda: self.addVoiceCommand()) # TODO  ## ADDED: 14/02/19   
+        self.Anadir.clicked.connect(lambda: self.addManualCommand())     
+        #self.Ejecutar.clicked.connect(lambda: self.addVoiceCommand()) # TODO  ## ADDED: 14/02/19
         #self.btn_sdv_experimental.clicked.connect(lambda: self.sdvGoToExperimental())
         #self.btn_sdv_manufactura.clicked.connect(lambda: self.sdvGoToManufactura())
         #self.btn_sdv_industrial.clicked.connect(lambda: self.sdvGoToIndustrial())
@@ -232,8 +239,8 @@ class SDVoice(Q_MAIN_WINDOW, UI_MAIN_WINDOW):
             # TODO: Remover robot de la lista
             #self.ListaMaquinas.removeItem(self.ListaConexiones.currentText())
             
-    def addManualCommand(self):
-        indexes = self.EstadosDeConexion.selectedIndexes()
+    def addManualCommand(self):   ## CHANGED 14/02
+        index = self.EstadosDeConexion.selectedIndexes()
         # SI no se ha seleccionado ningun robot SDV arrojar error
         if not indexes:
             msg = QMessageBox()
@@ -243,16 +250,58 @@ class SDVoice(Q_MAIN_WINDOW, UI_MAIN_WINDOW):
             msg.setWindowTitle("Error")
             ret = msg.exec_()
         else:
-            for index in indexes:
-                sdv = index.data()
-                self.comm = [QtGui.QStandardItem(str(sdv)), 
-                        QtGui.QStandardItem(str(self.ListaInstrucciones.currentText())),
-                        QtGui.QStandardItem(str(self.ListaMaquinas.currentText()))]
-                self.TablaInstrucciones_model.appendRow(self.comm)
-            
+            ##TODO: Quitar el for, para que solo se puede con un seleccionado a la vez
+            sdv = index.data()
+            self.comm = [QtGui.QStandardItem(str(sdv)), 
+                    QtGui.QStandardItem(str(self.ListaInstrucciones.currentText())),
+                    QtGui.QStandardItem(str(self.ListaMaquinas.currentText()))]
+            self.TablaInstrucciones_model.appendRow(self.comm)
+
+    def listVoiceCommand(self):  ## ADDED: 14/02/19
+        # Actualizar GUI
+        item = QtGui.QStandardItem("Hola Santiago") ##TODO: Cambiar cuando el botón de generar comandos este habilitado
+        self.ListaComandos_model.appendRow(item) 
+        item = QtGui.QStandardItem("Chao Santiago") ##TODO: Cambiar cuando el botón de generar comandos este habilitado
+        self.ListaComandos_model.appendRow(item)
+
+    def addVoiceCommand(self): ## ADDED: 14/02/19
+        index = self.EstadosDeConexion.selectedIndexes()
+        commandIndex = self.ListaComandos.selectedIndexes()
+        # SI no se ha seleccionado ningun robot SDV arrojar error
+#        if not indexes:
+#            msg = QMessageBox()
+#            msg.setIcon(QMessageBox.Warning)
+#            msg.setText(u"Error de Asignación de Comando:")
+#            msg.setInformativeText("Seleccione al menos un robot de la lista de conexiones")
+#            msg.setWindowTitle("Error")
+#            ret = msg.exec_()
+#        elif not commandIndex:
+        if not commandIndex:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Warning)
+            msg.setText(u"Error de Asignación de Comando:")
+            msg.setInformativeText("Seleccione al menos un comando de la lista de comandos")
+            msg.setWindowTitle("Error")
+            ret = msg.exec_()        
+        else:
+            sdv = index.data()
+            command = commandIndex.data()
+            self.comm = [QtGui.QStandardItem(str(sdv)), 
+                    QtGui.QStandardItem(str(command)),
+                    QtGui.QStandardItem(str(self.ListaMaquinas.currentText()))] ##TODO: Cambiar para que pueda tomar la instruccion y la maquina desde el Voice
+            self.TablaInstrucciones_model.appendRow(self.comm)
+
+#            for index in indexes:  ##TODO: Quitar el for, para que solo se puede con un seleccionado a la vez
+#                print(indexes, type(indexes))
+#                sdv = index.data()
+#                self.comm = [QtGui.QStandardItem(str(sdv)), 
+#                        QtGui.QStandardItem(str(self.ListaInstrucciones.currentText())),
+#                        QtGui.QStandardItem(str(self.ListaMaquinas.currentText()))]
+#                self.TablaInstrucciones_model.appendRow(self.comm)
+                
     def sendCommand(self):
         #if str(self.comm[0]) == 'sdvun2':
-        print ':)'
+        print ':)'  ## Debugging - No necesario
         self.sender = Sender()
         self.sender.sendSDVtoCeldaExperimental()
     

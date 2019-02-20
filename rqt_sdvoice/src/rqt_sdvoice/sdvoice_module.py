@@ -10,26 +10,10 @@ from actionlib_msgs.msg import GoalStatusArray
 from python_qt_binding import QtGui, QtCore, loadUi
 from python_qt_binding.QtWidgets import QWidget, QMessageBox
 
-
-#import sys
-#import time
-#import rospy
-#import socket
-#import roslaunch
-#import subprocess
-#from firebase import firebase
-#from PyQt5 import QtGui, QtCore
-#from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QGridLayout, QTextEdit, QPushButton, QMessageBox
-
 # Custom Libraries
 import includes as inc
-#from ros_utils import *
+from utils_firebase import Firebase
 
-# Sockets connection
-SERVER_PORT = 11311
-SERVER_IP = ['192.168.1.11', '192.168.1.12', '192.168.1.13']
-SERVER_USERNAME = ['sdvun1', 'sdvun2', 'sdvun3']
-SERVER_PASSWORD = ['sdvun1', 'sdvun2', 'sdvun3']
 
 SDVUN_LAST_COMMAND = [[], [], []]
 
@@ -40,14 +24,15 @@ SDVUN_LAST_COMMAND = [[], [], []]
 # output args: client for server connections
 #----------------------------------------------------
 class SDV():
-    def __init__(self, name, address, username, password):
+    def __init__(self, name, address, username, password, firebase):
         self.name = name
         self.address = address
         self.username = username
         self.password = password
         # Objetos
         self.ssh = None
-        self.sender = Sender(name)
+        self.firebase = firebase
+        self.sender = Sender(name, firebase)
 
 #----------------------------------------------------
 # Name: ssh
@@ -95,9 +80,10 @@ class ssh():
 # output args: Rospy message publisher for robots
 #----------------------------------------------------
 class Sender():
-    def __init__(self, name):
-        self.status = ''
+    def __init__(self, name, firebase):
+        self.status = 0
         self.name = name
+        self.firebase = firebase
         # Crear mensaje PoseStamped
         self.pose = PoseStamped()
         self.pose.header.stamp = rospy.Time.now()
@@ -149,24 +135,28 @@ class Sender():
 
     def publishPoseStamped(self):
         self.pub.publish(self.pose)
+        self.firebase.addData(self.name, str(self.pose.header.stamp), self.pose.pose.position,self.pose.pose.orientation,'moving')
         print self.pose
         
     def callbackStatus(self, status):
-        print status
-        for stat in status.status_list:
-            if (stat == '1') and (self.status != stat): print '%s: CAMINANDO'%self.name#, stat.text
-            #elif stat == '2': print '%s: NUEVA POSE RECIBIDA'%self.name#, stat.text
-            elif (stat == '3') and (self.status != stat): print u'%s: LLEGUÉ!'%self.name#, stat.text
+        for stats in status.status_list:
+            stat = stats.status 
+            # TODO: Crear método para editar la pose en la base de datos y no agregar metodo nuevo
+            # SDV ha llegado a la posición deseada
+            if (stat == 3) and (self.status != stat):
+                self.status = stat
+                print u'%s: LLEGUÉ!'%self.name#, stat.text
+                # Crear mensaje con status complete
+                self.firebase.addData(self.name, str(self.pose.header.stamp), self.pose.pose.position,self.pose.pose.orientation,'complete')
+                
+            # TODO: Crear método para editar la pose en la base de datos y no agregar metodo nuevo
             # SDV no llega a la posición deseada
-            elif (stat == '4') and (self.status != stat):
+            elif (stat == 4) and (self.status != stat):
                 self.status = stat
                 print '%s: NO LLEGO'%self.name#, stat.text
-                # TODO: LLamar a publicar firebase
+                self.firebase.addData(self.name, str(self.pose.header.stamp), self.pose.pose.position,self.pose.pose.orientation,'failed')
         
-    def SDVisMoving(self, stat):
-        # New status detected
-        if self.status != stat:
-
+                
 #----------------------------------------------------
 # Name: SDVoice
 # Type: Class
@@ -204,33 +194,36 @@ class SDVoice():
         self._widget.Conectar.clicked.connect(lambda: self.connectSSH())
         self._widget.Desconectar.clicked.connect(lambda: self.disconnectSSH())
         self._widget.Anadir.clicked.connect(lambda: self.addManualCommand())
-        self._widget.Stop.clicked.connect(lambda: self.sendCommand())
+        self._widget.Ejectutar.clicked.connect(lambda: self.sendCommand())
         #self.btn_sdv_experimental.clicked.connect(lambda: self.sdvGoToExperimental())
         #self.btn_sdv_manufactura.clicked.connect(lambda: self.sdvGoToManufactura())
         #self.btn_sdv_industrial.clicked.connect(lambda: self.sdvGoToIndustrial())
         
+        # Iniciar conexion con Firebase
+        self.firebase = Firebase()
+        
         # Crear robots SDV
         self.sdvs = []
-        for i, uname in enumerate(SERVER_USERNAME):
-            self.sdvs.append(SDV(SERVER_USERNAME[i], SERVER_IP[i], SERVER_USERNAME[i], SERVER_PASSWORD[i]))
-            #self.sdvs[i].sender = Sender(SERVER_USERNAME[i])
-        # inicializar conexion
+        for i, uname in enumerate(inc.SERVER_USERNAME):
+            self.sdvs.append(SDV(inc.SERVER_USERNAME[i], inc.SERVER_IP[i], inc.SERVER_USERNAME[i], inc.SERVER_PASSWORD[i], self.firebase))
+            #self.sdvs[i].sender = Sender(inc.SERVER_USERNAME[i])
+        # inicializar conexion con SDVs
         self.initSocket()
         self._widget.statusBar.showMessage("System Status | Ready. Welcome!")
     
     
     def initSocket(self):
-        #for i, name in enumerate(SERVER_USERNAME):
+        #for i, name in enumerate(inc.SERVER_USERNAME):
         #    self.sdvs[i].ssh = None
         # Agregar a ListaConexiones lista de hosts maquinas
-        self._widget.ListaConexiones.addItems(SERVER_USERNAME)
+        self._widget.ListaConexiones.addItems(inc.SERVER_USERNAME)
     
     
     def connectSSH(self):
         i = self._widget.ListaConexiones.currentIndex()
         # Let the user know we're connecting to the server
         self._widget.statusBar.showMessage("Connecting to server.")
-        self.sdvs[i].ssh = ssh(SERVER_IP[i], SERVER_USERNAME[i], SERVER_PASSWORD[i])
+        self.sdvs[i].ssh = ssh(inc.SERVER_IP[i], inc.SERVER_USERNAME[i], inc.SERVER_PASSWORD[i])
         # Agregar a EstadosDeConexion lista de hosts conectados
         if self.sdvs[i].ssh.client != None:
             # TODO: Lanzar el proyecto de sdvoice en el robot SDV
@@ -260,7 +253,7 @@ class SDVoice():
 
     def disconnectSSH(self):
         for index in self._widget.EstadosDeConexion.selectedIndexes():
-            i = SERVER_USERNAME.index(index.data())
+            i = inc.SERVER_USERNAME.index(index.data())
             self.sdvs[i].ssh.client.close()
             self.sdvs[i].ssh = None
             self.EstadosDeConexion_model.removeRow(index.row())
@@ -291,9 +284,9 @@ class SDVoice():
         
         # TODO: If robot not connected, show error
         i = 0
-        if name == SERVER_USERNAME[0]:   i=0#SDVUN_LAST_COMMAND[0] = self.sender.pose
-        elif name == SERVER_USERNAME[1]: i=1#SDVUN_LAST_COMMAND[1] = self.sender.pose
-        elif name == SERVER_USERNAME[2]: i=2#SDVUN_LAST_COMMAND[2] = self.sender.pose
+        if name == inc.SERVER_USERNAME[0]:   i=0#SDVUN_LAST_COMMAND[0] = self.sender.pose
+        elif name == inc.SERVER_USERNAME[1]: i=1#SDVUN_LAST_COMMAND[1] = self.sender.pose
+        elif name == inc.SERVER_USERNAME[2]: i=2#SDVUN_LAST_COMMAND[2] = self.sender.pose
     
         
         # HOME
@@ -313,9 +306,9 @@ class SDVoice():
             ret = msg.exec_()
         
         # TODO: If robot not connected, show error
-        if name == SERVER_USERNAME[0]: self.sdvs[i].sender.publishPoseStamped()
-        elif name == SERVER_USERNAME[1]: self.sdvs[i].sender.publishPoseStamped()
-        elif name == SERVER_USERNAME[2]: self.sdvs[i].sender.publishPoseStamped()
+        if name == inc.SERVER_USERNAME[0]: self.sdvs[i].sender.publishPoseStamped()
+        elif name == inc.SERVER_USERNAME[1]: self.sdvs[i].sender.publishPoseStamped()
+        elif name == inc.SERVER_USERNAME[2]: self.sdvs[i].sender.publishPoseStamped()
     
     def closeEvent(self, event):
         # Cerrar todos los subprocesos abiertos

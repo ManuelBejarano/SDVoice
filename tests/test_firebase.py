@@ -2,7 +2,17 @@ import firebase_admin
 from firebase_admin import db
 from firebase_admin import credentials
 from firebase_admin import auth
-
+from PyQt5 import uic, QtGui, QtCore
+from geometry_msgs.msg import PoseStamped
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QGridLayout, QTextEdit, QPushButton, QMessageBox
+'''
+#load ui file
+RELATIVE_DIR = './'
+GUI_DIR = RELATIVE_DIR + './'
+GUI_TITLE = 'Comandos SDV'
+MAIN_WINDOW = GUI_DIR + 'mainwindow.ui'
+UI_MAIN_WINDOW, Q_MAIN_WINDOW = uic.loadUiType(MAIN_WINDOW)
+'''
 # Autenticar conexion URL a la base de datos
 cred = credentials.Certificate("/home/manuel/Descargas/automatizacion-87dc9-firebase-adminsdk-6jz9r-407ae5fd18.json")
 default_app = firebase_admin.initialize_app(cred, {
@@ -11,8 +21,11 @@ default_app = firebase_admin.initialize_app(cred, {
 
 class Firebase():
     def __init__(self):
-        ## Creacion de la base de datos inicial
-        ref = db.reference('/') # Referencia a la raiz del proyecto
+        print('Hola')
+
+    ## Metodo de creacion de la base de datos inicial de cada usuario    
+    def newDataBase(self,userName):
+        ref = db.reference('/%s'%userName) # Referencia al usuario que se creo
         ref.set({
                 'SDV': 
                     {
@@ -55,18 +68,33 @@ class Firebase():
                     }
                 })
     
+    ## Metodo para crear un nuevo usuario y retorna el user de firebase
+    def addUser(self, correo, clave, celular, userName):
+        user = auth.create_user(
+        email = correo,
+        email_verified = True,
+        phone_number = '+57%s'%celular,
+        password = clave,
+        display_name = userName,
+        disabled=False)
+        #print('Sucessfully created new user: {0}'.format(user.uid)) # Se puede imprimir en donde se necesite
+        # Set admin privilege on the user corresponding to uid.
+        auth.set_custom_user_claims(user.uid, {'admin': True})        
+        return user            
+
+    ## Metodo para obtener el user de firebase con el email
+    def getUser(self,email):
+        user = auth.get_user_by_email(email)
+        #print('Successfully fetched user data: {0}'.format(user.uid)) # Se puede imprimir en donde se necesite
+        return user
 
     ## Metodo para agregar datos a la base de datos
-    def addData(self, SDV, time, pose, vel, task):
-        if SDV == 'SDV1':
-            newRef = db.reference('/SDV/SDV1') # Referencia al tallo SDV1
-        elif SDV == 'SDV2':
-            newRef = db.reference('/SDV/SDV2') # Referencia al tallo SDV2    
-        else:
-            newRef = db.reference('/SDV/SDV3') # Referencia al tallo SDV3
+    def addData(self, userName, SDV, time, pose, vel, task):
+        sdv = '/' + userName + '/SDV/'+SDV
+        newRef = db.reference(sdv) # Referencia al tallo SDV#
       
         # Agregar datos
-        newRef.push({ u'time': time,
+        newKey = newRef.push({ u'time': time,
                    u'pos': {'X': pose[0],
                             'Y': pose[1],
                             'Z': pose[2]},
@@ -75,56 +103,41 @@ class Firebase():
                             'Z': vel[2]},
                    u'task': task}
         )
-    def getData(self,SDV):
-        if SDV == 'SDV1':
-            newRef = db.reference('/SDV/SDV1') # Referencia al tallo SDV1
-        elif SDV == 'SDV2':
-            newRef = db.reference('/SDV/SDV2') # Referencia al tallo SDV2    
-        else:
-            newRef = db.reference('/SDV/SDV3') # Referencia al tallo SDV3
+        return newKey.key
+
+    ## Metodo para obtener los datos de un SDV
+    def getData(self, userName, SDV):      
+        sdv = '/' + userName + '/SDV/'+SDV
+        newRef = db.reference(sdv) # Referencia al tallo SDV#
         
         # Obtener datos        
         data = newRef.order_by_key().get()
         for key in data.items():
-            print(key)      
-'''        
-# Obtener el usuario por email
-user = auth.get_user_by_email('mfbejaranob@unal.edu.co')
-print('Successfully fetched user data: {0}'.format(user.uid))
-'''
+            print(key)
+    
+    ## Metodo para modificar la task de uno de los datos  
+    def updateTask(self, userName, SDV, key, update): 
+        path = '/' + userName + '/SDV/' + SDV + '/%s'%key
+        ref = db.reference(path) # Referencia al usuario que se creo
+        ref.update({
+            'task': update
+        })
 
-''' 
-# Crear usuarios Administradores:
-user = auth.create_user(
-    email='mfbejaranob@unal.edu.co',
-    email_verified=True,
-    phone_number='+573142183559',
-    password='123456',
-    display_name='Manuel Bejarano',
-    disabled=False)
-print('Sucessfully created new user: {0}'.format(user.uid))
+    ## Metodo para hacer login
+    def login(self, email, passw, firebase):                
+        try:
+            user = firebase.getUser(email)  
+        except:
+            print('No hay ningun usuario registrado a ese email')
+            return 0
 
-# Set admin privilege on the user corresponding to uid.
-auth.set_custom_user_claims(user.uid, {'admin': True})
+        if user.password == passw:
+            return user
+        else:
+            print('La contrasena no coincide, intentelo de nuevo.') 
+        
+        
 
-user = auth.create_user(
-    email='saalvarezse@unal.edu.co',
-    email_verified=True,
-    phone_number='+573123498388',
-    password='123456',
-    display_name='Santiago Alvarez',
-    disabled=False)
-print('Sucessfully created new user: {0}'.format(user.uid))
-
-# Set admin privilege on the user corresponding to uid.
-auth.set_custom_user_claims(user.uid, {'admin': True})
-'''
-'''
-# Iterate through all users. This will still retrieve users in batches,
- buffering no more than 1000 users in memory at a time.
- for user in auth.list_users().iterate_all():
-    print('User: ' + user.display_name) 
-'''
 #----------------------------------------------------
 # MAIN PROGRAM
 #----------------------------------------------------
@@ -140,10 +153,109 @@ def main():
     '''
 
     firebase = Firebase()
-    firebase.addData('SDV1', 1, [0,0,0],[1,2,3],'move')
-    firebase.addData('SDV1', 2, [0,1,0],[1,3,3],'move')
-    firebase.addData('SDV2', 4, [2,1,1],[5,4,6],'recieve')
-    firebase.getData('SDV1')
+    #user = firebase.addUser('mfbejaranob@unal.edu.co','123456','3142183559','Manuel')
+    #firebase.newDataBase(user.display_name)    
+    #user2 = firebase.addUser('pgtarazonag@unal.edu.co','123456','3108063204','Pat')
+    #firebase.newDataBase(user2.display_name)
+        
+    #user = firebase.getUser('mfbejaranob@unal.edu.co')    
+    #dataId = firebase.addData(user.display_name, 'SDV1', 1, [0,0,0],[1,2,3],'move')
+    #firebase.updateTask(user.display_name, 'SDV1', dataId, 'complete')
+
+    user3 = firebase.login('mfbejaranob@unal.edu.co', 123457, firebase)
+    if user3 != 0:
+        dataId = firebase.addData(user.display_name, 'SDV3', 1, [0,0,0],[1,2,3],'move')
+    
+
 if __name__ == '__main__':
     main()
+
+'''
+import os
+import firebase_admin
+from firebase_admin import db
+from firebase_admin import credentials
+from firebase_admin import auth
+
+# Custom Libraries
+import includes as inc
+
+class Firebase():
+    # Autenticar conexion URL a la base de datos
+    cred = credentials.Certificate("/home/sdv/catkin_ws/src/rqt_sdvoice/src/rqt_sdvoice/automatizacion-87dc9-adminsdk.json")
+    default_app = firebase_admin.initialize_app(cred, {
+                    'databaseURL' : 'https://automatizacion-87dc9.firebaseio.com/'
+              })
+    def __init__(self):
+        ## Creacion de la base de datos inicial
+        ref = db.reference('/') # Referencia a la raiz del proyecto
+        ref.set({
+                'SDV': 
+                    {
+                        inc.SERVER_USERNAME[0]: {
+                            u'POSE0':{
+                                u'time': u'1',
+                                u'pos': {'X':'0',
+                                    'Y':'0',
+                                    'Z':'0'},
+                                u'ori': {'X':'0',
+                                    'Y':'0',
+                                    'Z':'0',
+                                    'W':'1'},
+                                u'status': u'move'
+                            }
+                        },
+                        inc.SERVER_USERNAME[1]: {
+                            u'POSE0':{
+                                u'time': u'1',
+                                u'pos': {'X':'0',
+                                    'Y':'0',
+                                    'Z':'0'},
+                                u'ori': {'X':'0',
+                                    'Y':'0',
+                                    'Z':'0',
+                                    'W':'1'},
+                                u'status': u'move'
+                            }
+                        },
+                        inc.SERVER_USERNAME[2]: {
+                            u'POSE0':{
+                                u'time': u'1',
+                                u'pos': {'X':'0',
+                                    'Y':'0',
+                                    'Z':'0'},
+                                u'ori': {'X':'0',
+                                    'Y':'0',
+                                    'Z':'0',
+                                    'W':'1'},
+                                u'status': u'move'
+                            }
+                        },
+                    }
+                })
+    
+
+    ## Metodo para agregar datos a la base de datos
+    def addData(self, SDV, time, pose, ori, task):
+        newRef = db.reference('/SDV/%s'%SDV) # Referencia al tallo SDV#
+      
+        # Agregar datos
+        newRef.push({ u'time': time,
+                   u'pos': {'X': pose.x,
+                            'Y': pose.y,
+                            'Z': pose.z},
+                   u'vel': {'X': ori.x,
+                            'Y': ori.y,
+                            'Z': ori.z,
+                            'W': ori.w},
+                   u'task': task}
+        )
+    def getData(self,SDV):
+        newRef = db.reference('/SDV/%s'%SDV) # Referencia al tallo SDV#
+        
+        # Obtener datos        
+        data = newRef.order_by_key().get()
+        for key in data.items():
+            print(key)   
+'''      
 

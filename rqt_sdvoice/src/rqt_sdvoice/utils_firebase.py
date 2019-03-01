@@ -144,7 +144,7 @@ class Firebase():
             user = firebase.getUser(email)  # Si no hay usuario bota error
         except:
             print('No hay ningun usuario registrado a ese email')
-            return 0
+            return None
 
         # Si no hay error continua aqui
         userName = user.display_name    # username del usuario obtenido con getUser
@@ -157,4 +157,4 @@ class Firebase():
             return user
         else:
             print('La contrasena no coincide, intentelo de nuevo.') 
-            return 0
+            return None

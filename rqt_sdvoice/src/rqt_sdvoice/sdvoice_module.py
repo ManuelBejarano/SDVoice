@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import os
+import time
 import rospy
 import rospkg
 from paramiko import client
@@ -8,13 +9,13 @@ from qt_gui.plugin import Plugin
 from geometry_msgs.msg import PoseStamped
 from actionlib_msgs.msg import GoalStatusArray
 from python_qt_binding import QtGui, QtCore, loadUi
-from python_qt_binding.QtWidgets import QWidget, QMessageBox
+from python_qt_binding.QtWidgets import QWidget, QMessageBox, QLineEdit
 
 # Custom Libraries
 import includes as inc
 from utils_firebase import Firebase
 
-
+firebase = Firebase()
 SDVUN_LAST_COMMAND = [[], [], []]
 
 #----------------------------------------------------
@@ -24,15 +25,14 @@ SDVUN_LAST_COMMAND = [[], [], []]
 # output args: client for server connections
 #----------------------------------------------------
 class SDV():
-    def __init__(self, name, address, username, password, firebase):
+    def __init__(self, name, address, username, password):
         self.name = name
         self.address = address
         self.username = username
         self.password = password
         # Objetos
         self.ssh = None
-        self.firebase = firebase
-        self.sender = Sender(name, firebase)
+        self.sender = Sender(name)
 
 #----------------------------------------------------
 # Name: ssh
@@ -80,10 +80,12 @@ class ssh():
 # output args: Rospy message publisher for robots
 #----------------------------------------------------
 class Sender():
-    def __init__(self, name, firebase):
+    def __init__(self, name):
+        self.timer, self.delta = 0., time.clock()
+        self.poses = []
         self.status = 0
         self.name = name
-        self.firebase = firebase
+        self.key = 'moving'
         # Crear mensaje PoseStamped
         self.pose = PoseStamped()
         self.pose.header.stamp = rospy.Time.now()
@@ -97,6 +99,7 @@ class Sender():
         self.pose.pose.orientation.w = 1
         self.pub = rospy.Publisher('/%s/move_base_simple/goal'%self.name, PoseStamped, queue_size=100)
         self.subs = rospy.Subscriber('/%s/move_base/status'%self.name, GoalStatusArray, self.callbackStatus)
+        self.poses.append(self.pose)
 
     def sendSDVtoHome(self):
         self.pose.header.stamp = rospy.Time().now()
@@ -135,27 +138,132 @@ class Sender():
 
     def publishPoseStamped(self):
         self.pub.publish(self.pose)
-        self.firebase.addData(self.name, str(self.pose.header.stamp), self.pose.pose.position,self.pose.pose.orientation,'moving')
-        print self.pose
+        # ADD USERNAME AFTER LOGIN
+        self.status = 0
+        self.key = firebase.addData('Santiago', self.name, str(self.pose.header.stamp), self.pose.pose.position,self.pose.pose.orientation,'moving')
+        self.poses.append(self.pose)
+        print self.poses[-1]
         
     def callbackStatus(self, status):
         for stats in status.status_list:
             stat = stats.status 
-            # TODO: Crear método para editar la pose en la base de datos y no agregar metodo nuevo
             # SDV ha llegado a la posición deseada
             if (stat == 3) and (self.status != stat):
                 self.status = stat
                 print u'%s: LLEGUÉ!'%self.name#, stat.text
                 # Crear mensaje con status complete
-                self.firebase.addData(self.name, str(self.pose.header.stamp), self.pose.pose.position,self.pose.pose.orientation,'complete')
-                
-            # TODO: Crear método para editar la pose en la base de datos y no agregar metodo nuevo
+                # ADD USERNAME AFTER LOGIN
+                firebase.updateTask('Santiago', self.name, self.key, 'complete')
+                self.timer = 0.0
             # SDV no llega a la posición deseada
             elif (stat == 4) and (self.status != stat):
                 self.status = stat
                 print '%s: NO LLEGO'%self.name#, stat.text
-                self.firebase.addData(self.name, str(self.pose.header.stamp), self.pose.pose.position,self.pose.pose.orientation,'failed')
+                firebase.updateTask('Santiago', self.name, self.key, 'failed')
+                self.pose = self.poses[-2]
+                self.publishPoseStamped()
+                self.timer = 1.0
+            #else: print 'ahi voy'
         
+        
+                
+#----------------------------------------------------
+# Name: Login
+# Type: Class
+# input args: Q_MAIN_WINDOW and UI_MAIN_WINDOW
+# output args: DOYViewer object
+#----------------------------------------------------
+class Login():
+    ''' Principal class in the way it contains the main GUI's objects '''
+    # Create QWidget
+    _comm = []
+    _stack = []
+    _widget = QWidget()
+    
+    #----------------------------------------------------
+    # Name: __init__
+    # Type: Constructor
+    # input args: None
+    # output args: None
+    #----------------------------------------------------
+    def __init__(self, ui_file):
+        ''' Start window and declare initial values '''
+        # Extend the widget with all attributes and children from UI file
+        loadUi(ui_file, self._widget)
+        self.user = None
+        # Give QObjects reasonable names
+        self._widget.setObjectName('Login')
+        self._widget.Password.setEchoMode(QLineEdit.Password)
+        # Definir callbacks de cada elemento de la gui
+        self._widget.Entrar.clicked.connect(lambda: self.login())
+        self._widget.Registrarse.clicked.connect(lambda: self.registro())
+        
+    def login(self):
+        email = self._widget.Usuario.text()
+        passw = self._widget.Password.text()
+        self.user = firebase.login(email, passw, firebase)
+    
+    def registro(self):
+        self.user = []
+                         
+#----------------------------------------------------
+# Name: Registro
+# Type: Class
+# input args: Q_MAIN_WINDOW and UI_MAIN_WINDOW
+# output args: DOYViewer object
+#----------------------------------------------------
+class Registro():
+    ''' Principal class in the way it contains the main GUI's objects '''
+    # Create QWidget
+    _comm = []
+    _stack = []
+    _widget = QWidget()
+    
+    #----------------------------------------------------
+    # Name: __init__
+    # Type: Constructor
+    # input args: None
+    # output args: None
+    #----------------------------------------------------
+    def __init__(self, ui_file):
+        ''' Start window and declare initial values '''
+        # Extend the widget with all attributes and children from UI file
+        loadUi(ui_file, self._widget)
+        self.user = None
+        # Give QObjects reasonable names
+        self._widget.setObjectName('Registro')
+        # Definir callbacks de cada elemento de la gui
+        self._widget.Cancelar.clicked.connect(lambda: self.cancelar())
+        self._widget.Registrarse.clicked.connect(lambda: self.registro())
+    
+    def registro(self):
+        email = self._widget.email.text()
+        user_name = self._widget.userName.text()
+        phone = self._widget.phone.text()
+        passw = self._widget.pass.text()
+        repassw = self._widget.repass.text()
+        if passw != repassw:
+            self.user = None
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Warning)
+            msg.setText(u"Error de Contraseña:")
+            msg.setInformativeText(u"Contraseñas no coinciden!")
+            msg.setWindowTitle("Error")
+            ret = msg.exec_()
+        else:
+            try:
+                self.user = firebase.addUser(email, passw, firebase)
+            except:
+                self.user = None
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Warning)
+                msg.setText(u"Error de Contraseña:")
+                msg.setInformativeText(u"Datos erroneos, revisar:\n - Contraseña debe tener más de 6 digitos.\n - Verifique símbolos de los datos personales.")
+                msg.setWindowTitle("Error")
+                ret = msg.exec_()
+    
+    def cancelar(self):
+        self.user = []
                 
 #----------------------------------------------------
 # Name: SDVoice
@@ -199,13 +307,12 @@ class SDVoice():
         #self.btn_sdv_manufactura.clicked.connect(lambda: self.sdvGoToManufactura())
         #self.btn_sdv_industrial.clicked.connect(lambda: self.sdvGoToIndustrial())
         
-        # Iniciar conexion con Firebase
-        self.firebase = Firebase()
+        # LOGIN Y OTRAS COSAS
         
         # Crear robots SDV
         self.sdvs = []
         for i, uname in enumerate(inc.SERVER_USERNAME):
-            self.sdvs.append(SDV(inc.SERVER_USERNAME[i], inc.SERVER_IP[i], inc.SERVER_USERNAME[i], inc.SERVER_PASSWORD[i], self.firebase))
+            self.sdvs.append(SDV(inc.SERVER_USERNAME[i], inc.SERVER_IP[i], inc.SERVER_USERNAME[i], inc.SERVER_PASSWORD[i]))
             #self.sdvs[i].sender = Sender(inc.SERVER_USERNAME[i])
         # inicializar conexion con SDVs
         self.initSocket()
@@ -238,8 +345,6 @@ class SDVoice():
             # Actualizar GUI
             item = QtGui.QStandardItem(self._widget.ListaConexiones.currentText())
             self.EstadosDeConexion_model.appendRow(item)
-            # NOTA: NO NECESARIO ---- > self.ListaMaquinas.addItem(self.ListaConexiones.currentText())
-            # TODO: Agregar lista de comandos
         else:
             # QDialog de Warning por error de conexión
             # TODO: Cambiar tamaño de la ventana del mensaje
@@ -247,7 +352,7 @@ class SDVoice():
             msg.setIcon(QMessageBox.Warning)
             msg.setText("Error de Conexión:")
             msg.setInformativeText("No se pudo conectar a %s!"%(self._widget.ListaConexiones.currentText()))
-            msg.setWindowTitle("Warning")
+            msg.setWindowTitle("Error")
             ret = msg.exec_()
         self._widget.statusBar.showMessage("")
 
@@ -257,8 +362,6 @@ class SDVoice():
             self.sdvs[i].ssh.client.close()
             self.sdvs[i].ssh = None
             self.EstadosDeConexion_model.removeRow(index.row())
-            # TODO: Remover robot de la lista
-            #self.ListaMaquinas.removeItem(self.ListaConexiones.currentText())
          
     def addManualCommand(self):
         indexes = self._widget.EstadosDeConexion.selectedIndexes()
@@ -282,7 +385,6 @@ class SDVoice():
         name, instr, place = sorted(self._widget.TablaInstrucciones.selectedIndexes())
         name, place = str(name.data()), str(place.data())
         
-        # TODO: If robot not connected, show error
         i = 0
         if name == inc.SERVER_USERNAME[0]:   i=0#SDVUN_LAST_COMMAND[0] = self.sender.pose
         elif name == inc.SERVER_USERNAME[1]: i=1#SDVUN_LAST_COMMAND[1] = self.sender.pose
@@ -305,10 +407,16 @@ class SDVoice():
             msg.setWindowTitle("Error")
             ret = msg.exec_()
         
-        # TODO: If robot not connected, show error
         if name == inc.SERVER_USERNAME[0]: self.sdvs[i].sender.publishPoseStamped()
         elif name == inc.SERVER_USERNAME[1]: self.sdvs[i].sender.publishPoseStamped()
         elif name == inc.SERVER_USERNAME[2]: self.sdvs[i].sender.publishPoseStamped()
+        else:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Warning)
+            msg.setText(u"Error de Asignación de Comando:")
+            msg.setInformativeText("No se ha reconocido el robot SDV")
+            msg.setWindowTitle("Error")
+            ret = msg.exec_()
     
     def closeEvent(self, event):
         # Cerrar todos los subprocesos abiertos
@@ -320,6 +428,7 @@ class Plugin(Plugin):
 
     def __init__(self, context):
         super(Plugin, self).__init__(context)
+        self.context = context
         # Give QObjects reasonable names
         self.setObjectName('Plugin')
         
@@ -335,26 +444,67 @@ class Plugin(Plugin):
             print 'arguments: ', args
             print 'unknowns: ', unknowns
 
-        # Create SDVoice
+        # Create GUIs
         # Get path to UI file which should be in the "resource" folder of this package
-        ui_file = os.path.join(rospkg.RosPack().get_path('rqt_sdvoice'), 'resource', 'Plugin.ui')
-        self.sdvoice = SDVoice(ui_file)
-        # Show _widget.windowTitle on left-top of each plugin (when 
-        # it's set in _widget). This is useful when you open multiple 
-        # plugins at once. Also if you open multiple instances of your 
-        # plugin at once, these lines add number to make it easy to 
-        # tell from pane to pane.
-        if context.serial_number() > 1:
-            self.sdvoice._widget.setWindowTitle(self.sdvoice._widget.windowTitle() + (' (%d)' % context.serial_number()))
+        self.login_file = os.path.join(rospkg.RosPack().get_path('rqt_sdvoice'), 'resource', 'login.ui')
+        self.registro_file = os.path.join(rospkg.RosPack().get_path('rqt_sdvoice'), 'resource', 'registro.ui')
+        self.mainwindow_file = os.path.join(rospkg.RosPack().get_path('rqt_sdvoice'), 'resource', 'mainwindow.ui')
+        # Create classes
+        self.login = Login(self.login_file)
+        self.login._widget.Entrar.released.connect(lambda: self.loginView()) # Verificar login de usuario
+        self.login._widget.Registrarse.released.connect(lambda: self.registerView()) # Verificar login de usuario
+        
+        # Add widget to the user interface
+        self.context.add_widget(self.login._widget)
             
         # TODO: Add Console
         # TODO: Add Rviz
 
+       
+    def loginView(self):
+        # Login correcto
+        if self.login.user:
+            self.sdvoice = SDVoice(self.mainwindow_file)
+            # Show _widget.windowTitle on left-top of each plugin (when 
+            # it's set in _widget). This is useful when you open multiple 
+            # plugins at once. Also if you open multiple instances of your 
+            # plugin at once, these lines add number to make it easy to 
+            # tell from pane to pane.
+            if self.context.serial_number() > 1:
+                self.login._widget.setWindowTitle(self.login._widget.windowTitle() + (' (%d)' % self.context.serial_number()))
+                self.sdvoice._widget.setWindowTitle(self.sdvoice._widget.windowTitle() + (' (%d)' % self.context.serial_number()))
+            # Agregar widget al panel de rqt
+            self.context.add_widget(self.sdvoice._widget)
+            # TODO: CERRAR WIDGET LOGIN
+            self.login._widget.close()
+            
+        # Error de datos de usuario    
+        else:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Warning)
+            msg.setText(u"Error de Verificación de Usuario:")
+            msg.setInformativeText(u"Usuario o contraseña no válidos!")
+            msg.setWindowTitle("Error")
+            ret = msg.exec_()
         
-        # Add widget to the user interface
-        #context.add_widget(self._widget)
-        context.add_widget(self.sdvoice._widget)
-
+    def registerView(self):
+        # Registro se presionó
+        self.registro = Registro(self.registro_file)
+        self.registro._widget.Registrarse.released.connect(lambda: self.registerToLogin()) # Verificar registro de usuario
+        self.registro._widget.Cancelar.released.connect(lambda: self.cancelToLogin()) # Cancelar
+        if self.context.serial_number() > 1:
+            self.login._widget.setWindowTitle(self.login._widget.windowTitle() + (' (%d)' % self.context.serial_number()))
+            self.registro._widget.setWindowTitle(self.registro._widget.windowTitle() + (' (%d)' % self.context.serial_number()))
+            
+        self.context.add_widget(self.registro._widget)
+        
+    def registerToLogin(self):
+        self.user = self.registro.user
+        
+    def cancelToLogin(self):
+        self.registro._widget.close()
+        pass
+            
     def shutdown_plugin(self):
         # TODO unregister all publishers here
         pass

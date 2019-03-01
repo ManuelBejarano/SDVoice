@@ -6,19 +6,22 @@ from PyQt5 import uic, QtGui, QtCore
 from geometry_msgs.msg import PoseStamped
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QGridLayout, QTextEdit, QPushButton, QMessageBox
 
-# Autenticar conexion URL a la base de datos
-cred = credentials.Certificate("/home/manuel/Descargas/automatizacion-87dc9-firebase-adminsdk-6jz9r-407ae5fd18.json")
-default_app = firebase_admin.initialize_app(cred, {
-                    'databaseURL' : 'https://automatizacion-87dc9.firebaseio.com/'
-              })
 
 class Firebase():
 
     def __init__(self):
+        # Autenticar conexion URL a la base de datos
+        cred = credentials.Certificate("/home/manuel/Descargas/automatizacion-87dc9-firebase-adminsdk-6jz9r-407ae5fd18.json")
+        default_app = firebase_admin.initialize_app(cred, {
+                    'databaseURL' : 'https://automatizacion-87dc9.firebaseio.com/'
+              })        
+
+    ## Metodo para iniciar las bases de datos
+    def initDataBase(self):
         ref = db.reference('/')         # Referencia a la raiz
         ref.set({
                 'Users': 0,
-                'PassData': 0
+                'ConecctionData': 0
                 })
 
     ## Metodo de creacion de la base de datos inicial de cada usuario    
@@ -83,10 +86,11 @@ class Firebase():
         auth.set_custom_user_claims(user.uid, {'admin': True})
         
         ## Agregar el pass del usuario
-        path = '/PassData/%s'%userName
-        ref = db.reference(path) # Referencia al usuario que se creo
+        path = '/ConecctionData/%s'%userName
+        ref = db.reference(path) # Referencia a los datos de conexion del usuario que se creo
         ref.set({
-                    
+                'email': correo,
+                'Pass': clave
                 })        
         return user            
 
@@ -132,20 +136,34 @@ class Firebase():
             'task': update
         })
 
+    ## Metodo para modificar una password
+    def updatePassword(self, userName, update): 
+        path = '/ConecctionData/' + userName
+        ref = db.reference(path) # Referencia al usuario que se creo
+        ref.update({
+            'Pass': update
+        })
+
     ## Metodo para hacer login
-    def login(self, email, passw, firebase):                
+    def login(self, email, clave, firebase):             
         try:
-            user = firebase.getUser(email)  
+            user = firebase.getUser(email)  # Si no hay usuario bota error
         except:
             print('No hay ningun usuario registrado a ese email')
             return 0
 
-        if user.password == passw:
+        # Si no hay error continua aqui
+        userName = user.display_name    # username del usuario obtenido con getUser
+        path = '/ConecctionData/' + userName
+        ref = db.reference(path) # Referencia a los datos de conexion del usuario
+        data = ref.get() # Toma los datos de todo el path
+        [email, passw] = data.items() # Guarda los datos del email y de la pass por separado
+        password = passw[1] # Toma solo el valor del password
+        if  password == clave:
             return user
         else:
             print('La contrasena no coincide, intentelo de nuevo.') 
-        
-        
+            return 0
 
 #----------------------------------------------------
 # MAIN PROGRAM
@@ -163,111 +181,25 @@ def main():
 
     firebase = Firebase()
     
-    user = firebase.addUser('mfbejaranob@unal.edu.co','123456','3142183559','Manuel')
-    firebase.newDataBase(user.display_name, '123456')    
-    #user2 = firebase.addUser('pgtarazonag@unal.edu.co','123456','3108063204','Pat')
-    #firebase.newDataBase(user2.display_name)
-        
-    #user = firebase.getUser('mfbejaranob@unal.edu.co')    
-    #dataId = firebase.addData(user.display_name, 'SDV1', 1, [0,0,0],[1,2,3],'move')
-    #firebase.updateTask(user.display_name, 'SDV1', dataId, 'complete')
-    
+    #firebase.initDataBase()    
     '''
-    user3 = firebase.login('mfbejaranob@unal.edu.co', 123457, firebase)
-    if user3 != 0:
-        dataId = firebase.addData(user.display_name, 'SDV3', 1, [0,0,0],[1,2,3],'move')
-    '''    
+    user = firebase.addUser('mfbejaranob@unal.edu.co', '123456', '3142183559', 'Manuel')
+    firebase.newDataBase(user.display_name)    
+    user2 = firebase.addUser('pgtarazonag@unal.edu.co', '123456', '3205575944', 'Pat')
+    firebase.newDataBase(user2.display_name)
+    user3 = firebase.addUser('saalvarezse@unal.edu.co', '123456', '3123498388', 'Santiago')
+    firebase.newDataBase(user3.display_name)   
+    
+    user = firebase.getUser('mfbejaranob@unal.edu.co')
+    dataId = firebase.addData(user.display_name, 'SDV1', 1, [0,0,0],[1,2,3], 'move')
+    firebase.updateTask(user.display_name, 'SDV1', dataId, 'complete')
+    '''
+
+    user4 = firebase.login('mfbejaranob@unal.edu.co', '123456', firebase)
+    if user4 != 0:
+        print(user4)
+        print('Hizo LOGIN :D :D :D :D :D')
+ 
 
 if __name__ == '__main__':
     main()
-
-
-'''
-import os
-import firebase_admin
-from firebase_admin import db
-from firebase_admin import credentials
-from firebase_admin import auth
-
-# Custom Libraries
-import includes as inc
-
-class Firebase():
-    # Autenticar conexion URL a la base de datos
-    cred = credentials.Certificate("/home/sdv/catkin_ws/src/rqt_sdvoice/src/rqt_sdvoice/automatizacion-87dc9-adminsdk.json")
-    default_app = firebase_admin.initialize_app(cred, {
-                    'databaseURL' : 'https://automatizacion-87dc9.firebaseio.com/'
-              })
-    def __init__(self):
-        ## Creacion de la base de datos inicial
-        ref = db.reference('/') # Referencia a la raiz del proyecto
-        ref.set({
-                'SDV': 
-                    {
-                        inc.SERVER_USERNAME[0]: {
-                            u'POSE0':{
-                                u'time': u'1',
-                                u'pos': {'X':'0',
-                                    'Y':'0',
-                                    'Z':'0'},
-                                u'ori': {'X':'0',
-                                    'Y':'0',
-                                    'Z':'0',
-                                    'W':'1'},
-                                u'status': u'move'
-                            }
-                        },
-                        inc.SERVER_USERNAME[1]: {
-                            u'POSE0':{
-                                u'time': u'1',
-                                u'pos': {'X':'0',
-                                    'Y':'0',
-                                    'Z':'0'},
-                                u'ori': {'X':'0',
-                                    'Y':'0',
-                                    'Z':'0',
-                                    'W':'1'},
-                                u'status': u'move'
-                            }
-                        },
-                        inc.SERVER_USERNAME[2]: {
-                            u'POSE0':{
-                                u'time': u'1',
-                                u'pos': {'X':'0',
-                                    'Y':'0',
-                                    'Z':'0'},
-                                u'ori': {'X':'0',
-                                    'Y':'0',
-                                    'Z':'0',
-                                    'W':'1'},
-                                u'status': u'move'
-                            }
-                        },
-                    }
-                })
-    
-
-    ## Metodo para agregar datos a la base de datos
-    def addData(self, SDV, time, pose, ori, task):
-        newRef = db.reference('/SDV/%s'%SDV) # Referencia al tallo SDV#
-      
-        # Agregar datos
-        newRef.push({ u'time': time,
-                   u'pos': {'X': pose.x,
-                            'Y': pose.y,
-                            'Z': pose.z},
-                   u'vel': {'X': ori.x,
-                            'Y': ori.y,
-                            'Z': ori.z,
-                            'W': ori.w},
-                   u'task': task}
-        )
-    def getData(self,SDV):
-        newRef = db.reference('/SDV/%s'%SDV) # Referencia al tallo SDV#
-        
-        # Obtener datos        
-        data = newRef.order_by_key().get()
-        for key in data.items():
-            print(key)   
-'''      
-

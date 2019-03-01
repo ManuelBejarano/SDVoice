@@ -20,9 +20,8 @@ class Firebase():
     
     ## Metodo de creacion de la base de datos inicial de cada usuario    
     def newDataBase(self,userName):
-        # Referencia al usuario que se creo
-        ref = db.reference('/%s'%userName)
-        # Creacion de la base de datos inicial
+        path = '/Users/%s'%userName
+        ref = db.reference(path) # Referencia al usuario que se creo
         ref.set({
                 'SDV': 
                     {
@@ -66,8 +65,8 @@ class Firebase():
                             }
                         },
                     }
-                })
-    
+                })       
+
     ## Metodo para crear un nuevo usuario y retorna el user de firebase
     def addUser(self, correo, clave, celular, userName):
         user = auth.create_user(
@@ -80,7 +79,14 @@ class Firebase():
         #print('Sucessfully created new user: {0}'.format(user.uid)) # Se puede imprimir en donde se necesite
         # Set admin privilege on the user corresponding to uid.
         auth.set_custom_user_claims(user.uid, {'admin': True})        
-        return user            
+        ## Agregar el pass del usuario
+        path = '/ConecctionData/%s'%userName
+        ref = db.reference(path) # Referencia a los datos de conexion del usuario que se creo
+        ref.set({
+                'email': correo,
+                'Pass': clave
+                })        
+        return user                 
 
     ## Metodo para obtener el user de firebase con el email
     def getUser(self,email):
@@ -90,7 +96,7 @@ class Firebase():
         
     ## Metodo para agregar datos a la base de datos
     def addData(self, userName, SDV, time, pose, ori, task):
-        sdv = '/%s/SDV/%s'%(userName, SDV)
+        sdv = '/Users/' + userName + '/SDV/'+SDV
         newRef = db.reference(sdv) # Referencia al tallo SDV#
       
         # Agregar datos
@@ -98,7 +104,7 @@ class Firebase():
                    u'pos': {'X': pose.x,
                             'Y': pose.y,
                             'Z': pose.z},
-                   u'vel': {'X': ori.x,
+                   u'ori': {'X': ori.x,
                             'Y': ori.y,
                             'Z': ori.z,
                             'W': ori.w},
@@ -108,7 +114,7 @@ class Firebase():
         
     ## Metodo para obtener los datos de un SDV
     def getData(self, userName, SDV):      
-        sdv = '/' + userName + '/SDV/'+SDV
+        sdv = '/Users/' + userName + '/SDV/'+SDV
         newRef = db.reference(sdv) # Referencia al tallo SDV#
         
         # Obtener datos        
@@ -118,58 +124,37 @@ class Firebase():
             
     ## Metodo para modificar la task de uno de los datos  
     def updateTask(self, userName, SDV, key, update): 
-        path = '/' + userName + '/SDV/' + SDV + '/%s'%key
+        path = '/Users/' + userName + '/SDV/' + SDV + '/%s'%key
         ref = db.reference(path) # Referencia al usuario que se creo
         ref.update({
             'task': update
         })
         
+    ## Metodo para modificar una password
+    def updatePassword(self, userName, update): 
+        path = '/ConecctionData/' + userName
+        ref = db.reference(path) # Referencia al usuario que se creo
+        ref.update({
+            'Pass': update
+        })
+
     ## Metodo para hacer login
-    def loginUser(self, email, passw, firebase):                
+    def login(self, email, clave, firebase):             
         try:
-            user = firebase.getUser(email)
+            user = firebase.getUser(email)  # Si no hay usuario bota error
         except:
             print('No hay ningun usuario registrado a ese email')
             return 0
-        finally:
-            print user['data']['passwordHash']
-            upass = scrypt.decrypt(user._data.passwordHash, 'jxspr8Ki0RYycVU8zykbdLGjFQ3McFUH0uiiTvC8pVMXAn210wjLNmdZJzxUECKbm0QsEmYUSDzZvpjeJ9WmXA==', maxtime=0.05)
-            print upass
-            if upass == passw:
-                return user
-            else:
-                print('La contrasena no coincide, intentelo de nuevo.') 
-   
 
-'''
-#----------------------------------------------------
-# MAIN PROGRAM
-#----------------------------------------------------
-# Name: main
-# Type: Main Function
-# input args: None
-# output args: None
-#----------------------------------------------------
-def main():
-    Main function of execution for the application. 
-    It generates the QT App and executes it 
-
-    firebase = Firebase()
-    #user = firebase.addUser('mfbejaranob@unal.edu.co','123456','3142183559','Manuel')
-    #firebase.newDataBase(user.display_name)    
-    #user2 = firebase.addUser('pgtarazonag@unal.edu.co','123456','3108063204','Pat')
-    #firebase.newDataBase(user2.display_name)
-        
-    #user = firebase.getUser('mfbejaranob@unal.edu.co')    
-    #dataId = firebase.addData(user.display_name, 'SDV1', 1, [0,0,0],[1,2,3],'move')
-    #firebase.updateTask(user.display_name, 'SDV1', dataId, 'complete')
-
-    user3 = firebase.login('mfbejaranob@unal.edu.co', '123457', firebase)
-    if user3 != 0:
-        dataId = firebase.addData(user.display_name, 'SDV3', 1, [0,0,0],[1,2,3],'move')
-    
-
-if __name__ == '__main__':
-    main()
-
-'''
+        # Si no hay error continua aqui
+        userName = user.display_name    # username del usuario obtenido con getUser
+        path = '/ConecctionData/' + userName
+        ref = db.reference(path) # Referencia a los datos de conexion del usuario
+        data = ref.get() # Toma los datos de todo el path
+        [email, passw] = data.items() # Guarda los datos del email y de la pass por separado
+        password = passw[1] # Toma solo el valor del password
+        if  password == clave:
+            return user
+        else:
+            print('La contrasena no coincide, intentelo de nuevo.') 
+            return 0

@@ -475,7 +475,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>escudo_unal_2015-01.jpg</normaloff>escudo_unal_2015-01.jpg</iconset>
+    <normaloff>escudo_unal.jpg</normaloff>escudo_unal.jpg</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">

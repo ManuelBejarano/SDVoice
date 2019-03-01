@@ -5,14 +5,7 @@ from firebase_admin import auth
 from PyQt5 import uic, QtGui, QtCore
 from geometry_msgs.msg import PoseStamped
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QGridLayout, QTextEdit, QPushButton, QMessageBox
-'''
-#load ui file
-RELATIVE_DIR = './'
-GUI_DIR = RELATIVE_DIR + './'
-GUI_TITLE = 'Comandos SDV'
-MAIN_WINDOW = GUI_DIR + 'mainwindow.ui'
-UI_MAIN_WINDOW, Q_MAIN_WINDOW = uic.loadUiType(MAIN_WINDOW)
-'''
+
 # Autenticar conexion URL a la base de datos
 cred = credentials.Certificate("/home/manuel/Descargas/automatizacion-87dc9-firebase-adminsdk-6jz9r-407ae5fd18.json")
 default_app = firebase_admin.initialize_app(cred, {
@@ -20,12 +13,18 @@ default_app = firebase_admin.initialize_app(cred, {
               })
 
 class Firebase():
+
     def __init__(self):
-        print('Hola')
+        ref = db.reference('/')         # Referencia a la raiz
+        ref.set({
+                'Users': 0,
+                'PassData': 0
+                })
 
     ## Metodo de creacion de la base de datos inicial de cada usuario    
     def newDataBase(self,userName):
-        ref = db.reference('/%s'%userName) # Referencia al usuario que se creo
+        path = '/Users/%s'%userName
+        ref = db.reference(path) # Referencia al usuario que se creo
         ref.set({
                 'SDV': 
                     {
@@ -67,6 +66,8 @@ class Firebase():
                         },
                     }
                 })
+
+        
     
     ## Metodo para crear un nuevo usuario y retorna el user de firebase
     def addUser(self, correo, clave, celular, userName):
@@ -79,7 +80,14 @@ class Firebase():
         disabled=False)
         #print('Sucessfully created new user: {0}'.format(user.uid)) # Se puede imprimir en donde se necesite
         # Set admin privilege on the user corresponding to uid.
-        auth.set_custom_user_claims(user.uid, {'admin': True})        
+        auth.set_custom_user_claims(user.uid, {'admin': True})
+        
+        ## Agregar el pass del usuario
+        path = '/PassData/%s'%userName
+        ref = db.reference(path) # Referencia al usuario que se creo
+        ref.set({
+                    
+                })        
         return user            
 
     ## Metodo para obtener el user de firebase con el email
@@ -90,7 +98,7 @@ class Firebase():
 
     ## Metodo para agregar datos a la base de datos
     def addData(self, userName, SDV, time, pose, vel, task):
-        sdv = '/' + userName + '/SDV/'+SDV
+        sdv = '/Users/' + userName + '/SDV/'+SDV
         newRef = db.reference(sdv) # Referencia al tallo SDV#
       
         # Agregar datos
@@ -104,10 +112,11 @@ class Firebase():
                    u'task': task}
         )
         return newKey.key
-
+      
+    
     ## Metodo para obtener los datos de un SDV
     def getData(self, userName, SDV):      
-        sdv = '/' + userName + '/SDV/'+SDV
+        sdv = '/Users/' + userName + '/SDV/'+SDV
         newRef = db.reference(sdv) # Referencia al tallo SDV#
         
         # Obtener datos        
@@ -117,7 +126,7 @@ class Firebase():
     
     ## Metodo para modificar la task de uno de los datos  
     def updateTask(self, userName, SDV, key, update): 
-        path = '/' + userName + '/SDV/' + SDV + '/%s'%key
+        path = '/Users/' + userName + '/SDV/' + SDV + '/%s'%key
         ref = db.reference(path) # Referencia al usuario que se creo
         ref.update({
             'task': update
@@ -153,22 +162,25 @@ def main():
     '''
 
     firebase = Firebase()
-    #user = firebase.addUser('mfbejaranob@unal.edu.co','123456','3142183559','Manuel')
-    #firebase.newDataBase(user.display_name)    
+    
+    user = firebase.addUser('mfbejaranob@unal.edu.co','123456','3142183559','Manuel')
+    firebase.newDataBase(user.display_name, '123456')    
     #user2 = firebase.addUser('pgtarazonag@unal.edu.co','123456','3108063204','Pat')
     #firebase.newDataBase(user2.display_name)
         
     #user = firebase.getUser('mfbejaranob@unal.edu.co')    
     #dataId = firebase.addData(user.display_name, 'SDV1', 1, [0,0,0],[1,2,3],'move')
     #firebase.updateTask(user.display_name, 'SDV1', dataId, 'complete')
-
+    
+    '''
     user3 = firebase.login('mfbejaranob@unal.edu.co', 123457, firebase)
     if user3 != 0:
         dataId = firebase.addData(user.display_name, 'SDV3', 1, [0,0,0],[1,2,3],'move')
-    
+    '''    
 
 if __name__ == '__main__':
     main()
+
 
 '''
 import os

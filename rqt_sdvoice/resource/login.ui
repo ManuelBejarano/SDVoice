@@ -148,7 +148,7 @@
        </color>
       </brush>
      </colorrole>
-     <colorrole role="PlaceholderText">
+     <!--colorrole role="PlaceholderText">
       <brush brushstyle="SolidPattern">
        <color alpha="128">
         <red>0</red>
@@ -156,7 +156,7 @@
         <blue>0</blue>
        </color>
       </brush>
-     </colorrole>
+     </colorrole-->
     </active>
     <inactive>
      <colorrole role="WindowText">
@@ -294,7 +294,7 @@
        </color>
       </brush>
      </colorrole>
-     <colorrole role="PlaceholderText">
+     <!--colorrole role="PlaceholderText">
       <brush brushstyle="SolidPattern">
        <color alpha="128">
         <red>0</red>
@@ -302,7 +302,7 @@
         <blue>0</blue>
        </color>
       </brush>
-     </colorrole>
+     </colorrole-->
     </inactive>
     <disabled>
      <colorrole role="WindowText">
@@ -440,7 +440,7 @@
        </color>
       </brush>
      </colorrole>
-     <colorrole role="PlaceholderText">
+     <!--colorrole role="PlaceholderText">
       <brush brushstyle="SolidPattern">
        <color alpha="128">
         <red>0</red>
@@ -448,7 +448,7 @@
         <blue>0</blue>
        </color>
       </brush>
-     </colorrole>
+     </colorrole-->
     </disabled>
    </palette>
   </property>
@@ -632,7 +632,7 @@
         </color>
        </brush>
       </colorrole>
-      <colorrole role="PlaceholderText">
+      <!--colorrole role="PlaceholderText">
        <brush brushstyle="SolidPattern">
         <color alpha="128">
          <red>0</red>
@@ -640,7 +640,7 @@
          <blue>0</blue>
         </color>
        </brush>
-      </colorrole>
+      </colorrole-->
      </active>
      <inactive>
       <colorrole role="WindowText">
@@ -778,7 +778,7 @@
         </color>
        </brush>
       </colorrole>
-      <colorrole role="PlaceholderText">
+      <!--colorrole role="PlaceholderText">
        <brush brushstyle="SolidPattern">
         <color alpha="128">
          <red>0</red>
@@ -786,7 +786,7 @@
          <blue>0</blue>
         </color>
        </brush>
-      </colorrole>
+      </colorrole-->
      </inactive>
      <disabled>
       <colorrole role="WindowText">
@@ -924,7 +924,7 @@
         </color>
        </brush>
       </colorrole>
-      <colorrole role="PlaceholderText">
+      <!--colorrole role="PlaceholderText">
        <brush brushstyle="SolidPattern">
         <color alpha="128">
          <red>0</red>
@@ -932,7 +932,7 @@
          <blue>0</blue>
         </color>
        </brush>
-      </colorrole>
+      </colorrole-->
      </disabled>
     </palette>
    </property>
@@ -1087,7 +1087,7 @@
         </color>
        </brush>
       </colorrole>
-      <colorrole role="PlaceholderText">
+      <!--colorrole role="PlaceholderText">
        <brush brushstyle="SolidPattern">
         <color alpha="128">
          <red>0</red>
@@ -1095,7 +1095,7 @@
          <blue>0</blue>
         </color>
        </brush>
-      </colorrole>
+      </colorrole-->
      </active>
      <inactive>
       <colorrole role="WindowText">
@@ -1233,7 +1233,7 @@
         </color>
        </brush>
       </colorrole>
-      <colorrole role="PlaceholderText">
+      <!--colorrole role="PlaceholderText">
        <brush brushstyle="SolidPattern">
         <color alpha="128">
          <red>0</red>
@@ -1241,7 +1241,7 @@
          <blue>0</blue>
         </color>
        </brush>
-      </colorrole>
+      </colorrole-->
      </inactive>
      <disabled>
       <colorrole role="WindowText">
@@ -1379,7 +1379,7 @@
         </color>
        </brush>
       </colorrole>
-      <colorrole role="PlaceholderText">
+      <!--colorrole role="PlaceholderText">
        <brush brushstyle="SolidPattern">
         <color alpha="128">
          <red>0</red>
@@ -1387,7 +1387,7 @@
          <blue>0</blue>
         </color>
        </brush>
-      </colorrole>
+      </colorrole-->
      </disabled>
     </palette>
    </property>

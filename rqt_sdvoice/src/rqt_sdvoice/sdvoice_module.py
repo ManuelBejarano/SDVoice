@@ -6,10 +6,12 @@ import rospy
 import rospkg
 from paramiko import client
 from qt_gui.plugin import Plugin
+from time import gmtime, strftime
 from geometry_msgs.msg import PoseStamped
 from actionlib_msgs.msg import GoalStatusArray
 from python_qt_binding import QtGui, QtCore, loadUi
-from python_qt_binding.QtWidgets import QWidget, QMessageBox, QLineEdit
+from python_qt_binding.QtWidgets import QWidget, QMessageBox, QLineEdit    
+
 
 # Custom Libraries
 import includes as inc
@@ -232,6 +234,8 @@ class Registro():
         self.user = None
         # Give QObjects reasonable names
         self._widget.setObjectName('Registro')
+        self._widget.passw.setEchoMode(QLineEdit.Password)
+        self._widget.repass.setEchoMode(QLineEdit.Password)
         # Definir callbacks de cada elemento de la gui
         self._widget.Cancelar.clicked.connect(lambda: self.cancelar())
         self._widget.Registrarse.clicked.connect(lambda: self.registro())
@@ -240,25 +244,27 @@ class Registro():
         email = self._widget.email.text()
         user_name = self._widget.userName.text()
         phone = self._widget.phone.text()
-        passw = self._widget.pass.text()
+        passw = self._widget.passw.text()
         repassw = self._widget.repass.text()
+        # Error de contraseñas
         if passw != repassw:
             self.user = None
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Warning)
             msg.setText(u"Error de Contraseña:")
-            msg.setInformativeText(u"Contraseñas no coinciden!")
+            msg.setInformativeText(u"Datos erroneos, revisar:\n - Contraseña debe tener más de 6 digitos.\n - Verifique símbolos de los datos personales.")
             msg.setWindowTitle("Error")
             ret = msg.exec_()
         else:
             try:
                 self.user = firebase.addUser(email, passw, firebase)
+            # Error de registro
             except:
                 self.user = None
                 msg = QMessageBox()
                 msg.setIcon(QMessageBox.Warning)
-                msg.setText(u"Error de Contraseña:")
-                msg.setInformativeText(u"Datos erroneos, revisar:\n - Contraseña debe tener más de 6 digitos.\n - Verifique símbolos de los datos personales.")
+                msg.setText(u"Error de Registro:")
+                msg.setInformativeText(u"No se ha podido registrar usuario.")
                 msg.setWindowTitle("Error")
                 ret = msg.exec_()
     
@@ -303,25 +309,21 @@ class SDVoice():
         self._widget.Desconectar.clicked.connect(lambda: self.disconnectSSH())
         self._widget.Anadir.clicked.connect(lambda: self.addManualCommand())
         self._widget.Ejectutar.clicked.connect(lambda: self.sendCommand())
-        #self.btn_sdv_experimental.clicked.connect(lambda: self.sdvGoToExperimental())
-        #self.btn_sdv_manufactura.clicked.connect(lambda: self.sdvGoToManufactura())
-        #self.btn_sdv_industrial.clicked.connect(lambda: self.sdvGoToIndustrial())
         
         # LOGIN Y OTRAS COSAS
         
         # Crear robots SDV
         self.sdvs = []
         for i, uname in enumerate(inc.SERVER_USERNAME):
-            self.sdvs.append(SDV(inc.SERVER_USERNAME[i], inc.SERVER_IP[i], inc.SERVER_USERNAME[i], inc.SERVER_PASSWORD[i]))
-            #self.sdvs[i].sender = Sender(inc.SERVER_USERNAME[i])
+            self.sdvs.append(SDV(inc.SERVER_USERNAME[i], inc.SERVER_IP[i], 
+                                 inc.SERVER_USERNAME[i], inc.SERVER_PASSWORD[i])
+                             )
         # inicializar conexion con SDVs
         self.initSocket()
         self._widget.statusBar.showMessage("System Status | Ready. Welcome!")
     
     
     def initSocket(self):
-        #for i, name in enumerate(inc.SERVER_USERNAME):
-        #    self.sdvs[i].ssh = None
         # Agregar a ListaConexiones lista de hosts maquinas
         self._widget.ListaConexiones.addItems(inc.SERVER_USERNAME)
     
@@ -333,6 +335,10 @@ class SDVoice():
         self.sdvs[i].ssh = ssh(inc.SERVER_IP[i], inc.SERVER_USERNAME[i], inc.SERVER_PASSWORD[i])
         # Agregar a EstadosDeConexion lista de hosts conectados
         if self.sdvs[i].ssh.client != None:
+            # Actualizar GUI
+            item = QtGui.QStandardItem(self._widget.ListaConexiones.currentText())
+            self.EstadosDeConexion_model.appendRow(item)
+            
             # TODO: Lanzar el proyecto de sdvoice en el robot SDV
             #node = roslaunch.core.Node('sdvoice', 'agv_nav.launch')
             #launch = roslaunch.scriptapi.ROSLaunch()
@@ -342,9 +348,6 @@ class SDVoice():
             #self.ssh_clients[i].sendCommand("roslaunch sdvoice agv_nav.launch")
             #self.ssh_clients[i].sendCommand("ls")
 
-            # Actualizar GUI
-            item = QtGui.QStandardItem(self._widget.ListaConexiones.currentText())
-            self.EstadosDeConexion_model.appendRow(item)
         else:
             # QDialog de Warning por error de conexión
             # TODO: Cambiar tamaño de la ventana del mensaje
@@ -382,7 +385,17 @@ class SDVoice():
                 self.TablaInstrucciones_model.appendRow(self._comm)
        
     def sendCommand(self):
-        name, instr, place = sorted(self._widget.TablaInstrucciones.selectedIndexes())
+        try: # Todas las columnas de la fila seleccionadas
+            name, instr, place = sorted(self._widget.TablaInstrucciones.selectedIndexes())
+        except:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Warning)
+            msg.setText(u"Error de Ejecución de Instrucción:")
+            msg.setInformativeText("No se ha seleccionado toda la fila. Seleccione el índice de la instrucción")
+            msg.setWindowTitle("Error")
+            ret = msg.exec_()
+            return
+        # Selección correcta
         name, place = str(name.data()), str(place.data())
         
         i = 0
@@ -406,6 +419,7 @@ class SDVoice():
             msg.setInformativeText("No se ha reconocido el destino del SDV")
             msg.setWindowTitle("Error")
             ret = msg.exec_()
+            return
         
         if name == inc.SERVER_USERNAME[0]: self.sdvs[i].sender.publishPoseStamped()
         elif name == inc.SERVER_USERNAME[1]: self.sdvs[i].sender.publishPoseStamped()
@@ -417,6 +431,7 @@ class SDVoice():
             msg.setInformativeText("No se ha reconocido el robot SDV")
             msg.setWindowTitle("Error")
             ret = msg.exec_()
+            return
     
     def closeEvent(self, event):
         # Cerrar todos los subprocesos abiertos
@@ -431,20 +446,10 @@ class Plugin(Plugin):
         self.context = context
         # Give QObjects reasonable names
         self.setObjectName('Plugin')
-        
-        # Process standalone plugin command-line arguments
-        from argparse import ArgumentParser
-        parser = ArgumentParser()
-        # Add argument(s) to the parser.
-        parser.add_argument("-q", "--quiet", action="store_true",
-                      dest="quiet",
-                      help="Put plugin in silent mode")
-        args, unknowns = parser.parse_known_args(context.argv())
-        if not args.quiet:
-            print 'arguments: ', args
-            print 'unknowns: ', unknowns
 
         # Create GUIs
+        print strftime("%Y-%m-%d %H:%M:%S", gmtime())
+        print '*** RQt SDVoice Pluggin ***'
         # Get path to UI file which should be in the "resource" folder of this package
         self.login_file = os.path.join(rospkg.RosPack().get_path('rqt_sdvoice'), 'resource', 'login.ui')
         self.registro_file = os.path.join(rospkg.RosPack().get_path('rqt_sdvoice'), 'resource', 'registro.ui')
@@ -464,6 +469,7 @@ class Plugin(Plugin):
     def loginView(self):
         # Login correcto
         if self.login.user:
+            print 'Autenticado usuario: %s'%(self.login.user)
             self.sdvoice = SDVoice(self.mainwindow_file)
             # Show _widget.windowTitle on left-top of each plugin (when 
             # it's set in _widget). This is useful when you open multiple 

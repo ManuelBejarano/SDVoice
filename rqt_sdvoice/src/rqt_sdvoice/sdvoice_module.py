@@ -7,11 +7,10 @@ import rospkg
 from paramiko import client
 from qt_gui.plugin import Plugin
 from time import gmtime, strftime
-from geometry_msgs.msg import PoseStamped
-from actionlib_msgs.msg import GoalStatusArray
+from geometry_msgs.msg import PoseStamped, Twist
+from actionlib_msgs.msg import GoalStatusArray, GoalID
 from python_qt_binding import QtGui, QtCore, loadUi
 from python_qt_binding.QtWidgets import QWidget, QMessageBox, QLineEdit    
-
 
 # Custom Libraries
 import includes as inc
@@ -27,14 +26,15 @@ SDVUN_LAST_COMMAND = [[], [], []]
 # output args: client for server connections
 #----------------------------------------------------
 class SDV():
-    def __init__(self, name, address, username, password):
+    def __init__(self, name, address, username, password, user):
+        self.user = user
         self.name = name
         self.address = address
         self.username = username
         self.password = password
         # Objetos
         self.ssh = None
-        self.sender = Sender(name)
+        self.sender = Sender(name, self.user)
 
 #----------------------------------------------------
 # Name: ssh
@@ -82,9 +82,10 @@ class ssh():
 # output args: Rospy message publisher for robots
 #----------------------------------------------------
 class Sender():
-    def __init__(self, name):
+    def __init__(self, name, user):
+        self.user = user
         self.timer, self.delta = 0., time.clock()
-        self.poses = []
+        self.poses, self.gids = [], []
         self.status = 0
         self.name = name
         self.key = 'moving'
@@ -99,9 +100,15 @@ class Sender():
         self.pose.pose.orientation.y = 0
         self.pose.pose.orientation.z = 0
         self.pose.pose.orientation.w = 1
-        self.pub = rospy.Publisher('/%s/move_base_simple/goal'%self.name, PoseStamped, queue_size=100)
-        self.subs = rospy.Subscriber('/%s/move_base/status'%self.name, GoalStatusArray, self.callbackStatus)
         self.poses.append(self.pose)
+        self.pub = rospy.Publisher('/%s/move_base_simple/goal'%self.name, PoseStamped, queue_size=100)
+        self.cancel = GoalID()
+        self.cancel.stamp = rospy.Time.now()
+        self.cancel.id = '/%s/HOME'%self.name
+        self.gids.append(self.cancel)
+        self.pub_cancel = rospy.Publisher('/%s/move_base/cancel'%self.name, GoalID, queue_size=100)
+        self.subs = rospy.Subscriber('/%s/move_base/status'%self.name, GoalStatusArray, self.callbackStatus)
+        self.subs_goal = rospy.Subscriber('/%s/move_base/goal'%self.name, GoalID, self.newGoalID)
 
     def sendSDVtoHome(self):
         self.pose.header.stamp = rospy.Time().now()
@@ -142,9 +149,23 @@ class Sender():
         self.pub.publish(self.pose)
         # ADD USERNAME AFTER LOGIN
         self.status = 0
-        self.key = firebase.addData('Santiago', self.name, str(self.pose.header.stamp), self.pose.pose.position,self.pose.pose.orientation,'moving')
-        self.poses.append(self.pose)
+        self.key = firebase.addData(self.user.display_name, self.name, str(self.pose.header.stamp), self.pose.pose.position,self.pose.pose.orientation,'moving')
         print self.poses[-1]
+        
+    def publishCancelGoal(self):
+        # Cancelar último objetivo
+        self.pub_cancel.pub(self.gids[-1])
+        # Re publicar el último obejtivo
+        self.publishResetGoal()
+        
+    def publishResetGoal(self):
+        firebase.updateTask(self.user.display_name, self.name, self.key, 'reseted')
+        self.pose = self.poses[-2]
+        self.publishPoseStamped()
+        
+    def newGoalID(self, status):
+        self.gids.append(status.goal_id.id)
+        self.poses.append(status.goal.target_pose)
         
     def callbackStatus(self, status):
         for stats in status.status_list:
@@ -155,13 +176,13 @@ class Sender():
                 print u'%s: LLEGUÉ!'%self.name#, stat.text
                 # Crear mensaje con status complete
                 # ADD USERNAME AFTER LOGIN
-                firebase.updateTask('Santiago', self.name, self.key, 'complete')
+                firebase.updateTask(self.user.display_name, self.name, self.key, 'complete')
                 self.timer = 0.0
             # SDV no llega a la posición deseada
             elif (stat == 4) and (self.status != stat):
                 self.status = stat
                 print '%s: NO LLEGO'%self.name#, stat.text
-                firebase.updateTask('Santiago', self.name, self.key, 'failed')
+                firebase.updateTask(self.user.display_name, self.name, self.key, 'failed')
                 self.pose = self.poses[-2]
                 self.publishPoseStamped()
                 self.timer = 1.0
@@ -290,10 +311,11 @@ class SDVoice():
     # input args: None
     # output args: None
     #----------------------------------------------------
-    def __init__(self, ui_file):
+    def __init__(self, ui_file, user):
         ''' Start window and declare initial values '''
         # Extend the widget with all attributes and children from UI file
         loadUi(ui_file, self._widget)
+        self.user = user
         # Give QObjects reasonable names
         self._widget.setObjectName('SDVoice')
         self.EstadosDeConexion_model = QtGui.QStandardItemModel()
@@ -309,6 +331,8 @@ class SDVoice():
         self._widget.Desconectar.clicked.connect(lambda: self.disconnectSSH())
         self._widget.Anadir.clicked.connect(lambda: self.addManualCommand())
         self._widget.Ejectutar.clicked.connect(lambda: self.sendCommand())
+        self._widget.Stop.clicked.connect(lambda: self.stopSDV())
+        self._widget.Reset.clicked.connect(lambda: self.resetSDV())
         
         # LOGIN Y OTRAS COSAS
         
@@ -316,7 +340,7 @@ class SDVoice():
         self.sdvs = []
         for i, uname in enumerate(inc.SERVER_USERNAME):
             self.sdvs.append(SDV(inc.SERVER_USERNAME[i], inc.SERVER_IP[i], 
-                                 inc.SERVER_USERNAME[i], inc.SERVER_PASSWORD[i])
+                                 inc.SERVER_USERNAME[i], inc.SERVER_PASSWORD[i], self.user)
                              )
         # inicializar conexion con SDVs
         self.initSocket()
@@ -433,6 +457,56 @@ class SDVoice():
             ret = msg.exec_()
             return
     
+    def stopSDV(self):
+        indexes = self._widget.EstadosDeConexion.selectedIndexes()
+        # SI no se ha seleccionado ningun robot SDV arrojar error
+        if not indexes:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Warning)
+            msg.setText(u"Error de Asignación de Comando:")
+            msg.setInformativeText("Seleccione al menos un robot de la lista de conexiones")
+            msg.setWindowTitle("Error")
+            ret = msg.exec_()
+        else:
+            for index in indexes:
+                sdv = index.data()
+                if sdv == inc.SERVER_USERNAME[0]: self.sdvs[0].sender.publishCancelGoal()
+                elif sdv == inc.SERVER_USERNAME[1]: self.sdvs[1].sender.publishCancelGoal()
+                elif sdv == inc.SERVER_USERNAME[2]: self.sdvs[2].sender.publishCancelGoal()
+                else:
+                    msg = QMessageBox()
+                    msg.setIcon(QMessageBox.Warning)
+                    msg.setText(u"Error de Asignación de Comando:")
+                    msg.setInformativeText("No se ha reconocido el robot SDV")
+                    msg.setWindowTitle("Error")
+                    ret = msg.exec_()
+                    return
+       
+    def resetSDV(self):
+        indexes = self._widget.EstadosDeConexion.selectedIndexes()
+        # SI no se ha seleccionado ningun robot SDV arrojar error
+        if not indexes:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Warning)
+            msg.setText(u"Error de Asignación de Comando:")
+            msg.setInformativeText("Seleccione al menos un robot de la lista de conexiones")
+            msg.setWindowTitle("Error")
+            ret = msg.exec_()
+        else:
+            for index in indexes:
+                sdv = index.data()
+                if sdv == inc.SERVER_USERNAME[0]: self.sdvs[0].sender.publishResetGoal()
+                elif sdv == inc.SERVER_USERNAME[1]: self.sdvs[1].sender.publishResetGoal()
+                elif sdv == inc.SERVER_USERNAME[2]: self.sdvs[2].sender.publishResetGoal()
+                else:
+                    msg = QMessageBox()
+                    msg.setIcon(QMessageBox.Warning)
+                    msg.setText(u"Error de Asignación de Comando:")
+                    msg.setInformativeText("No se ha reconocido el robot SDV")
+                    msg.setWindowTitle("Error")
+                    ret = msg.exec_()
+                    return
+       
     def closeEvent(self, event):
         # Cerrar todos los subprocesos abiertos
         #self.roscore.terminate()
@@ -469,8 +543,8 @@ class Plugin(Plugin):
     def loginView(self):
         # Login correcto
         if self.login.user:
-            print 'Autenticado usuario: %s'%(self.login.user)
-            self.sdvoice = SDVoice(self.mainwindow_file)
+            print 'Autenticado usuario: %s'%(self.login.user.display_name)
+            self.sdvoice = SDVoice(self.mainwindow_file, self.login.user)
             # Show _widget.windowTitle on left-top of each plugin (when 
             # it's set in _widget). This is useful when you open multiple 
             # plugins at once. Also if you open multiple instances of your 

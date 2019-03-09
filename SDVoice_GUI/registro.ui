@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>Registro</class>
  <widget class="QWidget" name="Registro">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -1503,6 +1506,19 @@
     <number>2</number>
    </property>
   </widget>
+  <zorder>Borde</zorder>
+  <zorder>email</zorder>
+  <zorder>userName</zorder>
+  <zorder>phone</zorder>
+  <zorder>pass</zorder>
+  <zorder>repass</zorder>
+  <zorder>Registrarse</zorder>
+  <zorder>Cancelar</zorder>
+  <zorder>label</zorder>
+  <zorder>label_2</zorder>
+  <zorder>label_3</zorder>
+  <zorder>label_4</zorder>
+  <zorder>label_5</zorder>
  </widget>
  <resources/>
  <connections/>

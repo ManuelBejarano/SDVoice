@@ -5,24 +5,19 @@ from firebase_admin import auth
 from PyQt5 import uic, QtGui, QtCore
 from geometry_msgs.msg import PoseStamped
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QGridLayout, QTextEdit, QPushButton, QMessageBox
-
+from six.moves import urllib
+import json
 
 class Firebase():
 
     def __init__(self):
+        # Generar el API Key
+        self.firebase_apikey = 'AIzaSyDXHZOR2M2cU1MHTVhTLMq3hBG4sBcSsa0'
         # Autenticar conexion URL a la base de datos
         cred = credentials.Certificate("/home/manuel/Descargas/automatizacion-87dc9-firebase-adminsdk-6jz9r-407ae5fd18.json")
         default_app = firebase_admin.initialize_app(cred, {
                     'databaseURL' : 'https://automatizacion-87dc9.firebaseio.com/'
-              })        
-
-    ## Metodo para iniciar las bases de datos
-    def initDataBase(self):
-        ref = db.reference('/')         # Referencia a la raiz
-        ref.set({
-                'Users': 0,
-                'ConecctionData': 0
-                })
+              })
 
     ## Metodo de creacion de la base de datos inicial de cada usuario    
     def newDataBase(self,userName):
@@ -31,40 +26,43 @@ class Firebase():
         ref.set({
                 'SDV': 
                     {
-                        'SDV1': {
-                            u'POSE0':{
+                        'sdvun1': {
+                           u'POSE0':{
                                 u'time': u'1',
-                                u'pos': {'X':'1',
-                                    'Y':'1',
-                                    'Z':'1'},
-                                u'vel': {'X':'1',
-                                    'Y':'1',
-                                    'Z':'1'},
-                                u'task': u'move'
+                                u'pos': {'X':'0',
+                                    'Y':'0',
+                                    'Z':'0'},
+                                u'ori': {'X':'0',
+                                    'Y':'0',
+                                    'Z':'0',
+                                    'W':'1'},
+                                u'status': u'move'
                             }
                         },
-                        'SDV2': {
+                        'sdvun2': {
                             u'POSE0':{
                                 u'time': u'1',
-                                u'pos': {'X':'1',
-                                    'Y':'1',
-                                    'Z':'1'},
-                                u'vel': {'X':'1',
-                                    'Y':'1',
-                                    'Z':'1'},
-                                u'task': u'move'
+                                u'pos': {'X':'0',
+                                    'Y':'0',
+                                    'Z':'0'},
+                                u'ori': {'X':'0',
+                                    'Y':'0',
+                                    'Z':'0',
+                                    'W':'1'},
+                                u'status': u'move'
                             }
                         },
-                        'SDV3': {
+                        'sdvun3': {
                             u'POSE0':{
                                 u'time': u'1',
-                                u'pos': {'X':'1',
-                                    'Y':'1',
-                                    'Z':'1'},
-                                u'vel': {'X':'1',
-                                    'Y':'1',
-                                    'Z':'1'},
-                                u'task': u'move'
+                                u'pos': {'X':'0',
+                                    'Y':'0',
+                                    'Z':'0'},
+                                u'ori': {'X':'0',
+                                    'Y':'0',
+                                    'Z':'0',
+                                    'W':'1'},
+                                u'status': u'move'
                             }
                         },
                     }
@@ -73,35 +71,123 @@ class Firebase():
         
     
     ## Metodo para crear un nuevo usuario y retorna el user de firebase
-    def addUser(self, correo, clave, celular, userName):
-        user = auth.create_user(
-        email = correo,
-        email_verified = True,
-        phone_number = '+57%s'%celular,
-        password = clave,
-        display_name = userName,
-        disabled=False)
-        #print('Sucessfully created new user: {0}'.format(user.uid)) # Se puede imprimir en donde se necesite
-        # Set admin privilege on the user corresponding to uid.
-        auth.set_custom_user_claims(user.uid, {'admin': True})
-        
-        ## Agregar el pass del usuario
-        path = '/ConecctionData/%s'%userName
-        ref = db.reference(path) # Referencia a los datos de conexion del usuario que se creo
-        ref.set({
-                'email': correo,
-                'Pass': clave
-                })        
-        return user            
+    def addUser(self, correo, clave, celular, userName):     
+        try:
+            user = auth.create_user(
+            email = correo,
+            email_verified = True,
+            phone_number = '+57%s'%celular,
+            password = clave,
+            display_name = userName,
+            disabled=False)
+            # Set admin privilege on the user corresponding to uid.
+            auth.set_custom_user_claims(user.uid, {'admin': True})
+        except:
+            print('Puede que haya un usuario registrado a ese email')
+            print('Revise los datos ingresados en busca de errores')
+            return None
+        finally:
+            # Agregar el usuario al ToolKit
+            my_data = dict()
+            my_data["email"] = correo
+            my_data["password"] = clave
+            my_data["returnSecureToken"] = True
+            json_data = json.dumps(my_data).encode()  # Archivo para la transferencia de datos al toolkit
+            headers = {"Content-Type": "application/json"}
+            request = urllib.request.Request("https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key="+self.firebase_apikey, data=json_data, headers=headers)  # Mensaje enviado al toolkit
+            try:
+                loader = urllib.request.urlopen(request)
+            except urllib.error.URLError as e:
+                message = json.loads(e.read())
+                print(message["error"]["message"])
+                return None
+            finally:                  
+                return user            
 
     ## Metodo para obtener el user de firebase con el email
     def getUser(self,email):
         user = auth.get_user_by_email(email)
-        #print('Successfully fetched user data: {0}'.format(user.uid)) # Se puede imprimir en donde se necesite
         return user
 
+    ## Metodo para hacer login
+    def login(self, email, password, firebase):             
+        try:
+            user = firebase.getUser(email)  # Si no hay usuario bota error
+        except:
+            print('No hay ningun usuario registrado a ese email')
+            return None
+        finally:        
+            my_data = dict()
+            my_data["email"] = email
+            my_data["password"] = password
+            my_data["returnSecureToken"] = True
+				        
+            json_data = json.dumps(my_data).encode()  # Archivo para la transferencia de datos al toolkit
+            headers = {"Content-Type": "application/json"}		
+            request = urllib.request.Request("https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key="+self.firebase_apikey, data=json_data, headers=headers)  # Mensaje enviado al toolkit
+          		
+            try:
+                loader = urllib.request.urlopen(request)
+            except urllib.error.URLError as e:
+                message = json.loads(e.read())
+                print(message["error"]["message"])
+            else:
+                print(loader.read())
+                return user       
+   
+    ## Metodo para modificar una password
+    def resetPassword(email):
+        my_data = dict()
+        my_data["email"] = email
+        my_data["requestType"] = "PASSWORD_RESET"
+				    
+        json_data = json.dumps(my_data).encode()  # Archivo para la transferencia de datos al toolkit
+        headers = {"Content-Type": "application/json"}		
+        request = urllib.request.Request("https://www.googleapis.com/identitytoolkit/v3/relyingparty/getOobConfirmationCode?key="+self.firebase_apikey, data=json_data, headers=headers)  # Mensaje enviado al toolkit
+        try:
+            loader = urllib.request.urlopen(request)
+        except urllib.error.URLError as e:
+            message = json.loads(e.read())
+            print(message["error"]["message"])
+        else:
+            print(loader.read())
+
+    ## Metodo para borrar un usuario
+    def deleteUser(self, id_token):		
+        my_data = {"idToken": id_token}      			
+        json_data = json.dumps(my_data).encode()  # Archivo para la transferencia de datos al toolkit
+        headers = {"Content-Type": "application/json"}		
+        request = urllib.request.Request("https://www.googleapis.com/identitytoolkit/v3/relyingparty/deleteAccount?key="+self.firebase_apikey, data=json_data, headers=headers)  # Mensaje enviado al toolkit
+      		
+        try:
+            loader = urllib.request.urlopen(request)
+        except urllib.error.URLError as e:
+            message = json.loads(e.read())
+            print(message["error"]["message"])
+        else:
+            print(loader.read())        
+
+    ## Metodo para actualizar el token de inicio de sesion
+    def refreshToken(self, token):
+        my_data = dict()
+        my_data["grant_type"] = "refresh_token"
+        my_data["refresh_token"] = token
+				    
+        json_data = json.dumps(my_data).encode()  # Archivo para la transferencia de datos al toolkit
+        headers = {"Content-Type": "application/json"}		
+        request = urllib.request.Request("https://securetoken.googleapis.com/v1/token?key="+self.firebase_apikey, data=json_data, headers=headers)
+      		
+        try:
+            loader = urllib.request.urlopen(request)
+        except urllib.error.URLError as e:
+            message = json.loads(e.read())
+            print(message["error"]["message"])
+        else:
+            print(loader.read())
+      		
+
     ## Metodo para agregar datos a la base de datos
-    def addData(self, userName, SDV, time, pose, vel, task):
+    def addData(self, userName, SDV, time, pose, ori, task):
         sdv = '/Users/' + userName + '/SDV/'+SDV
         newRef = db.reference(sdv) # Referencia al tallo SDV#
       
@@ -110,13 +196,13 @@ class Firebase():
                    u'pos': {'X': pose[0],
                             'Y': pose[1],
                             'Z': pose[2]},
-                   u'vel': {'X': vel[0],
-                            'Y': vel[1],
-                            'Z': vel[2]},
+                   u'ori': {'X': ori[0],
+                            'Y': ori[1],
+                            'Z': ori[2],
+                            'W': ori[3]},
                    u'task': task}
         )
         return newKey.key
-      
     
     ## Metodo para obtener los datos de un SDV
     def getData(self, userName, SDV):      
@@ -136,35 +222,6 @@ class Firebase():
             'task': update
         })
 
-    ## Metodo para modificar una password
-    def updatePassword(self, userName, update): 
-        path = '/ConecctionData/' + userName
-        ref = db.reference(path) # Referencia al usuario que se creo
-        ref.update({
-            'Pass': update
-        })
-
-    ## Metodo para hacer login
-    def login(self, email, clave, firebase):             
-        try:
-            user = firebase.getUser(email)  # Si no hay usuario bota error
-        except:
-            print('No hay ningun usuario registrado a ese email')
-            return 0
-
-        # Si no hay error continua aqui
-        userName = user.display_name    # username del usuario obtenido con getUser
-        path = '/ConecctionData/' + userName
-        ref = db.reference(path) # Referencia a los datos de conexion del usuario
-        data = ref.get() # Toma los datos de todo el path
-        [email, passw] = data.items() # Guarda los datos del email y de la pass por separado
-        password = passw[1] # Toma solo el valor del password
-        if  password == clave:
-            return user
-        else:
-            print('La contrasena no coincide, intentelo de nuevo.') 
-            return 0
-
 #----------------------------------------------------
 # MAIN PROGRAM
 #----------------------------------------------------
@@ -179,27 +236,33 @@ def main():
     It generates the QT App and executes it 
     '''
 
-    firebase = Firebase()
+    firebase = Firebase() 
     
-    #firebase.initDataBase()    
-    '''
-    user = firebase.addUser('mfbejaranob@unal.edu.co', '123456', '3142183559', 'Manuel')
-    firebase.newDataBase(user.display_name)    
-    user2 = firebase.addUser('pgtarazonag@unal.edu.co', '123456', '3205575944', 'Pat')
-    firebase.newDataBase(user2.display_name)
-    user3 = firebase.addUser('saalvarezse@unal.edu.co', '123456', '3123498388', 'Santiago')
-    firebase.newDataBase(user3.display_name)   
+    #user = firebase.addUser('mfbejaranob@unal.edu.co', '123456', '3142183559', 'Manuel')
+    #firebase.newDataBase(user.display_name)
+    #user2 = firebase.addUser('saalvarezse@unal.edu.co', '123456', '3123498388', 'Santiago')
+    #firebase.newDataBase(user2.display_name)   
     
-    user = firebase.getUser('mfbejaranob@unal.edu.co')
-    dataId = firebase.addData(user.display_name, 'SDV1', 1, [0,0,0],[1,2,3], 'move')
-    firebase.updateTask(user.display_name, 'SDV1', dataId, 'complete')
+    #user = firebase.login('mfbejaranob@unal.edu.co', '123456', firebase)
+    #print(user)
+    
+    #user = firebase.getUser('mfbejaranob@unal.edu.co')
     '''
+    dataId = firebase.addData(user.display_name, 'sdvun1', 1, [0,0,0],[1,2,3,4], 'move')
+    dataId = firebase.addData(user.display_name, 'sdvun1', 2, [0,0,0],[2,2,3,4], 'move')
+    dataId = firebase.addData(user.display_name, 'sdvun1', 3, [0,0,0],[2,2,3,4], 'move')
+    dataId = firebase.addData(user.display_name, 'sdvun1', 4, [0,0,0],[2,2,3,4], 'move')
+    '''
+    #firebase.updateTask(user.display_name, 'sdvun1', dataId, 'complete')
 
-    user4 = firebase.login('mfbejaranob@unal.edu.co', '123456', firebase)
-    if user4 != 0:
-        print(user4)
-        print('Hizo LOGIN :D :D :D :D :D')
- 
-
+    '''
+    dataId = firebase.addData(user.display_name, 'sdvun2', 1, [0,0,0],[1,2,3,4], 'moving')
+    dataId = firebase.addData(user.display_name, 'sdvun2', 2, [0,0,0],[2,2,3,4], 'moving')
+    dataId = firebase.addData(user.display_name, 'sdvun2', 3, [0,0,0],[2,2,3,4], 'moving')
+    dataId = firebase.addData(user.display_name, 'sdvun2', 4, [0,0,0],[2,2,3,4], 'moving')
+    '''
+    #firebase.updateTask(user.display_name, 'sdvun2', '-L_MOkgcogIOLeFF4dLv', 'failed')
+        
+    
 if __name__ == '__main__':
     main()

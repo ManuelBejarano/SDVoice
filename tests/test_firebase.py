@@ -21,7 +21,7 @@ class Firebase():
 
     ## Metodo de creacion de la base de datos inicial de cada usuario    
     def newDataBase(self,userName):
-        path = '/Users/%s'%userName
+        path = '/%s'%userName
         ref = db.reference(path) # Referencia al usuario que se creo
         ref.set({
                 'SDV': 
@@ -72,7 +72,8 @@ class Firebase():
     
     ## Metodo para crear un nuevo usuario y retorna el user de firebase
     def addUser(self, correo, clave, celular, userName):     
-        try:
+        error = False  ## Bandera de error      
+        try:           
             user = auth.create_user(
             email = correo,
             email_verified = True,
@@ -85,24 +86,10 @@ class Firebase():
         except:
             print('Puede que haya un usuario registrado a ese email')
             print('Revise los datos ingresados en busca de errores')
-            return None
+            error = True
         finally:
-            # Agregar el usuario al ToolKit
-            my_data = dict()
-            my_data["email"] = correo
-            my_data["password"] = clave
-            my_data["returnSecureToken"] = True
-            json_data = json.dumps(my_data).encode()  # Archivo para la transferencia de datos al toolkit
-            headers = {"Content-Type": "application/json"}
-            request = urllib.request.Request("https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key="+self.firebase_apikey, data=json_data, headers=headers)  # Mensaje enviado al toolkit
-            try:
-                loader = urllib.request.urlopen(request)
-            except urllib.error.URLError as e:
-                message = json.loads(e.read())
-                print(message["error"]["message"])
-                return None
-            finally:                  
-                return user            
+            if error == False:            
+                return user        
 
     ## Metodo para obtener el user de firebase con el email
     def getUser(self,email):
@@ -111,29 +98,33 @@ class Firebase():
 
     ## Metodo para hacer login
     def login(self, email, password, firebase):             
+        error = False    ## Bandera de error
         try:
             user = firebase.getUser(email)  # Si no hay usuario bota error
         except:
             print('No hay ningun usuario registrado a ese email')
-            return None
-        finally:        
-            my_data = dict()
-            my_data["email"] = email
-            my_data["password"] = password
-            my_data["returnSecureToken"] = True
-				        
-            json_data = json.dumps(my_data).encode()  # Archivo para la transferencia de datos al toolkit
-            headers = {"Content-Type": "application/json"}		
-            request = urllib.request.Request("https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key="+self.firebase_apikey, data=json_data, headers=headers)  # Mensaje enviado al toolkit
-          		
-            try:
-                loader = urllib.request.urlopen(request)
-            except urllib.error.URLError as e:
-                message = json.loads(e.read())
-                print(message["error"]["message"])
-            else:
-                print(loader.read())
-                return user       
+            error = True
+        finally:
+            if error == False:        
+                my_data = dict()
+                my_data["email"] = email
+                my_data["password"] = password
+                my_data["returnSecureToken"] = True
+				            
+                json_data = json.dumps(my_data).encode()  # Archivo para la transferencia de datos al toolkit
+                headers = {"Content-Type": "application/json"}		
+                request = urllib.request.Request("https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key="+self.firebase_apikey, data=json_data, headers=headers)  # Mensaje enviado al toolkit
+              		
+                try:
+                    loader = urllib.request.urlopen(request)
+                except urllib.error.URLError as e:
+                    message = json.loads(e.read())
+                    print(message["error"]["message"])
+                    error = True
+                finally:
+                    if error == False: 
+                        print(loader.read())
+                        return user       
    
     ## Metodo para modificar una password
     def resetPassword(email):
@@ -154,11 +145,11 @@ class Firebase():
 
     ## Metodo para borrar un usuario
     def deleteUser(self, id_token):		
-        my_data = {"idToken": id_token}      			
+        my_data = {"idToken": id_token}
+      			
         json_data = json.dumps(my_data).encode()  # Archivo para la transferencia de datos al toolkit
         headers = {"Content-Type": "application/json"}		
-        request = urllib.request.Request("https://www.googleapis.com/identitytoolkit/v3/relyingparty/deleteAccount?key="+self.firebase_apikey, data=json_data, headers=headers)  # Mensaje enviado al toolkit
-      		
+        request = urllib.request.Request("https://www.googleapis.com/identitytoolkit/v3/relyingparty/deleteAccount?key="+self.firebase_apikey, data=json_data, headers=headers)  # Mensaje enviado al toolkit	
         try:
             loader = urllib.request.urlopen(request)
         except urllib.error.URLError as e:
@@ -188,9 +179,8 @@ class Firebase():
 
     ## Metodo para agregar datos a la base de datos
     def addData(self, userName, SDV, time, pose, ori, task):
-        sdv = '/Users/' + userName + '/SDV/'+SDV
-        newRef = db.reference(sdv) # Referencia al tallo SDV#
-      
+        sdv = '/' + userName + '/SDV/'+SDV
+        newRef = db.reference(sdv) # Referencia al tallo SDV#      
         # Agregar datos
         newKey = newRef.push({ u'time': time,
                    u'pos': {'X': pose[0],
@@ -206,9 +196,8 @@ class Firebase():
     
     ## Metodo para obtener los datos de un SDV
     def getData(self, userName, SDV):      
-        sdv = '/Users/' + userName + '/SDV/'+SDV
-        newRef = db.reference(sdv) # Referencia al tallo SDV#
-        
+        sdv = '/' + userName + '/SDV/'+SDV
+        newRef = db.reference(sdv) # Referencia al tallo SDV#        
         # Obtener datos        
         data = newRef.order_by_key().get()
         for key in data.items():
@@ -216,7 +205,7 @@ class Firebase():
     
     ## Metodo para modificar la task de uno de los datos  
     def updateTask(self, userName, SDV, key, update): 
-        path = '/Users/' + userName + '/SDV/' + SDV + '/%s'%key
+        path = '/' + userName + '/SDV/' + SDV + '/%s'%key
         ref = db.reference(path) # Referencia al usuario que se creo
         ref.update({
             'task': update
@@ -241,10 +230,13 @@ def main():
     #user = firebase.addUser('mfbejaranob@unal.edu.co', '123456', '3142183559', 'Manuel')
     #firebase.newDataBase(user.display_name)
     #user2 = firebase.addUser('saalvarezse@unal.edu.co', '123456', '3123498388', 'Santiago')
-    #firebase.newDataBase(user2.display_name)   
+    #firebase.newDataBase(user2.display_name)       
     
-    #user = firebase.login('mfbejaranob@unal.edu.co', '123456', firebase)
-    #print(user)
+    #user = firebase.addUser('sdazar@unal.edu.co', '123456', '3016541002', 'Santiago Daza')
+    #firebase.newDataBase(user.display_name)    
+    
+    #user = firebase.login('sdazar@unal.edu.co', '123456', firebase)
+    #firebase.deleteUser()
     
     #user = firebase.getUser('mfbejaranob@unal.edu.co')
     '''

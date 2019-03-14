@@ -295,6 +295,13 @@ class Registro():
                 msg.setInformativeText(u"No se ha podido registrar usuario: \n Datos erroneos, revisar:\n - Contraseña debe tener más de 6 digitos.\n - Verifique símbolos de los datos personales.")
                 msg.setWindowTitle("Error")
                 ret = msg.exec_()
+            # Registro exitoso
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+            msg.setText(u"Bienvenido:")
+            msg.setInformativeText(u"Usuario creado exitosamente!")
+            msg.setWindowTitle(u"Información")
+            ret = msg.exec_()
     
     def cancelar(self):
         self.user = []

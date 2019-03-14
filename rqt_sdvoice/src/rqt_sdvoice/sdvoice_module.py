@@ -7,6 +7,8 @@ import rospkg
 from paramiko import client
 from qt_gui.plugin import Plugin
 from time import gmtime, strftime
+from sensor_msgs.msg import Image
+from move_base_msgs.msg import MoveBaseActionGoal
 from geometry_msgs.msg import PoseStamped, Twist
 from actionlib_msgs.msg import GoalStatusArray, GoalID
 from python_qt_binding import QtGui, QtCore, loadUi
@@ -18,23 +20,6 @@ from utils_firebase import Firebase
 
 firebase = Firebase()
 SDVUN_LAST_COMMAND = [[], [], []]
-
-#----------------------------------------------------
-# Name: SDV
-# Type: Class
-# input args:
-# output args: client for server connections
-#----------------------------------------------------
-class SDV():
-    def __init__(self, name, address, username, password, user):
-        self.user = user
-        self.name = name
-        self.address = address
-        self.username = username
-        self.password = password
-        # Objetos
-        self.ssh = None
-        self.sender = Sender(name, self.user)
 
 #----------------------------------------------------
 # Name: ssh
@@ -108,7 +93,8 @@ class Sender():
         self.gids.append(self.cancel)
         self.pub_cancel = rospy.Publisher('/%s/move_base/cancel'%self.name, GoalID, queue_size=100)
         self.subs = rospy.Subscriber('/%s/move_base/status'%self.name, GoalStatusArray, self.callbackStatus)
-        self.subs_goal = rospy.Subscriber('/%s/move_base/goal'%self.name, GoalID, self.newGoalID)
+        self.subs_goal = rospy.Subscriber('/%s/move_base/goal'%self.name, MoveBaseActionGoal, self.newGoalID)
+        self.subs_img = rospy.Subscriber('/%s/camera/rgb/image_raw'%self.name, Image, self.newImage)
 
     def sendSDVtoHome(self):
         self.pose.header.stamp = rospy.Time().now()
@@ -147,25 +133,30 @@ class Sender():
 
     def publishPoseStamped(self):
         self.pub.publish(self.pose)
-        # ADD USERNAME AFTER LOGIN
         self.status = 0
         self.key = firebase.addData(self.user.display_name, self.name, str(self.pose.header.stamp), self.pose.pose.position,self.pose.pose.orientation,'moving')
         print self.poses[-1]
         
     def publishCancelGoal(self):
         # Cancelar último objetivo
-        self.pub_cancel.pub(self.gids[-1])
-        # Re publicar el último obejtivo
-        self.publishResetGoal()
+        print self.gids[-1]
+        self.pub_cancel.publish(self.gids[-1])
+        firebase.updateTask(self.user.display_name, self.name, self.key, 'canceled')
         
     def publishResetGoal(self):
-        firebase.updateTask(self.user.display_name, self.name, self.key, 'reseted')
-        self.pose = self.poses[-2]
+        self.status = 0
+        self.pub.publish(self.pose)
         self.publishPoseStamped()
+        firebase.updateTask(self.user.display_name, self.name, self.key, 'reseted')
         
     def newGoalID(self, status):
-        self.gids.append(status.goal_id.id)
+        self.gids.append(status.goal_id)
         self.poses.append(status.goal.target_pose)
+        
+    def newImage(self, status):
+        pass
+        #self.gids.append(status.goal_id)
+        #self.poses.append(status.goal.target_pose)
         
     def callbackStatus(self, status):
         for stats in status.status_list:
@@ -187,9 +178,24 @@ class Sender():
                 self.publishPoseStamped()
                 self.timer = 1.0
             #else: print 'ahi voy'
-        
-        
-                
+
+#----------------------------------------------------
+# Name: SDV
+# Type: Class
+# input args:
+# output args: client for server connections
+#----------------------------------------------------
+class SDV():
+    def __init__(self, name, address, username, password, user):
+        self.user = user
+        self.name = name
+        self.address = address
+        self.username = username
+        self.password = password
+        # Objetos
+        self.ssh = None
+        self.sender = Sender(name, self.user)
+      
 #----------------------------------------------------
 # Name: Login
 # Type: Class
@@ -273,19 +279,20 @@ class Registro():
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Warning)
             msg.setText(u"Error de Contraseña:")
-            msg.setInformativeText(u"Datos erroneos, revisar:\n - Contraseña debe tener más de 6 digitos.\n - Verifique símbolos de los datos personales.")
+            msg.setInformativeText(u"Las contraseñas no coinciden")
             msg.setWindowTitle("Error")
             ret = msg.exec_()
         else:
             try:
-                self.user = firebase.addUser(email, passw, firebase)
+                self.user = firebase.addUser(email, passw, phone, user_name)
+                firebase.newDataBase(self.user.display_name)
             # Error de registro
             except:
                 self.user = None
                 msg = QMessageBox()
                 msg.setIcon(QMessageBox.Warning)
                 msg.setText(u"Error de Registro:")
-                msg.setInformativeText(u"No se ha podido registrar usuario.")
+                msg.setInformativeText(u"No se ha podido registrar usuario: \n Datos erroneos, revisar:\n - Contraseña debe tener más de 6 digitos.\n - Verifique símbolos de los datos personales.")
                 msg.setWindowTitle("Error")
                 ret = msg.exec_()
     
@@ -535,10 +542,6 @@ class Plugin(Plugin):
         
         # Add widget to the user interface
         self.context.add_widget(self.login._widget)
-            
-        # TODO: Add Console
-        # TODO: Add Rviz
-
        
     def loginView(self):
         # Login correcto
